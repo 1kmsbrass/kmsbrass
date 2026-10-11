@@ -7,6 +7,7 @@
         <span class="brand-kicker">{{ if eq .Site.Language.Lang "ta" }}பித்தளைப் பொருட்கள் — மொத்த விற்பனை{{ else }}Brassware · Wholesale{{ end }}</span>
       </span>
     </a>
+    {{ if not .IsHome }}
     <details class="search-disclosure" id="site-search-disclosure">
       <summary class="icon-button search-open" aria-controls="site-search-panel" aria-label="{{ if eq .Site.Language.Lang "ta" }}தளத்தில் தேடுங்கள்{{ else }}Search KMS{{ end }}">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>
@@ -21,6 +22,7 @@
         <noscript><p class="search-hint">{{ if eq .Site.Language.Lang "ta" }}JavaScript இல்லாவிட்டாலும் அனைத்து பக்கங்களையும் படிக்கலாம்; தொடர்பு இணைப்புகள் செயல்படும்.{{ else }}With JavaScript disabled, all pages and contact links still work; instant search is unavailable.{{ end }}</p></noscript>
       </div>
     </details>
+    {{ end }}
     <nav class="primary-nav" aria-label="{{ if eq .Site.Language.Lang "ta" }}முதன்மை வழிசெலுத்தல்{{ else }}Main navigation{{ end }}">
       <a href="{{ printf "%s#product-index" .Site.Home.RelPermalink }}">{{ if eq .Site.Language.Lang "ta" }}பொருட்கள்{{ else }}Products{{ end }}</a>
       <a href="{{ "rates/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}விலைத் தகவல்{{ else }}Rates{{ end }}</a>
@@ -39,6 +41,11 @@
         {{ if ne .Lang $.Lang }}<a href="{{ .RelPermalink }}" lang="{{ .Language.LanguageCode }}">{{ .Language.LanguageName }}</a>{{ end }}
       {{ end }}
     </div>
+  </div>
+  <div class="mobile-header-contact">
+    {{ $phone := replaceRE "[^0-9+]" "" .Site.Params.phone }}
+    <a class="mobile-header-call" href="tel:{{ $phone }}">{{ if eq .Site.Language.Lang "ta" }}அழைக்கவும்: {{ else }}Call: {{ end }}{{ .Site.Params.phone }}</a>
+    <a class="mobile-header-whatsapp" href="{{ partial "whatsapp-url.html" (dict "ctx" . "message" "Hello Kumbakonam Metal Stores. I would like a wholesale brass quote. Item: ; Quantity: ; City: ; Required date: ") }}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
   </div>
   <div class="desktop-contact-strip">
     <span><strong>{{ if eq .Site.Language.Lang "ta" }}முகவரி:{{ else }}Address:{{ end }}</strong> {{ .Site.Params.address }}</span>
