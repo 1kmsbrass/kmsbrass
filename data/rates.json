@@ -13,7 +13,8 @@
       "updatedOn": null,
       "description": "A general reference value, when verified and approved for public display.",
       "oldValue": null,
-      "newValue": null
+      "newValue": null,
+      "descriptionTa": "சரிபார்த்து பொதுவில் வெளியிட ஒப்புதல் அளிக்கப்பட்டால் காட்டப்படும் பொதுக் குறிப்பு விலை."
     },
     {
       "id": "brass-scrap",
@@ -25,7 +26,8 @@
       "updatedOn": null,
       "description": "Reference only; scrap grade, cleanliness and mix affect the actual value.",
       "oldValue": null,
-      "newValue": null
+      "newValue": null,
+      "descriptionTa": "உலோகக் கலவை, தரம், சுத்தம் மற்றும் கலந்துள்ள பொருட்களால் பழைய பித்தளையின் விலை மாறும்."
     },
     {
       "id": "copper-reference",
@@ -37,7 +39,8 @@
       "updatedOn": null,
       "description": "A general reference value, when verified and approved for public display.",
       "oldValue": null,
-      "newValue": null
+      "newValue": null,
+      "descriptionTa": "சரிபார்த்து பொதுவில் வெளியிட ஒப்புதல் அளிக்கப்பட்டால் காட்டப்படும் பொதுச் செம்புக் குறிப்பு விலை."
     }
   ],
   "history": []
