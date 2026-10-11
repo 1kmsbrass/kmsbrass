@@ -12,11 +12,11 @@ sources:
 
 Kumbakonam Metal Stores supplies brass articles for pooja, lamps, temples, vessels, cookware and bulk gifting, subject to item availability and confirmed specifications. This is a wholesale enquiry site: **we do not show retail checkout prices or unverified rates.** Ask for a straight quote for the item and quantity you need.
 
-## What we sell — and what this site does not promise
+## What we sell and what we don't
 
 We handle wholesale and bulk enquiries for brass articles such as pooja items, lamps, temple articles, vessels, cookware and gifting requirements. Product-specific pages will publish stable facts such as material, sizes, weights, capacity and minimum order quantity as each specification is verified.
 
-This site does not promise that every listed article is available at all times, that every pooja uses the same items, or that a public rate is a guaranteed price. Ritual-specific requirements should be confirmed with the temple or officiant. No stock counters, discounts or reply-time promises are invented.
+We do not offer trade credit, display v1 public prices, guarantee unconfirmed stock, or promise an availability/dispatch date before the order details are confirmed. We do not accept ritual assumptions as proof: requirements specific to a temple should be confirmed with its committee or officiant. We do not use fake stock counters, discounts or reply-time promises.
 
 ## How ordering works
 
