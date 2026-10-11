@@ -27,4 +27,5 @@
   {{ $mainCSS := resources.Get "css/main.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $mainCSS.RelPermalink }}" integrity="{{ $mainCSS.Data.Integrity }}" crossorigin="anonymous">
   {{ with .OutputFormats.Get "RSS" }}<link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ $.Site.Title }}">{{ end }}
+  {{ partial "jsonld.html" . }}
 </head>
