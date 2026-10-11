@@ -4,11 +4,14 @@
 {{- $rate := index $rateList 0 -}}
 {{- $rateValue := "" -}}
 {{- $rateDate := "" -}}
-{{- if and $rate.public (ne $rate.value nil) -}}
+{{- if and site.Params.showPrices $rate.public (ne $rate.value nil) -}}
   {{- $rateValue = printf "%.2f" $rate.value -}}
 {{- end -}}
 {{- with $rate.updatedOn -}}{{- $rateDate = . -}}{{- end -}}
-{{- $history := sort (where (where site.Data.rates.history "public" true) "id" "brass-reference") "date" "asc" -}}
+{{- $history := slice -}}
+{{- if site.Params.showPrices -}}
+  {{- $history = sort (where (where site.Data.rates.history "public" true) "id" "brass-reference") "date" "asc" -}}
+{{- end -}}
 <div class="rate-ticker" data-rate-value="{{ $rateValue }}" data-rate-unit="{{ $rate.unit }}" data-rate-history="{{ $history | jsonify | htmlEscape }}">
   <div class="rate-ticker-label">
     <span class="rate-pulse" aria-hidden="true"></span>
