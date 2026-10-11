@@ -1,0 +1,23 @@
+{{- /* Public rate only. Missing or unverified values are never guessed. */ -}}
+{{- $rates := site.Data.rates.rates -}}
+{{- $rateList := where $rates "id" "brass-reference" -}}
+{{- $rate := index $rateList 0 -}}
+{{- $rateValue := "" -}}
+{{- $rateDate := "" -}}
+{{- if and $rate.public (ne $rate.value nil) -}}
+  {{- $rateValue = printf "%.2f" $rate.value -}}
+{{- end -}}
+{{- with $rate.updatedOn -}}{{- $rateDate = . -}}{{- end -}}
+{{- $history := where site.Data.rates.history "public" true -}}
+<div class="rate-ticker" data-rate-value="{{ $rateValue }}" data-rate-unit="{{ $rate.unit }}" data-rate-history="{{ $history | jsonify | htmlEscape }}">
+  <div class="rate-ticker-label">
+    <span class="rate-pulse" aria-hidden="true"></span>
+    <span>{{ if eq site.Language.Lang "ta" }}பித்தளை குறிப்பு விலை{{ else }}Brass reference rate{{ end }}</span>
+  </div>
+  <div class="rate-ticker-value-wrap">
+    <strong class="rate-ticker-value" aria-live="polite">{{ if ne $rateValue "" }}₹{{ $rateValue }} / kg{{ else }}{{ if eq site.Language.Lang "ta" }}இன்றைய விலை வெளியிடப்படவில்லை{{ else }}Today's figure not published{{ end }}{{ end }}</strong>
+    <span class="rate-ticker-date">{{ if ne $rateDate "" }}{{ if eq site.Language.Lang "ta" }}புதுப்பிப்பு: {{ else }}Updated {{ end }}{{ $rateDate }}{{ else }}{{ if eq site.Language.Lang "ta" }}சரியான விலைக்கு தொடர்பு கொள்ளவும்{{ else }}Call for today's quote{{ end }}{{ end }}</span>
+  </div>
+  <svg class="rate-ticker-sparkline" viewBox="0 0 112 30" role="img" aria-label="{{ if eq site.Language.Lang "ta" }}சமீபத்திய பொது விலை வரலாறு{{ else }}Recent public rate history{{ end }}"><path d="M2 22 L110 22" fill="none" stroke="currentColor" stroke-opacity=".28" stroke-width="1.5"/></svg>
+  <a class="rate-ticker-link" href="{{ "rates/" | relLangURL }}">{{ if eq site.Language.Lang "ta" }}விவரங்கள்{{ else }}Rate notes{{ end }} <span aria-hidden="true">↗</span></a>
+</div>
