@@ -1,10 +1,12 @@
-{{- /* Emit LocalBusiness schema only when real contact details replace the placeholders. */ -}}
+{{- /* Emit LocalBusiness schema only when real contact details replace placeholders. */ -}}
 {{- if and .IsHome (ne .Site.Params.phone "{{PHONE}}") (ne .Site.Params.address "{{ADDRESS}}") -}}
   {{- $postalAddress := dict "@type" "PostalAddress" "streetAddress" .Site.Params.address "addressCountry" "IN" -}}
-  {{- $business := dict "@context" "https://schema.org" "@type" "LocalBusiness" "@id" .Site.BaseURL "#business" "name" .Site.Title "url" .Site.BaseURL "description" .Site.Params.description "telephone" .Site.Params.phone "address" $postalAddress -}}
+  {{- $business := dict "@context" "https://schema.org" "@type" "LocalBusiness" "@id" (printf "%s#business" .Site.BaseURL) "name" .Site.Title "url" .Site.BaseURL "description" .Site.Params.description "telephone" .Site.Params.phone "address" $postalAddress -}}
   {{- if ne .Site.Params.gstNo "{{GST_NO}}" -}}
     {{- $business = merge $business (dict "taxID" .Site.Params.gstNo) -}}
   {{- end -}}
+<script type="application/ld+json">{{ $business | jsonify | safeJS }}</script>
+{{- end -}}
 
 {{- /* Basic breadcrumb markup for complete, indexable pages. */ -}}
 {{- if and (not .IsHome) .IsPage (eq .Params.quality "complete") -}}
@@ -12,6 +14,4 @@
   {{- $pageItem := dict "@type" "ListItem" "position" 2 "name" .Title "item" .Permalink -}}
   {{- $breadcrumb := dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" (slice $homeItem $pageItem) -}}
 <script type="application/ld+json">{{ $breadcrumb | jsonify | safeJS }}</script>
-{{- end -}}
-<script type="application/ld+json">{{ $business | jsonify | safeJS }}</script>
 {{- end -}}
