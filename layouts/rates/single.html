@@ -48,11 +48,22 @@
       </table>
     </div>
   </section>
-  {{ $shareText := printf "%s\n%s\n%s" "Kumbakonam Metal Stores — public reference rates" "Indicative only. Call for exact quote. Wholesale orders require advance payment." .Permalink }}
+  {{ $shareTitle := "Kumbakonam Metal Stores — public reference rates" }}
+  {{ $shareNote := "Indicative only. Call for exact quote. Wholesale orders require advance payment." }}
+  {{ if eq .Site.Language.Lang "ta" }}
+    {{ $shareTitle = "கும்பகோணம் மெட்டல் ஸ்டோர்ஸ் — பொது குறிப்பு விலைகள்" }}
+    {{ $shareNote = "குறிப்பு விலைகள் மட்டுமே. சரியான விலைக்கு தொடர்பு கொள்ளவும். மொத்த ஆர்டர்களுக்கு முன்பணம் தேவை." }}
+  {{ end }}
+  {{ $shareText := printf "%s\n%s\n%s" $shareTitle $shareNote .Permalink }}
   {{ range where .Site.Data.rates.rates "public" true }}
+    {{ $rateName := .name }}
     {{ $publicValue := "Not published — contact KMS for today's quote" }}
+    {{ if eq $.Site.Language.Lang "ta" }}
+      {{ $rateName = .nameTa }}
+      {{ $publicValue = "வெளியிடப்படவில்லை — இன்றைய விலைக்கு தொடர்பு கொள்ளவும்" }}
+    {{ end }}
     {{ if ne .value nil }}{{ $publicValue = printf "₹%.2f %s" .value .unit }}{{ end }}
-    {{ $shareText = printf "%s\n%s: %s" $shareText .name $publicValue }}
+    {{ $shareText = printf "%s\n%s: %s" $shareText $rateName $publicValue }}
   {{ end }}
   <div class="rate-actions" aria-label="{{ if eq .Site.Language.Lang "ta" }}விலை பகிர்வு கருவிகள்{{ else }}Rate sharing tools{{ end }}">
     <button class="button button-outline" type="button" data-copy-rates hidden>{{ if eq .Site.Language.Lang "ta" }}விலைகளை நகலெடுக்கவும்{{ else }}Copy rates as text{{ end }}</button>
