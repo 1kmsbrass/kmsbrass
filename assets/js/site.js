@@ -70,10 +70,12 @@
       for (const result of response.results.slice(0, 12)) {
         const data = await result.data();
         if (sequence !== searchSequence) return;
-        const section = (data.meta && (data.meta.section || data.meta.type)) || "Guides";
-        const group = /product/i.test(section) ? "Products" :
-          /temple|pooja|kumbabishegam/i.test(section) ? "Temples & rituals" :
-          /tool|rate/i.test(section) ? "Tools & rates" : "Guides";
+        // Use the URL path as a reliable fallback until each template supplies search metadata.
+        const path = String(data.url || "").toLowerCase().replace(/^\/(?:en|ta)(?:-[a-z]{2})?\//, "/");
+        const section = (data.meta && (data.meta.section || data.meta.type)) || path;
+        const group = /product/i.test(section) || path.startsWith("/products/") ? "Products" :
+          /temple|pooja|kumbabishegam/i.test(section) || /^\/(temples|poojas|kumbabishegam)\//.test(path) ? "Temples & rituals" :
+          /tool|rate/i.test(section) || /^\/(tools|rates|brass-rate)\//.test(path) ? "Tools & rates" : "Guides";
         if (!groups.has(group)) groups.set(group, []);
         groups.get(group).push(data);
       }
