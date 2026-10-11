@@ -15,7 +15,7 @@
       </summary>
       <div class="search-panel" id="site-search-panel">
         <label class="visually-hidden" for="site-search-input">{{ if eq .Site.Language.Lang "ta" }}தேடல் சொற்கள்{{ else }}Search terms{{ end }}</label>
-        <input id="site-search-input" class="search-input" type="search" autocomplete="off" placeholder="{{ if eq .Site.Language.Lang "ta" }}பொருட்கள், கோயில்கள், வழிகாட்டிகள்...{{ else }}Products, temples, guides…{{ end }}">
+        <input id="site-search-input" aria-controls="site-search-results" data-pagefind-search-input class="search-input" type="search" autocomplete="off" placeholder="{{ if eq .Site.Language.Lang "ta" }}பொருட்கள், கோயில்கள், வழிகாட்டிகள்...{{ else }}Products, temples, guides…{{ end }}">
         <p class="search-hint">{{ if eq .Site.Language.Lang "ta" }}ஆங்கிலம் அல்லது தமிழில் தேடலாம். உடனடி தேடலுக்கு JavaScript தேவை.{{ else }}Search in English or Tamil. Instant results require JavaScript.{{ end }}</p>
         <div id="site-search-results" class="search-results" aria-live="polite" aria-busy="false"></div>
         <noscript><p class="search-hint">{{ if eq .Site.Language.Lang "ta" }}JavaScript இல்லாவிட்டாலும் அனைத்து பக்கங்களையும் படிக்கலாம்; தொடர்பு இணைப்புகள் செயல்படும்.{{ else }}With JavaScript disabled, all pages and contact links still work; instant search is unavailable.{{ end }}</p></noscript>
