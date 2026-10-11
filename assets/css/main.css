@@ -405,3 +405,21 @@ kbd { font: inherit; font-size: .75rem; color: var(--muted); background: var(--s
   .desktop-contact-strip { display: none; }
   .header-contact { display: none; }
 }
+
+/* Contact bar, inline disclosure and page metadata: no overlays or obstructive popups. */
+.header-contact .header-whatsapp { color: var(--red-700); }
+.header-contact .header-whatsapp:hover { color: var(--red-900); }
+.desktop-contact-strip { font-size: .82rem; }
+.page-meta {
+  display: flex; flex-wrap: wrap; gap: .35rem 1.2rem;
+  padding: 1rem max(1rem, calc((100% - var(--content-width)) / 2));
+  border-top: 1px solid var(--line); color: var(--muted);
+  font-size: .85rem; line-height: 1.55;
+}
+.page-meta strong { color: var(--red-900); }
+.page-meta a { color: var(--red-700); }
+.footer-policy-link { display: inline-block; max-width: 40ch; margin-top: .5rem; color: var(--brass-100); }
+.site-footer a:hover { color: var(--brass-400); }
+@media (max-width: 680px) {
+  .page-meta { padding: .9rem 1rem calc(1rem + env(safe-area-inset-bottom)); }
+}
