@@ -11,11 +11,11 @@
   const copyFailedMessage = isTamil ? "இந்த உலாவியில் நகலெடுக்க முடியவில்லை." : "Copy not available in this browser.";
   const getText = () => {
     const rows = cards.map((card) => {
-      const label = card.dataset.label || "Reference rate";
+      const label = card.dataset.label || (isTamil ? "குறிப்பு விலை" : "Reference rate");
       const value = card.dataset.value
         ? "₹" + new Intl.NumberFormat("en-IN", { maximumFractionDigits: 2 }).format(Number(card.dataset.value)) + " " + (card.dataset.unit || "")
-        : "Not published — contact KMS for today's quote";
-      const updated = card.dataset.updated ? " (updated " + card.dataset.updated + ")" : "";
+        : (isTamil ? "வெளியிடப்படவில்லை — இன்றைய விலைக்கு KMS-ஐ தொடர்பு கொள்ளவும்" : "Not published — contact KMS for today's quote");
+      const updated = card.dataset.updated ? (isTamil ? " (புதுப்பிப்பு " : " (updated ") + card.dataset.updated + ")" : "";
       return label + ": " + value + updated;
     });
     const title = isTamil ? "கும்பகோணம் மெட்டல் ஸ்டோர்ஸ் — பொது குறிப்பு விலைகள்" : "Kumbakonam Metal Stores — public reference rates";
