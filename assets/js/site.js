@@ -21,7 +21,12 @@
       });
     }
     await pagefindLoading;
-    if (window.pagefind && input.value.trim()) runSearch();
+    if (window.pagefind && input.value.trim()) {
+      runSearch();
+    } else if (window.pagefind) {
+      results.textContent = "Start typing to search products, temples, guides and tools.";
+      results.setAttribute("aria-busy", "false");
+    }
   };
 
   const closeSearch = () => dialog.close();
