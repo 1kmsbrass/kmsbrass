@@ -430,3 +430,24 @@ kbd { font: inherit; font-size: .75rem; color: var(--muted); background: var(--s
 }
 .prices-hidden-notice h2 { margin: .3rem 0 .85rem; }
 .prices-hidden-notice p:not(.eyebrow) { max-width: 62ch; }
+
+/* Promote meaningful navigation, search guidance and contact information to the body text minimum. */
+.primary-nav a,
+.phone-link,
+.header-whatsapp,
+.search-label,
+.search-hint,
+.search-result-excerpt,
+.aside-terms p,
+.card-link,
+.desktop-contact-strip,
+.rate-ticker-value {
+  font-size: 1.0625rem;
+}
+@media (max-width: 680px) {
+  .mobile-contact-copy strong,
+  .mobile-contact-copy .sticky-phone {
+    font-size: 1.0625rem;
+  }
+  .mobile-contact-copy span:not(.sticky-phone) { display: none; }
+}
