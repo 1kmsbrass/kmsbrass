@@ -1,0 +1,8 @@
+{{ define "main" }}
+<article class="page-shell prose" data-pagefind-body>
+  <p class="eyebrow">{{ .Section | humanize }}</p>
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
+  {{ .Content }}
+</article>
+{{ end }}
