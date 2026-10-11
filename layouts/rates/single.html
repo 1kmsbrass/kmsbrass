@@ -1,0 +1,58 @@
+{{ define "main" }}
+<article class="rates-page page-shell" data-pagefind-body data-pagefind-meta="type:Tools">
+  <p class="eyebrow">{{ if eq .Site.Language.Lang "ta" }}பித்தளை · செம்பு · பழைய பொருட்கள்{{ else }}BRASS · COPPER · SCRAP{{ end }}</p>
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
+  <p class="rates-intro">{{ .Content }}</p>
+  {{ partial "rate-ticker.html" . }}
+  <div class="rates-heading-row">
+    <div>
+      <h2>{{ if eq .Site.Language.Lang "ta" }}பொது குறிப்பு விலைகள்{{ else }}Public reference rates{{ end }}</h2>
+      <p class="rates-muted">{{ if eq .Site.Language.Lang "ta" }}குறிப்பு விலைகள் மட்டுமே. கலவை, தரம், எடை மற்றும் உற்பத்தி விவரங்களால் இறுதி விலை மாறலாம்.{{ else }}These are reference values, not a guaranteed selling or buying price. Grade, composition, weight and product specifications affect the final quote.{{ end }}</p>
+    </div>
+    <p class="rates-updated">{{ if .Site.Data.rates.updatedOn }}{{ if eq .Site.Language.Lang "ta" }}பொது தரவு புதுப்பிப்பு: {{ else }}Public data updated: {{ end }}{{ .Site.Data.rates.updatedOn }}{{ else }}{{ if eq .Site.Language.Lang "ta" }}பொது விலை இன்னும் வெளியிடப்படவில்லை{{ else }}No verified public rate published yet{{ end }}{{ end }}</p>
+  </div>
+  <div class="rate-cards">
+    {{ range where .Site.Data.rates.rates "public" true }}
+      <article class="rate-card" data-rate-card data-label="{{ if eq $.Site.Language.Lang "ta" }}{{ .nameTa }}{{ else }}{{ .name }}{{ end }}" data-value="{{ if ne .value nil }}{{ .value }}{{ end }}" data-unit="{{ .unit }}" data-updated="{{ .updatedOn }}">
+        <span class="rate-card-label">{{ if eq $.Site.Language.Lang "ta" }}{{ .nameTa }}{{ else }}{{ .name }}{{ end }}</span>
+        <strong class="rate-card-value">{{ if ne .value nil }}₹{{ lang.FormatNumber 2 .value }}{{ else }}{{ if eq $.Site.Language.Lang "ta" }}தொடர்பு கொள்ளவும்{{ else }}Call for current rate{{ end }}{{ end }}</strong>
+        <span class="rate-card-unit">{{ .unit }}</span>
+        <p>{{ if eq $.Site.Language.Lang "ta" }}{{ .description }}{{ else }}{{ .description }}{{ end }}</p>
+        <small>{{ if .updatedOn }}{{ if eq $.Site.Language.Lang "ta" }}புதுப்பிப்பு: {{ else }}Updated on {{ end }}{{ .updatedOn }}{{ else }}{{ if eq $.Site.Language.Lang "ta" }}சரிபார்க்கப்பட்ட பொது விலை இல்லை{{ else }}No verified public figure yet{{ end }}{{ end }}</small>
+      </article>
+    {{ end }}
+  </div>
+  <div class="rate-actions" aria-label="{{ if eq .Site.Language.Lang "ta" }}விலை பகிர்வு கருவிகள்{{ else }}Rate sharing tools{{ end }}">
+    <button class="button button-outline" type="button" data-copy-rates>{{ if eq .Site.Language.Lang "ta" }}விலைகளை நகலெடுக்கவும்{{ else }}Copy rates as text{{ end }}</button>
+    <button class="button button-red" type="button" data-share-rates>{{ if eq .Site.Language.Lang "ta" }}WhatsApp-ல் பகிரவும்{{ else }}Share on WhatsApp{{ end }} <span aria-hidden="true">↗</span></button>
+    <span class="copy-status" role="status" aria-live="polite"></span>
+  </div>
+  <section class="rate-history-section">
+    <div>
+      <p class="eyebrow">{{ if eq .Site.Language.Lang "ta" }}பதிவு செய்யப்பட்ட மாற்றங்கள்{{ else }}RECORDED CHANGES{{ end }}</p>
+      <h2>{{ if eq .Site.Language.Lang "ta" }}விலை வரலாறு{{ else }}Rate history{{ end }}</h2>
+      <p class="rates-muted">{{ if eq .Site.Language.Lang "ta" }}சரிபார்க்கப்பட்ட பொது பதிவுகள் கிடைக்கும் போது மட்டுமே வரைபடம் காட்டப்படும்.{{ else }}The sparkline appears when verified public rate history is added. No figures are estimated or fabricated.{{ end }}</p>
+    </div>
+    <div class="rate-history-chart" data-history-chart>
+      <svg viewBox="0 0 480 116" role="img" aria-label="{{ if eq .Site.Language.Lang "ta" }}பொது விலை வரலாறு வரைபடம்{{ else }}Public rate history chart{{ end }}">
+        <path d="M1 95 H479" class="chart-baseline"></path>
+        <text x="240" y="58" text-anchor="middle" class="chart-empty-label">{{ if eq .Site.Language.Lang "ta" }}பதிவுகள் சேர்க்கப்படவில்லை{{ else }}No verified history added yet{{ end }}</text>
+      </svg>
+    </div>
+  </section>
+  <section class="rates-note">
+    <h2>{{ if eq .Site.Language.Lang "ta" }}விலைகளை எவ்வாறு பயன்படுத்துவது?{{ else }}How to use these rates{{ end }}</h2>
+    <p>{{ if eq .Site.Language.Lang "ta" }}இவை குறிப்பான தகவல்கள் மட்டுமே. ஒவ்வொரு பொருளுக்கும் சரியான விலை, அளவு, குறைந்தபட்ச ஆர்டர் மற்றும் விநியோகச் செலவை WhatsApp வழியாக உறுதிப்படுத்தவும்.{{ else }}Rates are indicative only. Ask us to confirm the exact product, variant, minimum order quantity and delivery cost by WhatsApp. Wholesale orders require advance payment; trade credit is not offered.{{ end }}</p>
+    {{ $message := "Hello Kumbakonam Metal Stores. Please share today's verified brass and scrap reference rates and the current quote for my requirement." }}
+    <a class="button button-brass" href="{{ partial "whatsapp-url.html" (dict "ctx" . "message" $message) }}" {{ if ne .Site.Params.whatsapp "{{WHATSAPP}}" }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ if eq .Site.Language.Lang "ta" }}இன்றைய விலையை கேளுங்கள்{{ else }}Ask for today's quote{{ end }} <span aria-hidden="true">↗</span></a>
+  </section>
+</article>
+{{ end }}
+
+{{ define "pageScripts" }}
+  {{ $ticker := resources.Get "js/rate-ticker.js" | minify | fingerprint }}
+  <script src="{{ $ticker.RelPermalink }}" integrity="{{ $ticker.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ $actions := resources.Get "js/rates-actions.js" | minify | fingerprint }}
+  <script src="{{ $actions.RelPermalink }}" integrity="{{ $actions.Data.Integrity }}" crossorigin="anonymous" defer></script>
+{{ end }}
