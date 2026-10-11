@@ -20,7 +20,12 @@ timeZone = "Asia/Kolkata"
   showPrices = false
   phone = "9894055337"
   whatsapp = "9894055337"
-  address = "9 Voc Street, Anupperpalayam, Tiruppur - 641652, Tamil Nadu, India"
+  address = "9 VOC Street, Anupperpalayam, Tiruppur - 641652, Tamil Nadu, India"
+  streetAddress = "9 VOC Street, Anupperpalayam"
+  addressLocality = "Tiruppur"
+  addressRegion = "Tamil Nadu"
+  postalCode = "641652"
+  addressCountry = "IN"
   gstNo = "33FQDPM8615P1Z9"
   defaultImageAlt = "Brassware from Kumbakonam Metal Stores"
 
