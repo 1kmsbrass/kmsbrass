@@ -8,6 +8,9 @@ translationKey: audience-retailers
 weight: 1
 kicker: "TRADE BUYERS"
 whatsappMessage: "Hello Kumbakonam Metal Stores. I am a retailer/dealer. Please share available brass product categories, variants, minimum order quantities and current wholesale quotes. My city is: "
+lastUpdated: "2026-10-11"
+sources:
+  - "KMS business and ordering policy; no external research claims used"
 ---
 
 Retail buyers need clear product details and an order process they can plan around. Tell us which brass articles you sell, the variants you need and where the goods should be delivered.
