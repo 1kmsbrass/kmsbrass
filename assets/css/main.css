@@ -241,8 +241,10 @@ kbd { font: inherit; font-size: .75rem; color: var(--muted); background: var(--s
 .card-link { display: flex; align-items: center; gap: .55rem; margin-top: auto; padding-top: 1rem; color: var(--red-700); font-size: .85rem; font-weight: 800; }
 .product-families { background: var(--cream); }
 .family-list { padding-top: 0; }
-.family-row { display: grid; grid-template-columns: 54px minmax(0, 1fr) 36px; align-items: center; gap: 1.2rem; padding: 1.4rem 0; border-top: 1px solid var(--line); }
+.family-row { display: grid; grid-template-columns: 54px minmax(0, 1fr) 36px; align-items: center; gap: 1.2rem; padding: 1.4rem 0; border-top: 1px solid var(--line); color: var(--ink); text-decoration: none; }
 .family-row:last-child { border-bottom: 1px solid var(--line); }
+.family-row:hover { color: var(--ink); background: linear-gradient(90deg, rgb(255 241 204 / 35%), transparent 75%); }
+.family-row:hover .family-arrow { border-color: var(--brass-500); background: var(--brass-100); }
 .family-index { color: var(--brass-500); font-family: var(--serif); font-size: 1.7rem; }
 .family-row h3 { margin: 0 0 .35rem; font-size: 1.35rem; }
 .family-row p { margin: 0; color: var(--muted); }
