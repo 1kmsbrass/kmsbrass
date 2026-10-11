@@ -2,7 +2,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#5E0F0F">
-  <meta name="color-scheme" content="light dark">
+  <meta name="color-scheme" content="light">
   <title>{{ if .IsHome }}{{ .Site.Title }} — {{ if eq .Site.Language.Lang "ta" }}மொத்த பித்தளைப் பொருட்கள்{{ else }}Brass Wholesale{{ end }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
   <meta name="description" content="{{ .Description | default .Site.Params.description | plainify | htmlEscape }}">
   {{ $robots := "index,follow" }}
