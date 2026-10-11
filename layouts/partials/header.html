@@ -1,0 +1,43 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="{{ .Site.Home.RelPermalink }}" aria-label="{{ .Site.Title }} — home">
+      <span class="brand-mark" aria-hidden="true">க</span>
+      <span class="brand-copy">
+        <span class="brand-name">Kumbakonam Metal Stores</span>
+        <span class="brand-kicker">{{ if eq .Site.Language.Lang "ta" }}பித்தளைப் பொருட்கள் — மொத்த விற்பனை{{ else }}Brassware · Wholesale{{ end }}</span>
+      </span>
+    </a>
+    <button class="icon-button search-open" type="button" aria-haspopup="dialog" aria-controls="site-search-dialog" aria-label="{{ if eq .Site.Language.Lang "ta" }}தேடலைத் திறக்கவும்{{ else }}Open search{{ end }}">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>
+      <span class="search-label">{{ if eq .Site.Language.Lang "ta" }}தேடு{{ else }}Search{{ end }}</span>
+      <kbd>/</kbd>
+    </button>
+    <nav class="primary-nav" aria-label="{{ if eq .Site.Language.Lang "ta" }}முதன்மை வழிசெலுத்தல்{{ else }}Main navigation{{ end }}">
+      <a href="{{ "products/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}பொருட்கள்{{ else }}Products{{ end }}</a>
+      <a href="{{ "rates/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}விலைத் தகவல்{{ else }}Rates{{ end }}</a>
+      <a href="{{ "tools/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}கருவிகள்{{ else }}Tools{{ end }}</a>
+      <a href="{{ "about/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}எங்களைப் பற்றி{{ else }}About{{ end }}</a>
+    </nav>
+    <div class="header-contact">
+      {{ $phone := replaceRE "[^0-9+]" "" .Site.Params.phone }}
+      {{ if and $phone (ne .Site.Params.phone "{{PHONE}}") }}
+        <a class="phone-link" href="tel:{{ $phone }}">{{ .Site.Params.phone }}</a>
+      {{ else }}
+        <span class="phone-link phone-placeholder">{{ .Site.Params.phone }}</span>
+      {{ end }}
+      <span class="payment-note">{{ if eq .Site.Language.Lang "ta" }}முன்பணம் செலுத்தி வாங்குதல்{{ else }}Advance payment{{ end }}</span>
+    </div>
+  </div>
+  <dialog class="search-dialog" id="site-search-dialog" aria-labelledby="search-title">
+    <div class="search-panel">
+      <div class="search-panel-top">
+        <h2 id="search-title">{{ if eq .Site.Language.Lang "ta" }}தளத்தில் தேடுங்கள்{{ else }}Search KMS{{ end }}</h2>
+        <button class="icon-button search-close" type="button" aria-label="{{ if eq .Site.Language.Lang "ta" }}மூடு{{ else }}Close search{{ end }}">✕</button>
+      </div>
+      <label class="visually-hidden" for="site-search-input">{{ if eq .Site.Language.Lang "ta" }}தேடல் சொற்கள்{{ else }}Search terms{{ end }}</label>
+      <input id="site-search-input" class="search-input" type="search" autocomplete="off" placeholder="{{ if eq .Site.Language.Lang "ta" }}பொருட்கள், கோயில்கள், வழிகாட்டிகள்...{{ else }}Products, temples, guides…{{ end }}">
+      <p class="search-hint">{{ if eq .Site.Language.Lang "ta" }}ஆங்கிலம் அல்லது தமிழில் தேடலாம்{{ else }}Search in English or Tamil · Press Esc to close{{ end }}</p>
+      <div id="site-search-results" class="search-results" aria-live="polite" aria-busy="false"></div>
+    </div>
+  </dialog>
+</header>
