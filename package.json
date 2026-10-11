@@ -9,7 +9,7 @@
     "search:index": "pagefind --site public",
     "dev": "hugo server --buildDrafts"
   },
-  "devDependencies": {
+  "dependencies": {
     "pagefind": "^1.3.0"
   }
 }
