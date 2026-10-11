@@ -3,20 +3,202 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ .Site.Title }}</title>
+  <meta name="theme-color" content="#a51f16">
+  <title>{{ .Site.Title }} | Wholesale Brass &amp; Temple Items</title>
   <meta name="description" content="{{ .Site.Params.description }}">
   <meta name="robots" content="index,follow">
+  <link rel="canonical" href="{{ .Site.BaseURL }}">
+  <style>
+    :root{--red:#a51f16;--red-dark:#76170f;--yellow:#f7c928;--ink:#241b16;--muted:#6f625a;--cream:#fffaf0;--line:#eadfce;--white:#fff}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+    a{color:inherit}
+    .topline{background:var(--red-dark);color:#fff;text-align:center;padding:8px 16px;font-size:.82rem;letter-spacing:.04em}
+    .wrap{width:min(1160px,calc(100% - 40px));margin:auto}
+    header{background:#fff;border-bottom:1px solid var(--line)}
+    .nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .mark{width:48px;height:48px;display:grid;place-items:center;border:2px solid var(--red);border-radius:50%;color:var(--red);font-weight:900;font-size:1rem;letter-spacing:-.06em}
+    .brand-name{font-weight:900;font-size:1.02rem;line-height:1.2}
+    .brand-sub{font-size:.72rem;color:var(--muted);letter-spacing:.09em;text-transform:uppercase;margin-top:4px}
+    .navlinks{display:flex;align-items:center;gap:24px;font-size:.9rem}
+    .navlinks a{text-decoration:none}
+    .navlinks a:hover{color:var(--red)}
+    .lang{border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 10px;font-weight:700;cursor:pointer}
+    .hero{background:var(--red);color:#fff;position:relative;overflow:hidden}
+    .hero:after{content:"";position:absolute;width:440px;height:440px;border:1px solid #ffffff24;border-radius:50%;right:-120px;top:-170px;box-shadow:0 0 0 38px #ffffff0b,0 0 0 78px #ffffff08;pointer-events:none}
+    .hero-inner{padding:76px 0 72px;display:grid;grid-template-columns:1.35fr .65fr;gap:44px;align-items:center;position:relative;z-index:1}
+    .eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;font-weight:800;color:var(--yellow)}
+    h1{font-size:clamp(2.5rem,5vw,4.65rem);line-height:1.04;letter-spacing:-.045em;margin:18px 0 22px;max-width:760px}
+    .hero p{font-size:1.08rem;max-width:650px;color:#fff0e9;margin:0 0 28px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;border-radius:7px;padding:13px 19px;font-weight:800;text-decoration:none;border:1px solid transparent}
+    .btn-yellow{background:var(--yellow);color:#2c1a00}
+    .btn-outline{border-color:#ffffff80;color:#fff}
+    .hero-note{font-size:.82rem!important;color:#f5d8d0!important;margin-top:16px!important}
+    .hero-card{background:var(--yellow);color:var(--red-dark);padding:28px;border-radius:14px;max-width:340px;justify-self:end;box-shadow:10px 10px 0 #76170f}
+    .hero-card .big{font-size:2.5rem;font-weight:900;line-height:1.05;letter-spacing:-.04em}
+    .hero-card p{color:#4e2115;font-size:.95rem;margin:12px 0 0}
+    .strip{background:#fff;border-bottom:1px solid var(--line)}
+    .strip-inner{display:grid;grid-template-columns:repeat(3,1fr);padding:18px 0;gap:20px}
+    .strip-item{display:flex;align-items:center;gap:12px;font-size:.9rem;font-weight:700}
+    .strip-icon{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#fff0c2;color:var(--red);font-weight:900;flex-shrink:0}
+    section{padding:70px 0}
+    .section-head{max-width:700px;margin-bottom:30px}
+    .kicker{font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;color:var(--red);font-weight:900}
+    h2{font-size:clamp(1.8rem,3vw,2.65rem);letter-spacing:-.035em;line-height:1.15;margin:9px 0 12px}
+    .section-head p{color:var(--muted);margin:0}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .category{display:block;background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;text-decoration:none;min-height:190px;transition:transform .18s,border-color .18s}
+    .category:hover{transform:translateY(-3px);border-color:#d6a59e}
+    .cat-symbol{width:48px;height:48px;border-radius:12px;background:#fff0c2;color:var(--red);display:grid;place-items:center;font-size:1.35rem;font-weight:900;margin-bottom:20px}
+    .category h3{font-size:1.04rem;line-height:1.3;margin:0 0 8px}
+    .category p{font-size:.86rem;color:var(--muted);margin:0}
+    .category .arrow{display:inline-block;color:var(--red);font-weight:900;margin-top:14px}
+    .band{background:#f5eddf}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+    .points{display:grid;gap:15px;margin-top:25px}
+    .point{display:flex;gap:12px;align-items:flex-start}
+    .tick{color:var(--red);font-weight:900;font-size:1.1rem}
+    .point strong{display:block}
+    .point span{color:var(--muted);font-size:.9rem}
+    .quote-box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px}
+    .quote-box h3{margin:0 0 10px;font-size:1.35rem}
+    .quote-box p{color:var(--muted);margin:0 0 20px}
+    .quote-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+    .quote-list li{border-top:1px solid var(--line);padding-top:12px;display:flex;gap:10px}
+    .quote-list b{color:var(--red)}
+    .contact{background:var(--red-dark);color:#fff;padding:52px 0}
+    .contact-inner{display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .contact h2{margin-top:0;max-width:650px}
+    .contact p{color:#f3d9d3;margin:0}
+    footer{background:#241b16;color:#e8dcd1;padding:28px 0;font-size:.84rem}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .footer-inner p{margin:4px 0}
+    .footer-links{display:flex;gap:18px;flex-wrap:wrap}
+    .footer-links a{color:#fff;text-decoration:none}
+    .tamil{display:none}
+    body.show-tamil .english{display:none}
+    body.show-tamil .tamil{display:initial}
+    body.show-tamil .block-tamil{display:block}
+    @media(max-width:850px){.navlinks{gap:14px}.navlinks .nav-extra{display:none}.hero-inner{grid-template-columns:1fr;padding:58px 0}.hero-card{justify-self:start;max-width:420px}.grid{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr;gap:28px}}
+    @media(max-width:560px){.wrap{width:min(100% - 28px,1160px)}.nav{min-height:72px;gap:10px}.mark{width:42px;height:42px}.brand-name{font-size:.9rem}.brand-sub{font-size:.62rem}.navlinks{gap:8px}.navlinks>a{display:none}.lang{font-size:.78rem;padding:7px}.hero-inner{padding:48px 0}.hero-card{padding:22px}.strip-inner{grid-template-columns:1fr;gap:12px;padding:16px 0}.grid{gap:10px}.category{padding:16px;min-height:175px}.cat-symbol{margin-bottom:14px}section{padding:52px 0}.contact-inner{align-items:flex-start;flex-direction:column}.footer-inner{flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+  </style>
 </head>
 <body>
+  <div class="topline">
+    <span class="english">Wholesale enquiries for shops, dealers, temples and bulk buyers</span>
+    <span class="tamil">கடைகள், வியாபாரிகள், கோயில்கள் மற்றும் மொத்தக் கொள்முதலுக்கு</span>
+  </div>
   <header>
-    <h1>Kumbakonam Metal Stores</h1>
-    <p>Wholesale Brass, Copper &amp; Temple Items</p>
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="Kumbakonam Metal Stores home">
+        <span class="mark">KMS</span>
+        <span><span class="brand-name">Kumbakonam Metal Stores</span><span class="brand-sub">Wholesale metalware</span></span>
+      </a>
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="#products"><span class="english">Products</span><span class="tamil">பொருட்கள்</span></a>
+        <a class="nav-extra" href="#wholesale"><span class="english">Wholesale</span><span class="tamil">மொத்த விற்பனை</span></a>
+        <a class="nav-extra" href="#contact"><span class="english">Enquiries</span><span class="tamil">விசாரணை</span></a>
+        <button class="lang" type="button" id="language-toggle" aria-pressed="false">தமிழ்</button>
+      </nav>
+    </div>
   </header>
   <main>
-    <h2>Wholesale enquiries</h2>
-    <p>Brass pooja items, Kumbabishegam items, household brassware
-    and bulk gifting.</p>
-    <p>Contact us for product details and wholesale pricing.</p>
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div>
+          <div class="eyebrow"><span class="english">Wholesale • Kumbakonam</span><span class="tamil">மொத்த விற்பனை • கும்பகோணம்</span></div>
+          <h1><span class="english">Brassware for trade, temples and tradition.</span><span class="tamil">வியாபாரம், கோயில்கள் மற்றும் பாரம்பரியத்திற்கான பித்தளைப் பொருட்கள்.</span></h1>
+          <p><span class="english">A wholesale source for brass pooja articles, Kumbabishegam requirements, household metalware and bulk gifting. Tell us what you need and enquire directly with KMS.</span><span class="tamil">பித்தளை பூஜைப் பொருட்கள், கும்பாபிஷேகப் பொருட்கள், வீட்டு உபயோக உலோகப் பொருட்கள் மற்றும் மொத்தப் பரிசுப் பொருட்களுக்கு KMS-ஐ நேரடியாகத் தொடர்புகொள்ளுங்கள்.</span></p>
+          <div class="actions">
+            <a class="btn btn-yellow" href="#contact"><span class="english">Make a wholesale enquiry</span><span class="tamil">மொத்தக் கொள்முதல் விசாரணை</span> <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-outline" href="#products"><span class="english">Explore product range</span><span class="tamil">பொருட்களைப் பாருங்கள்</span></a>
+          </div>
+          <p class="hero-note"><span class="english">Wholesale-focused. Product details and current rates shared on enquiry.</span><span class="tamil">மொத்த விற்பனைக்கான தளம். பொருள் விவரங்கள் மற்றும் தற்போதைய விலைகள் விசாரணையின் பேரில் வழங்கப்படும்.</span></p>
+        </div>
+        <aside class="hero-card">
+          <div class="big"><span class="english">One source.<br>Many needs.</span><span class="tamil">ஒரே இடம்.<br>பல தேவைகள்.</span></div>
+          <p><span class="english">From everyday brassware to temple requirements and bulk orders.</span><span class="tamil">அன்றாடப் பித்தளைப் பொருட்கள் முதல் கோயில் தேவைகள் மற்றும் மொத்த ஆர்டர்கள் வரை.</span></p>
+        </aside>
+      </div>
+    </section>
+    <div class="strip">
+      <div class="wrap strip-inner">
+        <div class="strip-item"><span class="strip-icon">01</span><span class="english">Wholesale enquiries</span><span class="tamil">மொத்த விற்பனை விசாரணைகள்</span></div>
+        <div class="strip-item"><span class="strip-icon">02</span><span class="english">Temple &amp; Kumbabishegam items</span><span class="tamil">கோயில் மற்றும் கும்பாபிஷேகப் பொருட்கள்</span></div>
+        <div class="strip-item"><span class="strip-icon">03</span><span class="english">Bulk and business orders</span><span class="tamil">மொத்த மற்றும் வணிக ஆர்டர்கள்</span></div>
+      </div>
+    </div>
+    <section id="products">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker"><span class="english">Product range</span><span class="tamil">பொருள் வகைகள்</span></div>
+          <h2><span class="english">Find the category you need.</span><span class="tamil">உங்களுக்குத் தேவையான பொருள் வகையைத் தேர்ந்தெடுக்கவும்.</span></h2>
+          <p><span class="english">Browse the main ranges we supply. Share the item, size, quantity and destination when you enquire.</span><span class="tamil">நாங்கள் வழங்கும் முக்கியப் பொருள் வகைகளைப் பாருங்கள். விசாரிக்கும்போது பொருள், அளவு, எண்ணிக்கை மற்றும் சேருமிடத்தைத் தெரிவிக்கவும்.</span></p>
+        </div>
+        <div class="grid">
+          <a class="category" href="#contact"><div class="cat-symbol" aria-hidden="true">✳</div><h3><span class="english">Pooja &amp; devotional items</span><span class="tamil">பூஜைப் பொருட்கள்</span></h3><p><span class="english">Brass lamps, bells and ritual essentials.</span><span class="tamil">பித்தளை விளக்குகள், மணிகள் மற்றும் பூஜைத் தேவைகள்.</span></p><span class="arrow">Enquire ↗</span></a>
+          <a class="category" href="#contact"><div class="cat-symbol" aria-hidden="true">⌂</div><h3><span class="english">Kumbabishegam &amp; temple</span><span class="tamil">கும்பாபிஷேகம் மற்றும் கோயில்</span></h3><p><span class="english">Items for temple ceremonies and requirements.</span><span class="tamil">கோயில் விழாக்கள் மற்றும் தேவைகளுக்கான பொருட்கள்.</span></p><span class="arrow">Enquire ↗</span></a>
+          <a class="category" href="#contact"><div class="cat-symbol" aria-hidden="true">◉</div><h3><span class="english">Household brassware</span><span class="tamil">வீட்டுப் பித்தளைப் பொருட்கள்</span></h3><p><span class="english">Traditional vessels and everyday metalware.</span><span class="tamil">பாரம்பரியப் பாத்திரங்கள் மற்றும் வீட்டு உபயோகப் பொருட்கள்.</span></p><span class="arrow">Enquire ↗</span></a>
+          <a class="category" href="#contact"><div class="cat-symbol" aria-hidden="true">▦</div><h3><span class="english">Bulk gifting &amp; trade</span><span class="tamil">மொத்தப் பரிசுப் பொருட்கள்</span></h3><p><span class="english">Product sourcing for shops, functions and bulk buyers.</span><span class="tamil">கடைகள், நிகழ்ச்சிகள் மற்றும் மொத்தக் கொள்முதலுக்கான பொருள் தேர்வு.</span></p><span class="arrow">Enquire ↗</span></a>
+        </div>
+      </div>
+    </section>
+    <section class="band" id="wholesale">
+      <div class="wrap two-col">
+        <div>
+          <div class="kicker"><span class="english">For business buyers</span><span class="tamil">வணிகக் கொள்முதலுக்கு</span></div>
+          <h2><span class="english">Tell us the requirement. We’ll help identify the right items.</span><span class="tamil">உங்கள் தேவையைத் தெரிவியுங்கள். பொருத்தமான பொருட்களைத் தேர்ந்தெடுக்க உதவுகிறோம்.</span></h2>
+          <p><span class="english">KMS serves wholesale enquiries across devotional, temple, household and gifting categories. Share a list or reference photo to help us understand your requirement.</span><span class="tamil">பூஜை, கோயில், வீட்டு உபயோகம் மற்றும் பரிசுப் பொருட்கள் தொடர்பான மொத்த விசாரணைகளை KMS ஏற்கிறது. உங்கள் தேவையைப் புரிந்துகொள்ள பட்டியல் அல்லது மாதிரிப் படத்தைப் பகிரலாம்.</span></p>
+          <div class="points">
+            <div class="point"><span class="tick">✓</span><div><strong><span class="english">Product-led enquiry</span><span class="tamil">பொருள் அடிப்படையிலான விசாரணை</span></strong><span><span class="english">Mention the item, size, weight or capacity if known.</span><span class="tamil">தெரிந்தால் பொருள், அளவு, எடை அல்லது கொள்ளளவைக் குறிப்பிடுங்கள்.</span></span></div></div>
+            <div class="point"><span class="tick">✓</span><div><strong><span class="english">Quantity and destination</span><span class="tamil">எண்ணிக்கை மற்றும் சேருமிடம்</span></strong><span><span class="english">Tell us the required quantity and delivery location.</span><span class="tamil">தேவையான எண்ணிக்கை மற்றும் சேருமிடத்தைத் தெரிவியுங்கள்.</span></span></div></div>
+            <div class="point"><span class="tick">✓</span><div><strong><span class="english">Current wholesale rates</span><span class="tamil">தற்போதைய மொத்த விலைகள்</span></strong><span><span class="english">Rates are shared after understanding the specific requirement.</span><span class="tamil">குறிப்பிட்ட தேவையை அறிந்தபின் விலை விவரங்கள் வழங்கப்படும்.</span></span></div></div>
+          </div>
+        </div>
+        <aside class="quote-box">
+          <h3><span class="english">Help us quote accurately</span><span class="tamil">சரியான விலை விவரத்திற்கு</span></h3>
+          <p><span class="english">Keep these details ready when contacting us.</span><span class="tamil">தொடர்புகொள்ளும்போது இந்த விவரங்களைத் தயாராக வைத்திருங்கள்.</span></p>
+          <ul class="quote-list">
+            <li><b>01</b><span><span class="english">Product name or photo</span><span class="tamil">பொருளின் பெயர் அல்லது படம்</span></span></li>
+            <li><b>02</b><span><span class="english">Size, weight or capacity</span><span class="tamil">அளவு, எடை அல்லது கொள்ளளவு</span></span></li>
+            <li><b>03</b><span><span class="english">Quantity required</span><span class="tamil">தேவையான எண்ணிக்கை</span></span></li>
+            <li><b>04</b><span><span class="english">City / delivery destination</span><span class="tamil">நகரம் / சேருமிடம்</span></span></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+    <section class="contact" id="contact">
+      <div class="wrap contact-inner">
+        <div>
+          <div class="eyebrow"><span class="english">Contact KMS</span><span class="tamil">KMS-ஐத் தொடர்புகொள்ளுங்கள்</span></div>
+          <h2><span class="english">Have a list, a photo or a bulk requirement?</span><span class="tamil">பட்டியல், படம் அல்லது மொத்தத் தேவை உள்ளதா?</span></h2>
+          <p><span class="english">Contact Kumbakonam Metal Stores to discuss your wholesale requirement.</span><span class="tamil">உங்கள் மொத்தக் கொள்முதல் தேவையைப் பற்றி கும்பகோணம் மெட்டல் ஸ்டோர்ஸைத் தொடர்புகொள்ளுங்கள்.</span></p>
+        </div>
+        <a class="btn btn-yellow" href="mailto:?subject=Wholesale%20enquiry%20-%20Kumbakonam%20Metal%20Stores"><span class="english">Start an enquiry</span><span class="tamil">விசாரணையைத் தொடங்குங்கள்</span> ↗</a>
+      </div>
+    </section>
   </main>
+  <footer>
+    <div class="wrap footer-inner">
+      <div><strong>Kumbakonam Metal Stores (KMS)</strong><p><span class="english">Wholesale brass, copper and traditional metalware.</span><span class="tamil">பித்தளை, செம்பு மற்றும் பாரம்பரிய உலோகப் பொருட்களின் மொத்த விற்பனை.</span></p></div>
+      <div class="footer-links"><a href="#products"><span class="english">Products</span><span class="tamil">பொருட்கள்</span></a><a href="#wholesale"><span class="english">Wholesale</span><span class="tamil">மொத்த விற்பனை</span></a><a href="#contact"><span class="english">Contact</span><span class="tamil">தொடர்பு</span></a></div>
+      <p>© {{ now.Year }} Kumbakonam Metal Stores</p>
+    </div>
+  </footer>
+  <script>
+    (function(){
+      var button=document.getElementById('language-toggle');
+      button.addEventListener('click',function(){
+        var tamil=document.body.classList.toggle('show-tamil');
+        button.textContent=tamil?'English':'தமிழ்';
+        button.setAttribute('aria-pressed',String(tamil));
+        document.documentElement.lang=tamil?'ta-IN':'en-IN';
+      });
+    })();
+  </script>
 </body>
 </html>
