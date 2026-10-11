@@ -23,6 +23,7 @@
   {{ with .Params.image }}
     <meta property="og:image" content="{{ if strings.HasPrefix . "http" }}{{ . }}{{ else }}{{ $.Site.Params.imageBaseURL }}/{{ . }}{{ end }}">
   {{ end }}
-  <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+  {{ $mainCSS := resources.Get "css/main.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $mainCSS.RelPermalink }}" integrity="{{ $mainCSS.Data.Integrity }}" crossorigin="anonymous">
   {{ with .OutputFormats.Get "RSS" }}<link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ $.Site.Title }}">{{ end }}
 </head>
