@@ -40,7 +40,7 @@
               <td>{{ if eq $.Site.Language.Lang "ta" }}{{ .nameTa }}{{ else }}{{ .name }}{{ end }}</td>
               <td>{{ if and $.Site.Params.showPrices (ne .oldValue nil) }}₹{{ lang.FormatNumber 2 .oldValue }}{{ else }}—{{ end }}</td>
               <td>{{ if and $.Site.Params.showPrices (ne .newValue nil) }}₹{{ lang.FormatNumber 2 .newValue }}{{ else }}—{{ end }}</td>
-              <td>{{ if ne .value nil }}₹{{ lang.FormatNumber 2 .value }}{{ else }}{{ if eq $.Site.Language.Lang "ta" }}வெளியிடப்படவில்லை{{ else }}Not published{{ end }}{{ end }}</td>
+              <td>{{ if and $.Site.Params.showPrices (ne .value nil) }}₹{{ lang.FormatNumber 2 .value }}{{ else }}{{ if eq $.Site.Language.Lang "ta" }}வெளியிடப்படவில்லை{{ else }}Not published{{ end }}{{ end }}</td>
               <td>{{ .updatedOn | default "—" }}</td>
             </tr>
           {{ end }}
