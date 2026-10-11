@@ -1,0 +1,15 @@
+{
+  "name": "kmsbrass-site",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Static Hugo website for Kumbakonam Metal Stores",
+  "scripts": {
+    "build": "hugo --minify && pagefind --site public",
+    "build:hugo": "hugo --minify",
+    "search:index": "pagefind --site public",
+    "dev": "hugo server --buildDrafts"
+  },
+  "devDependencies": {
+    "pagefind": "^1.3.0"
+  }
+}
