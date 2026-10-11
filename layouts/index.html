@@ -1,13 +1,111 @@
 {{ define "main" }}
-<section class="home-intro page-shell">
-  <p class="eyebrow">{{ if eq .Site.Language.Lang "ta" }}கும்பகோணம் · மொத்த விற்பனை{{ else }}KUMBAKONAM · WHOLESALE{{ end }}</p>
-  <h1>{{ .Title }}</h1>
-  {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
-  {{ partial "kolam-divider.html" . }}
-  <div class="prose home-copy">{{ .Content }}</div>
-  <div class="home-actions">
-    <a class="button button-red" href="#contact">{{ if eq .Site.Language.Lang "ta" }}மொத்த விசாரணை{{ else }}Wholesale enquiry{{ end }} <span aria-hidden="true">↗</span></a>
-    <a class="button button-outline" href="{{ "products/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}பொருட்களைப் பார்க்க{{ else }}Browse products{{ end }}</a>
+{{ partial "rate-ticker.html" . }}
+
+<section class="home-hero page-shell" data-pagefind-body>
+  <div class="home-hero-copy">
+    <p class="eyebrow">{{ if eq .Site.Language.Lang "ta" }}கும்பகோணம் · பித்தளை மொத்த விற்பனை{{ else }}KUMBAKONAM · BRASS WHOLESALE{{ end }}</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="hero-standfirst">{{ . }}</p>{{ end }}
+    <p class="hero-detail">{{ if eq .Site.Language.Lang "ta" }}கோயில்கள், வணிகக் கொள்முதல் மற்றும் மொத்தத் தேவைகளுக்கான பித்தளைப் பொருட்கள். தேவையான பொருள், எண்ணிக்கை மற்றும் ஊரைத் தெரிவிக்கவும்.{{ else }}Brass articles for temples, trade buyers and bulk requirements. Tell us the product, quantity and destination; we will clarify the details and quote.{{ end }}</p>
+    <div class="home-actions">
+      <a class="button button-red" href="{{ "audiences/retailers/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}வணிகக் கொள்முதல்{{ else }}Wholesale buyers{{ end }} <span aria-hidden="true">↗</span></a>
+      {{ $message := "Hello Kumbakonam Metal Stores. I would like to make a wholesale brass enquiry. Please help me with product options, minimum quantities and a current quote." }}
+      <a class="button button-brass" href="{{ partial "whatsapp-url.html" (dict "ctx" . "message" $message) }}" {{ if ne .Site.Params.whatsapp "{{WHATSAPP}}" }}target="_blank" rel="noopener noreferrer"{{ end }}>WhatsApp <span aria-hidden="true">↗</span></a>
+    </div>
+    <p class="hero-terms">{{ if eq .Site.Language.Lang "ta" }}மொத்த ஆர்டர்களுக்கு முன்பணம் தேவை · கடன் விற்பனை இல்லை{{ else }}Advance payment on wholesale orders · No trade credit{{ end }}</p>
+  </div>
+  <aside class="hero-visual" aria-label="{{ if eq .Site.Language.Lang "ta" }}வணிகம், கோயில் மற்றும் மொத்தத் தேவைகள்{{ else }}Trade, temple and bulk supply{{ end }}">
+    <div class="hero-visual-top"><span>KMS / 01</span><span>{{ if eq .Site.Language.Lang "ta" }}பித்தளை{{ else }}BRASSWARE{{ end }}</span></div>
+    <div class="hero-seal" aria-hidden="true">
+      <svg viewBox="0 0 220 220">
+        <circle cx="110" cy="110" r="84"></circle><circle cx="110" cy="110" r="65"></circle>
+        <path d="M110 27 C143 60 143 77 110 110 C77 77 77 60 110 27Z"></path>
+        <path d="M193 110 C160 143 143 143 110 110 C143 77 160 77 193 110Z"></path>
+        <path d="M110 193 C77 160 77 143 110 110 C143 143 160 160 110 193Z"></path>
+        <path d="M27 110 C60 77 77 77 110 110 C77 143 60 143 27 110Z"></path>
+        <circle cx="110" cy="110" r="14"></circle>
+      </svg>
+      <span>{{ if eq .Site.Language.Lang "ta" }}மொத்தம்{{ else }}WHOLESALE{{ end }}</span>
+    </div>
+    <div class="hero-visual-bottom">
+      <span>{{ if eq .Site.Language.Lang "ta" }}விளக்கம் · எண்ணிக்கை · விலை{{ else }}SPECIFY · QUANTITY · QUOTE{{ end }}</span>
+      <span class="hero-edition">KUMBAKONAM, TN</span>
+    </div>
+  </aside>
+</section>
+
+<section class="home-section home-audiences" id="browse">
+  <div class="section-heading page-shell">
+    <div><p class="eyebrow">{{ if eq .Site.Language.Lang "ta" }}யாருக்காக{{ else }}WHO WE SUPPLY FOR{{ end }}</p>
+      <h2>{{ if eq .Site.Language.Lang "ta" }}தேவைக்கேற்ற வழியைத் தேர்ந்தெடுக்கவும்{{ else }}Start with what you need{{ end }}</h2></div>
+    <p>{{ if eq .Site.Language.Lang "ta" }}ஒவ்வொரு ஆர்டருக்கும் தேவையான விவரங்கள் வேறுபடும். உங்கள் தேவையைத் தேர்ந்தெடுத்து விசாரிக்கவும்.{{ else }}Different orders need different details. Choose your buying context to make the enquiry clearer.{{ end }}</p>
+  </div>
+  <div class="audience-cards page-shell">
+    <a class="audience-card" href="{{ "audiences/retailers/" | relLangURL }}">
+      <span class="card-number">01 / TRADE</span><span class="card-mark" aria-hidden="true">↗</span>
+      <h3>{{ if eq .Site.Language.Lang "ta" }}சில்லறை விற்பனையாளர்கள்{{ else }}Retailers & dealers{{ end }}</h3>
+      <p>{{ if eq .Site.Language.Lang "ta" }}விற்பனைக்கான வகைகள், எண்ணிக்கை மற்றும் மொத்த விசாரணை.{{ else }}Product variants, quantity planning and trade enquiries.{{ end }}</p>
+      <span class="card-link">{{ if eq .Site.Language.Lang "ta" }}வணிக விசாரணை{{ else }}Trade enquiries{{ end }} <span aria-hidden="true">→</span></span>
+    </a>
+    <a class="audience-card" href="{{ "audiences/temples/" | relLangURL }}">
+      <span class="card-number">02 / TEMPLE</span><span class="card-mark" aria-hidden="true">↗</span>
+      <h3>{{ if eq .Site.Language.Lang "ta" }}கோயில்கள்{{ else }}Temples & institutions{{ end }}</h3>
+      <p>{{ if eq .Site.Language.Lang "ta" }}பூஜை, கோயில் மற்றும் சமயத் தேவைகளுக்கான பொருட்கள்.{{ else }}Articles for worship, temple needs and religious institutions.{{ end }}</p>
+      <span class="card-link">{{ if eq .Site.Language.Lang "ta" }}கோயில் விசாரணை{{ else }}Temple enquiries{{ end }} <span aria-hidden="true">→</span></span>
+    </a>
+    <a class="audience-card" href="{{ "audiences/events/" | relLangURL }}">
+      <span class="card-number">03 / EVENTS</span><span class="card-mark" aria-hidden="true">↗</span>
+      <h3>{{ if eq .Site.Language.Lang "ta" }}கும்பாபிஷேகம் மற்றும் விழாக்கள்{{ else }}Kumbabishegam & events{{ end }}</h3>
+      <p>{{ if eq .Site.Language.Lang "ta" }}பொருட் பட்டியல், நிகழ்வு தேதி மற்றும் மொத்த எண்ணிக்கை.{{ else }}Plan a multi-item list around event dates and quantities.{{ end }}</p>
+      <span class="card-link">{{ if eq .Site.Language.Lang "ta" }}நிகழ்வு விசாரணை{{ else }}Event enquiries{{ end }} <span aria-hidden="true">→</span></span>
+    </a>
+    <a class="audience-card" href="{{ "audiences/bulk-gifting/" | relLangURL }}">
+      <span class="card-number">04 / BULK</span><span class="card-mark" aria-hidden="true">↗</span>
+      <h3>{{ if eq .Site.Language.Lang "ta" }}மொத்தப் பரிசுப் பொருட்கள்{{ else }}Bulk gifting & organisations{{ end }}</h3>
+      <p>{{ if eq .Site.Language.Lang "ta" }}திரும்பளிப்பு, திருமணம் மற்றும் நிறுவனப் பரிசுகள்.{{ else }}Return gifts, weddings and institutional gifting.{{ end }}</p>
+      <span class="card-link">{{ if eq .Site.Language.Lang "ta" }}மொத்த விசாரணை{{ else }}Bulk enquiries{{ end }} <span aria-hidden="true">→</span></span>
+    </a>
   </div>
 </section>
+
+<section class="home-section product-families">
+  <div class="section-heading page-shell">
+    <div><p class="eyebrow">{{ if eq .Site.Language.Lang "ta" }}பொருள் வகைகள்{{ else }}PRODUCT FAMILIES{{ end }}</p>
+      <h2>{{ if eq .Site.Language.Lang "ta" }}பொருளிலிருந்து தொடங்குங்கள்{{ else }}Or start with the article{{ end }}</h2></div>
+    <p>{{ if eq .Site.Language.Lang "ta" }}கிடைப்பது, அளவு, எடை மற்றும் குறைந்தபட்ச ஆர்டர் ஆகியவற்றை விசாரணையில் உறுதிப்படுத்தவும்.{{ else }}Ask us to confirm variants, weight, size, minimum order and current quote.{{ end }}</p>
+  </div>
+  <div class="family-list page-shell">
+    <div class="family-row"><span class="family-index">A</span><div><h3>{{ if eq .Site.Language.Lang "ta" }}பூஜைப் பொருட்கள்{{ else }}Pooja & daily worship{{ end }}</h3><p>{{ if eq .Site.Language.Lang "ta" }}தினசரி வழிபாடு மற்றும் வீட்டு பூஜைக்கான பித்தளைப் பொருட்கள்.{{ else }}Brass articles for home worship and daily pooja.{{ end }}</p></div><span class="family-arrow" aria-hidden="true">↗</span></div>
+    <div class="family-row"><span class="family-index">B</span><div><h3>{{ if eq .Site.Language.Lang "ta" }}விளக்குகள் மற்றும் மணி{{ else }}Lamps & bells{{ end }}</h3><p>{{ if eq .Site.Language.Lang "ta" }}விளக்கு வகைகள், மணி மற்றும் தொடர்புடைய பொருட்கள்.{{ else }}Lamp styles, bells and related devotional articles.{{ end }}</p></div><span class="family-arrow" aria-hidden="true">↗</span></div>
+    <div class="family-row"><span class="family-index">C</span><div><h3>{{ if eq .Site.Language.Lang "ta" }}கோயில் மற்றும் கும்பாபிஷேகம்{{ else }}Temple & Kumbabishegam{{ end }}</h3><p>{{ if eq .Site.Language.Lang "ta" }}கோயில் தேவைகள், சடங்குகள் மற்றும் மொத்தப் பொருட் பட்டியல்கள்.{{ else }}Temple requirements, ritual contexts and multi-item lists.{{ end }}</p></div><span class="family-arrow" aria-hidden="true">↗</span></div>
+    <div class="family-row"><span class="family-index">D</span><div><h3>{{ if eq .Site.Language.Lang "ta" }}பாத்திரங்கள் மற்றும் பரிசுகள்{{ else }}Vessels, cookware & gifting{{ end }}</h3><p>{{ if eq .Site.Language.Lang "ta" }}பாத்திரங்கள், வீட்டு உபயோகம் மற்றும் மொத்தப் பரிசுகள்.{{ else }}Vessels, household use and bulk gifts.{{ end }}</p></div><span class="family-arrow" aria-hidden="true">↗</span></div>
+  </div>
+</section>
+
+<section class="home-method" id="about-kms">
+  <div class="method-inner page-shell">
+    <div class="method-heading"><p class="eyebrow">{{ if eq .Site.Language.Lang "ta" }}தெளிவான நடைமுறை{{ else }}A CLEARER WAY TO ORDER{{ end }}</p>
+      <h2>{{ if eq .Site.Language.Lang "ta" }}முதலில் விவரங்கள். பிறகு விலை.{{ else }}Specifications first. Then a quote.{{ end }}</h2></div>
+    <div class="method-steps">
+      <div><span>01</span><h3>{{ if eq .Site.Language.Lang "ta" }}தேவையை அனுப்புங்கள்{{ else }}Send the requirement{{ end }}</h3><p>{{ if eq .Site.Language.Lang "ta" }}பொருள், அளவு, எண்ணிக்கை, ஊர் மற்றும் தேதி.{{ else }}Item, variant, quantity, city and date.{{ end }}</p></div>
+      <div><span>02</span><h3>{{ if eq .Site.Language.Lang "ta" }}விவரங்களை உறுதிப்படுத்தவும்{{ else }}Confirm the details{{ end }}</h3><p>{{ if eq .Site.Language.Lang "ta" }}குறைந்தபட்ச ஆர்டர், கிடைப்பது, போக்குவரத்து மற்றும் சரியான விலை.{{ else }}Confirm MOQ, availability, transport and exact quote.{{ end }}</p></div>
+      <div><span>03</span><h3>{{ if eq .Site.Language.Lang "ta" }}முன்பணத்துடன் ஆர்டர்{{ else }}Order with advance payment{{ end }}</h3><p>{{ if eq .Site.Language.Lang "ta" }}மொத்த ஆர்டர்களுக்கு முன்பணம் தேவை; கடன் இல்லை.{{ else }}Wholesale orders require advance payment; no trade credit.{{ end }}</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="home-section tools-preview" id="tools-preview">
+  <div class="tools-preview-inner page-shell">
+    <div><p class="eyebrow">{{ if eq .Site.Language.Lang "ta" }}பயனுள்ள கருவிகள்{{ else }}PRACTICAL TOOLS{{ end }}</p>
+      <h2>{{ if eq .Site.Language.Lang "ta" }}ஆர்டரைத் திட்டமிட உதவும் கருவிகள்{{ else }}Tools to plan a better enquiry{{ end }}</h2>
+      <p>{{ if eq .Site.Language.Lang "ta" }}பொருள் அளவு கண்டறிதல், மொத்த எண்ணிக்கை கணக்கீடு மற்றும் கும்பாபிஷேகப் பட்டியல் கருவிகள் அடுத்த கட்டங்களில் சேர்க்கப்படும்.{{ else }}Product size guides, quantity finders and a Kumbabishegam list builder are planned for the next build phases.{{ end }}</p>
+    </div>
+    <a class="text-link" href="{{ "rates/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}பொது விலைத் தகவல் பார்க்க{{ else }}View public rate notes{{ end }} <span aria-hidden="true">↗</span></a>
+  </div>
+</section>
+{{ end }}
+
+{{ define "pageScripts" }}
+  {{ $ticker := resources.Get "js/rate-ticker.js" | minify | fingerprint }}
+  <script src="{{ $ticker.RelPermalink }}" integrity="{{ $ticker.Data.Integrity }}" crossorigin="anonymous" defer></script>
 {{ end }}
