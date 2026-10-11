@@ -3,6 +3,7 @@ title: "Explore Temples & Rituals"
 description: "A research archive connecting temples, poojas, documented Kumbabishegam events and brass articles is being prepared."
 quality: stub
 noindex: true
+translationKey: temples-research-archive
 ---
 
 The temple and ritual research archive is being prepared. The planned archive will connect verified temple information, pooja references, documented Kumbabishegam records and relevant brass articles.
