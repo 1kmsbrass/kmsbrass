@@ -3,6 +3,9 @@ title: "Brassware for trade, temples and bulk requirements"
 description: "Wholesale brass articles for trade buyers, temples and bulk requirements. Share your product, quantity and destination for an exact quote."
 quality: complete
 translationKey: home-page
+lastUpdated: "2026-10-11"
+sources:
+  - "KMS business and ordering policy; no external research claims used"
 ---
 
 Kumbakonam Metal Stores supplies brass articles for pooja, temples, households and bulk requirements.
