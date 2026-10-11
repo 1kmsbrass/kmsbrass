@@ -1,9 +1,9 @@
 {{ define "main" }}
-{{ partial "rate-ticker.html" . }}
+{{ if .Site.Params.showPrices }}{{ partial "rate-ticker.html" . }}{{ end }}
 
 <section class="home-hero page-shell">
   <div class="home-hero-copy">
-    <p class="eyebrow">{{ if eq .Site.Language.Lang "ta" }}கும்பகோணம் · பித்தளை மொத்த விற்பனை{{ else }}TIRUPPUR, TAMIL NADU · BRASS WHOLESALE{{ end }}</p>
+    <p class="eyebrow">{{ if eq .Site.Language.Lang "ta" }}திருப்பூர் · பித்தளை மொத்த விற்பனை{{ else }}TIRUPPUR, TAMIL NADU · BRASS WHOLESALE{{ end }}</p>
     <h1>{{ .Title }}</h1>
     {{ with .Description }}<p class="hero-standfirst">{{ . }}</p>{{ end }}
     <div class="prose home-hero-text">{{ .Content }}</div>
@@ -109,6 +109,8 @@
 {{ end }}
 
 {{ define "pageScripts" }}
-  {{ $ticker := resources.Get "js/rate-ticker.js" | minify | fingerprint }}
-  <script src="{{ $ticker.RelPermalink }}" integrity="{{ $ticker.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ if .Site.Params.showPrices }}
+    {{ $ticker := resources.Get "js/rate-ticker.js" | minify | fingerprint }}
+    <script src="{{ $ticker.RelPermalink }}" integrity="{{ $ticker.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ end }}
 {{ end }}
