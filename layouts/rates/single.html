@@ -4,7 +4,8 @@
   <h1>{{ .Title }}</h1>
   {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
   <div class="rates-intro">{{ .Content }}</div>
-  {{ partial "rate-ticker.html" . }}
+  {{ if .Site.Params.showPrices }}{{ partial "rate-ticker.html" . }}{{ end }}
+  {{ if .Site.Params.showPrices }}
   <div class="rates-heading-row">
     <div>
       <h2>{{ if eq .Site.Language.Lang "ta" }}பொது குறிப்பு விலைகள்{{ else }}Public reference rates{{ end }}</h2>
@@ -107,12 +108,23 @@
     {{ $message := "Hello Kumbakonam Metal Stores. Please share today's verified brass and scrap reference rates and the current quote for my requirement." }}
     <a class="button button-brass" href="{{ partial "whatsapp-url.html" (dict "ctx" . "message" $message) }}" {{ if ne .Site.Params.whatsapp "{{WHATSAPP}}" }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ if eq .Site.Language.Lang "ta" }}இன்றைய விலையை கேளுங்கள்{{ else }}Ask for today's quote{{ end }} <span aria-hidden="true">↗</span></a>
   </section>
+  {{ else }}
+  <section class="prices-hidden-notice" aria-labelledby="prices-hidden-title">
+    <p class="eyebrow">{{ if eq .Site.Language.Lang "ta" }}விலை நேர்மை{{ else }}PRICE POLICY{{ end }}</p>
+    <h2 id="prices-hidden-title">{{ if eq .Site.Language.Lang "ta" }}சரிபார்க்கப்பட்ட விலைகள் ஒப்புதல் கிடைக்கும் வரை வெளியிடப்படாது{{ else }}Public prices are switched off for this version{{ end }}</h2>
+    <p>{{ if eq .Site.Language.Lang "ta" }}எங்கள் விலை அன்றைய பித்தளை விலை மற்றும் உங்கள் எண்ணிக்கையைப் பொறுத்தது. பொருள், வகை, எண்ணிக்கை மற்றும் விநியோக நகரத்தை அனுப்புங்கள்; சரியான விலையை உறுதிப்படுத்துவோம்.{{ else }}Rate follows today's brass rate and your quantity. Message us for a straight number. Share the item, variant, quantity and destination so we can confirm an exact quote.{{ end }}</p>
+    {{ $message := "Hello Kumbakonam Metal Stores. Please share a current quote for my brass requirement. Item/variant: ; Quantity: ; City: ; Required date: " }}
+    <a class="button button-red" href="{{ partial "whatsapp-url.html" (dict "ctx" . "message" $message) }}" target="_blank" rel="noopener noreferrer">WhatsApp <span aria-hidden="true">↗</span></a>
+  </section>
+  {{ end }}
 </article>
 {{ end }}
 
 {{ define "pageScripts" }}
-  {{ $ticker := resources.Get "js/rate-ticker.js" | minify | fingerprint }}
-  <script src="{{ $ticker.RelPermalink }}" integrity="{{ $ticker.Data.Integrity }}" crossorigin="anonymous" defer></script>
-  {{ $actions := resources.Get "js/rates-actions.js" | minify | fingerprint }}
-  <script src="{{ $actions.RelPermalink }}" integrity="{{ $actions.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ if .Site.Params.showPrices }}
+    {{ $ticker := resources.Get "js/rate-ticker.js" | minify | fingerprint }}
+    <script src="{{ $ticker.RelPermalink }}" integrity="{{ $ticker.Data.Integrity }}" crossorigin="anonymous" defer></script>
+    {{ $actions := resources.Get "js/rates-actions.js" | minify | fingerprint }}
+    <script src="{{ $actions.RelPermalink }}" integrity="{{ $actions.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ end }}
 {{ end }}
