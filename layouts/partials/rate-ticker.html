@@ -8,7 +8,7 @@
   {{- $rateValue = printf "%.2f" $rate.value -}}
 {{- end -}}
 {{- with $rate.updatedOn -}}{{- $rateDate = . -}}{{- end -}}
-{{- $history := where site.Data.rates.history "public" true -}}
+{{- $history := where (where site.Data.rates.history "public" true) "id" "brass-reference" -}}
 <div class="rate-ticker" data-rate-value="{{ $rateValue }}" data-rate-unit="{{ $rate.unit }}" data-rate-history="{{ $history | jsonify | htmlEscape }}">
   <div class="rate-ticker-label">
     <span class="rate-pulse" aria-hidden="true"></span>
