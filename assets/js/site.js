@@ -76,10 +76,12 @@
       input.focus();
     } else if (event.key === "Escape" && disclosure.open && target !== input) {
       disclosure.open = false;
+      disclosure.querySelector("summary")?.focus();
     } else if (event.key === "Escape" && disclosure.open && target === input) {
       input.value = "";
       results.textContent = messages.ready;
       disclosure.open = false;
+      disclosure.querySelector("summary")?.focus();
     }
   });
 
