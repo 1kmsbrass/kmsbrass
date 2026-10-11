@@ -17,7 +17,7 @@
     if (!link) return;
     let url;
     try { url = new URL(link.href, window.location.href); } catch (_) { return; }
-    if (url.origin !== window.location.origin || !/^\\/products\\//.test(url.pathname) || prefetched.has(url.href)) return;
+    if (url.origin !== window.location.origin || !url.pathname.startsWith("/products/") || prefetched.has(url.href)) return;
     prefetched.add(url.href);
     const hint = document.createElement("link");
     hint.rel = "prefetch";
