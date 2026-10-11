@@ -38,11 +38,11 @@
         <tbody>
           {{ range where .Site.Data.rates.rates "public" true }}
             <tr>
-              <td>{{ if eq $.Site.Language.Lang "ta" }}{{ .nameTa }}{{ else }}{{ .name }}{{ end }}</td>
-              <td>{{ if and $.Site.Params.showPrices (ne .oldValue nil) }}₹{{ lang.FormatNumber 2 .oldValue }}{{ else }}—{{ end }}</td>
-              <td>{{ if and $.Site.Params.showPrices (ne .newValue nil) }}₹{{ lang.FormatNumber 2 .newValue }}{{ else }}—{{ end }}</td>
-              <td>{{ if and $.Site.Params.showPrices (ne .value nil) }}₹{{ lang.FormatNumber 2 .value }}{{ else }}{{ if eq $.Site.Language.Lang "ta" }}வெளியிடப்படவில்லை{{ else }}Not published{{ end }}{{ end }}</td>
-              <td>{{ .updatedOn | default "—" }}</td>
+              <td data-label="{{ if eq $.Site.Language.Lang "ta" }}குறிப்பு{{ else }}Reference{{ end }}">{{ if eq $.Site.Language.Lang "ta" }}{{ .nameTa }}{{ else }}{{ .name }}{{ end }}</td>
+              <td data-label="{{ if eq $.Site.Language.Lang "ta" }}பழைய{{ else }}Old{{ end }}">{{ if and $.Site.Params.showPrices (ne .oldValue nil) }}₹{{ lang.FormatNumber 2 .oldValue }}{{ else }}—{{ end }}</td>
+              <td data-label="{{ if eq $.Site.Language.Lang "ta" }}புதிய{{ else }}New{{ end }}">{{ if and $.Site.Params.showPrices (ne .newValue nil) }}₹{{ lang.FormatNumber 2 .newValue }}{{ else }}—{{ end }}</td>
+              <td data-label="{{ if eq $.Site.Language.Lang "ta" }}தற்போதைய{{ else }}Latest{{ end }}">{{ if and $.Site.Params.showPrices (ne .value nil) }}₹{{ lang.FormatNumber 2 .value }}{{ else }}{{ if eq $.Site.Language.Lang "ta" }}வெளியிடப்படவில்லை{{ else }}Not published{{ end }}{{ end }}</td>
+              <td data-label="{{ if eq $.Site.Language.Lang "ta" }}புதுப்பிப்பு{{ else }}Updated{{ end }}">{{ .updatedOn | default "—" }}</td>
             </tr>
           {{ end }}
         </tbody>
@@ -93,7 +93,7 @@
           <thead><tr><th>{{ if eq .Site.Language.Lang "ta" }}தேதி{{ else }}Date{{ end }}</th><th>{{ if eq .Site.Language.Lang "ta" }}வகை{{ else }}Reference{{ end }}</th><th>{{ if eq .Site.Language.Lang "ta" }}விலை{{ else }}Rate{{ end }}</th></tr></thead>
           <tbody>
             {{ range sort $history "date" "desc" }}
-              <tr><td>{{ .date }}</td><td>{{ if eq $.Site.Language.Lang "ta" }}{{ .labelTa | default .label }}{{ else }}{{ .label | default .id }}{{ end }}</td><td>{{ if and $.Site.Params.showPrices (ne .value nil) }}₹{{ lang.FormatNumber 2 .value }} {{ .unit | default "per kg" }}{{ else }}—{{ end }}</td></tr>
+              <tr><td data-label="{{ if eq $.Site.Language.Lang "ta" }}தேதி{{ else }}Date{{ end }}">{{ .date }}</td><td data-label="{{ if eq $.Site.Language.Lang "ta" }}வகை{{ else }}Reference{{ end }}">{{ if eq $.Site.Language.Lang "ta" }}{{ .labelTa | default .label }}{{ else }}{{ .label | default .id }}{{ end }}</td><td data-label="{{ if eq $.Site.Language.Lang "ta" }}விலை{{ else }}Rate{{ end }}">{{ if and $.Site.Params.showPrices (ne .value nil) }}₹{{ lang.FormatNumber 2 .value }} {{ .unit | default "per kg" }}{{ else }}—{{ end }}</td></tr>
             {{ end }}
           </tbody>
         </table>
