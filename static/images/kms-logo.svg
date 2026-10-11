@@ -8,11 +8,11 @@
       <stop offset="1" stop-color="#F8B900"/>
     </linearGradient>
     <linearGradient id="red" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#D71927"/>
-      <stop offset="0.56" stop-color="#C8202D"/>
-      <stop offset="1" stop-color="#A61926"/>
+      <stop offset="0" stop-color="#D71920"/>
+      <stop offset="0.56" stop-color="#D71920"/>
+      <stop offset="1" stop-color="#B5121B"/>
     </linearGradient>
   </defs>
   <circle cx="256" cy="256" r="239" fill="url(#yellow)" stroke="url(#red)" stroke-width="16"/>
-  <text x="256" y="302" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="138" font-weight="800" letter-spacing="-5" fill="#C8202D">KMS</text>
+  <text x="256" y="302" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="138" font-weight="800" letter-spacing="-5" fill="#D71920">KMS</text>
 </svg>
