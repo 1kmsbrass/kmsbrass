@@ -1,9 +1,14 @@
-/* Site-wide search enhancement. Without JavaScript, all content and contact links remain usable. */
+/* Shared, lazily loaded Pagefind search. The HTML remains readable without JavaScript. */
 (() => {
+  const inputs = [...document.querySelectorAll("[data-pagefind-search-input]")];
+  if (!inputs.length) return;
+
   const disclosure = document.getElementById("site-search-disclosure");
-  const input = document.getElementById("site-search-input");
-  const results = document.getElementById("site-search-results");
-  if (!disclosure || !input || !results) return;
+  const headerInput = document.getElementById("site-search-input");
+  const homeInput = document.getElementById("home-search-input");
+  let pagefindPromise = null;
+  const sequences = new WeakMap();
+  const debounceTimers = new WeakMap();
 
   const isTamil = (document.documentElement.lang || "").toLowerCase().startsWith("ta");
   const messages = isTamil ? {
@@ -30,64 +35,92 @@
     guides: "Guides"
   };
 
-  let pagefindPromise = null;
-  let searchSequence = 0;
-  let debounceTimer;
+  function resultTarget(input) {
+    const id = input.getAttribute("aria-controls");
+    return id ? document.getElementById(id) : null;
+  }
 
-  function loadPagefind() {
+  function loadPagefind(results) {
     if (!pagefindPromise) {
-      results.textContent = messages.loading;
+      if (results) results.textContent = messages.loading;
       pagefindPromise = import("/pagefind/pagefind.js")
         .then((module) => {
           window.pagefind = module.default || module;
           return window.pagefind;
         })
         .catch(() => {
-          results.textContent = messages.unavailable;
-          results.setAttribute("aria-busy", "false");
+          if (results) {
+            results.textContent = messages.unavailable;
+            results.setAttribute("aria-busy", "false");
+          }
           return null;
         });
     }
     return pagefindPromise;
   }
 
-  disclosure.addEventListener("toggle", async () => {
-    if (!disclosure.open) return;
-    await loadPagefind();
-    if (input.value.trim()) runSearch();
-    else {
-      results.textContent = messages.ready;
-      results.setAttribute("aria-busy", "false");
-    }
+  inputs.forEach((input) => {
+    const results = resultTarget(input);
+    if (!results) return;
+    input.addEventListener("focus", () => { loadPagefind(results); });
+    input.addEventListener("input", () => {
+      window.clearTimeout(debounceTimers.get(input));
+      debounceTimers.set(input, window.setTimeout(() => search(input, results), 100));
+    });
   });
 
-  input.addEventListener("input", () => {
-    window.clearTimeout(debounceTimer);
-    debounceTimer = window.setTimeout(runSearch, 100);
-  });
+  if (disclosure && headerInput) {
+    disclosure.addEventListener("toggle", async () => {
+      if (!disclosure.open) return;
+      await loadPagefind(resultTarget(headerInput));
+      headerInput.focus();
+      if (headerInput.value.trim()) search(headerInput, resultTarget(headerInput));
+      else {
+        const results = resultTarget(headerInput);
+        if (results) {
+          results.textContent = messages.ready;
+          results.setAttribute("aria-busy", "false");
+        }
+      }
+    });
+  }
 
   document.addEventListener("keydown", (event) => {
     const target = event.target;
     const typing = target instanceof HTMLElement &&
       (target.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName));
+
     if ((event.key === "/" && !typing) || ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k")) {
       event.preventDefault();
-      disclosure.open = true;
-      input.focus();
-    } else if (event.key === "Escape" && disclosure.open && target !== input) {
-      disclosure.open = false;
-      disclosure.querySelector("summary")?.focus();
-    } else if (event.key === "Escape" && disclosure.open && target === input) {
-      input.value = "";
-      results.textContent = messages.ready;
-      disclosure.open = false;
-      disclosure.querySelector("summary")?.focus();
+      if (homeInput && homeInput.getClientRects().length) {
+        homeInput.focus();
+      } else if (disclosure && headerInput) {
+        disclosure.open = true;
+        headerInput.focus();
+      }
+      return;
+    }
+
+    if (event.key === "Escape") {
+      if (disclosure && disclosure.open && disclosure.contains(target)) {
+        disclosure.open = false;
+        disclosure.querySelector("summary")?.focus();
+      } else if (target instanceof HTMLInputElement && target.matches("[data-pagefind-search-input]")) {
+        target.value = "";
+        const results = resultTarget(target);
+        if (results) {
+          results.replaceChildren();
+          results.textContent = messages.ready;
+        }
+      }
     }
   });
 
-  async function runSearch() {
+  async function search(input, results) {
     const query = input.value.trim();
-    const sequence = ++searchSequence;
+    const sequence = (sequences.get(input) || 0) + 1;
+    sequences.set(input, sequence);
+
     if (!query) {
       results.replaceChildren();
       results.textContent = messages.ready;
@@ -95,17 +128,18 @@
       return;
     }
 
-    const pagefind = await loadPagefind();
-    if (sequence !== searchSequence) return;
+    results.setAttribute("aria-busy", "true");
+    const pagefind = await loadPagefind(results);
+    if (sequence !== sequences.get(input)) return;
     if (!pagefind) {
       results.textContent = messages.notReady;
+      results.setAttribute("aria-busy", "false");
       return;
     }
 
-    results.setAttribute("aria-busy", "true");
     try {
       const response = await pagefind.search(query);
-      if (sequence !== searchSequence) return;
+      if (sequence !== sequences.get(input)) return;
       results.replaceChildren();
       if (!response.results.length) {
         results.textContent = messages.noResults;
@@ -115,7 +149,7 @@
       const groups = new Map();
       for (const result of response.results.slice(0, 12)) {
         const data = await result.data();
-        if (sequence !== searchSequence) return;
+        if (sequence !== sequences.get(input)) return;
         const path = String(data.url || "").toLowerCase().replace(/^\/(?:en|ta)(?:-[a-z]{2})?\//, "/");
         const section = (data.meta && (data.meta.section || data.meta.type)) || path;
         const group = /product/i.test(section) || path.startsWith("/products/") ? messages.products :
@@ -148,7 +182,7 @@
     } catch (_) {
       results.textContent = messages.failed;
     } finally {
-      if (sequence === searchSequence) results.setAttribute("aria-busy", "false");
+      if (sequence === sequences.get(input)) results.setAttribute("aria-busy", "false");
     }
   }
 })();
