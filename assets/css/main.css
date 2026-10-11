@@ -157,6 +157,8 @@ kbd { font: inherit; font-size: .75rem; color: var(--muted); background: var(--s
   .search-open { width: 48px; padding: .25rem; gap: .2rem; flex-wrap: wrap; }
   .search-label, .search-open kbd { display: none; }
   .primary-nav { gap: 1.1rem; }
+  .header-contact { display: flex; order: 4; align-items: center; justify-items: initial; gap: .55rem; width: 100%; padding-top: .45rem; border-top: 1px solid var(--line); }
+  .header-contact .payment-note { padding-left: .55rem; border-left: 1px solid var(--line); }
   .footer-inner { grid-template-columns: 1fr; gap: 1.8rem; }
   .footer-bottom { flex-direction: column; gap: .3rem; }
   .mobile-contact-bar {
@@ -167,6 +169,7 @@ kbd { font: inherit; font-size: .75rem; color: var(--muted); background: var(--s
   .mobile-contact-copy { display: grid; line-height: 1.35; }
   .mobile-contact-copy strong { color: var(--red-900); font-size: .83rem; }
   .mobile-contact-copy span { color: var(--muted); font-size: .72rem; }
+  .mobile-contact-copy .sticky-phone { color: var(--red-700); font-size: .77rem; font-weight: 800; text-decoration: none; }
   .mobile-contact-cta { min-width: 105px; padding-inline: 1rem; }
 }
 @media (prefers-reduced-motion: reduce) {
