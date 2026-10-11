@@ -1,0 +1,24 @@
+<footer class="site-footer" id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-brand-name">Kumbakonam Metal Stores</span>
+      <p>{{ if eq .Site.Language.Lang "ta" }}பித்தளை, பூஜை மற்றும் கோயில் பொருட்களுக்கான மொத்த விற்பனை.{{ else }}Wholesale brassware for pooja, temples, homes and bulk requirements.{{ end }}</p>
+      {{ partial "kolam-divider.html" . }}
+    </div>
+    <div class="footer-contact">
+      <h2>{{ if eq .Site.Language.Lang "ta" }}தொடர்பு{{ else }}Contact{{ end }}</h2>
+      <p>{{ .Site.Params.address }}</p>
+      <p>{{ if eq .Site.Language.Lang "ta" }}GST எண்{{ else }}GST No.{{ end }}: {{ .Site.Params.gstNo }}</p>
+      {{ $phone := replaceRE "[^0-9+]" "" .Site.Params.phone }}
+      {{ if and $phone (ne .Site.Params.phone "{{PHONE}}") }}<p><a href="tel:{{ $phone }}">{{ .Site.Params.phone }}</a></p>{{ else }}<p>{{ .Site.Params.phone }}</p>{{ end }}
+      {{ $message := "Hello Kumbakonam Metal Stores. Please contact me about wholesale brass products." }}
+      <a class="text-link" href="{{ partial "whatsapp-url.html" (dict "ctx" . "message" $message) }}" {{ if ne .Site.Params.whatsapp "{{WHATSAPP}}" }}target="_blank" rel="noopener noreferrer"{{ end }}>WhatsApp <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="footer-terms">
+      <h2>{{ if eq .Site.Language.Lang "ta" }}விற்பனை விவரங்கள்{{ else }}Wholesale terms{{ end }}</h2>
+      <p>{{ if eq .Site.Language.Lang "ta" }}மொத்த ஆர்டர்களுக்கு முன்பணம் தேவை. சரியான விலை மற்றும் குறைந்தபட்ச ஆர்டர் அளவுக்கு தொடர்பு கொள்ளவும்.{{ else }}Wholesale orders require advance payment. Contact us for an exact quote and minimum order quantity.{{ end }}</p>
+      <a class="research-link" href="{{ "temples/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}கோயில்கள் மற்றும் சடங்குகளை ஆராயுங்கள்{{ else }}Explore temples and rituals{{ end }}</a>
+    </div>
+  </div>
+  <div class="footer-bottom"><span>© {{ now.Year }} Kumbakonam Metal Stores</span><span>{{ if eq .Site.Language.Lang "ta" }}விலைகள் குறிப்பானவை; சரியான விலைக்கு தொடர்பு கொள்ளவும்.{{ else }}Indicative rates only · Call for exact quote{{ end }}</span></div>
+</footer>
