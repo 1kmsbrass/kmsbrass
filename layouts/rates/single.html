@@ -18,7 +18,7 @@
         <span class="rate-card-label">{{ if eq $.Site.Language.Lang "ta" }}{{ .nameTa }}{{ else }}{{ .name }}{{ end }}</span>
         <strong class="rate-card-value">{{ if ne .value nil }}₹{{ lang.FormatNumber 2 .value }}{{ else }}{{ if eq $.Site.Language.Lang "ta" }}தொடர்பு கொள்ளவும்{{ else }}Call for current rate{{ end }}{{ end }}</strong>
         <span class="rate-card-unit">{{ .unit }}</span>
-        <p>{{ if eq $.Site.Language.Lang "ta" }}{{ .description }}{{ else }}{{ .description }}{{ end }}</p>
+        <p>{{ if eq $.Site.Language.Lang "ta" }}{{ .descriptionTa | default .description }}{{ else }}{{ .description }}{{ end }}</p>
         <small>{{ if .updatedOn }}{{ if eq $.Site.Language.Lang "ta" }}புதுப்பிப்பு: {{ else }}Updated on {{ end }}{{ .updatedOn }}{{ else }}{{ if eq $.Site.Language.Lang "ta" }}சரிபார்க்கப்பட்ட பொது விலை இல்லை{{ else }}No verified public figure yet{{ end }}{{ end }}</small>
       </article>
     {{ end }}
