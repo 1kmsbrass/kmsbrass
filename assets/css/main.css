@@ -86,6 +86,14 @@ kbd { font: inherit; font-size: .75rem; color: var(--muted); background: var(--s
 .site-main { min-height: 44vh; }
 .page-shell { width: min(100% - 2rem, var(--content-width)); margin: 0 auto; padding-block: clamp(2rem, 6vw, 5.5rem); }
 .prose { max-width: var(--reading-width); }
+.home-intro { padding-top: clamp(3rem, 8vw, 7rem); padding-bottom: clamp(3rem, 7vw, 6rem); }
+.eyebrow { color: var(--red-700); font-size: .78rem; font-weight: 850; letter-spacing: .12em; margin-bottom: 1.2rem; }
+.home-intro h1 { max-width: 16ch; margin: 0 0 1rem; }
+.home-copy { max-width: 68ch; }
+.home-copy h2 { margin-top: 2.2rem; }
+.home-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.6rem; }
+.button-outline { border-color: var(--red-700); color: var(--red-700); background: transparent; }
+.button-outline:hover { color: var(--red-900); border-color: var(--red-900); background: var(--brass-100); }
 .prose h1, .prose h2, .prose h3 { text-wrap: balance; }
 .prose p, .prose li { line-height: 1.8; }
 .lede { color: var(--muted); font-size: clamp(1.1rem, 2vw, 1.35rem); max-width: 62ch; }
