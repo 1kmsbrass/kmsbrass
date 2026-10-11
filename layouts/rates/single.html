@@ -3,7 +3,7 @@
   <p class="eyebrow">{{ if eq .Site.Language.Lang "ta" }}பித்தளை · செம்பு · பழைய பொருட்கள்{{ else }}BRASS · COPPER · SCRAP{{ end }}</p>
   <h1>{{ .Title }}</h1>
   {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
-  <p class="rates-intro">{{ .Content }}</p>
+  <div class="rates-intro">{{ .Content }}</div>
   {{ partial "rate-ticker.html" . }}
   <div class="rates-heading-row">
     <div>
@@ -32,7 +32,7 @@
     <div>
       <p class="eyebrow">{{ if eq .Site.Language.Lang "ta" }}பதிவு செய்யப்பட்ட மாற்றங்கள்{{ else }}RECORDED CHANGES{{ end }}</p>
       <h2>{{ if eq .Site.Language.Lang "ta" }}விலை வரலாறு{{ else }}Rate history{{ end }}</h2>
-      <p class="rates-muted">{{ if eq .Site.Language.Lang "ta" }}சரிபார்க்கப்பட்ட பொது பதிவுகள் கிடைக்கும் போது மட்டுமே வரைபடம் காட்டப்படும்.{{ else }}The sparkline appears when verified public rate history is added. No figures are estimated or fabricated.{{ end }}</p>
+      <p class="rates-muted">{{ if eq .Site.Language.Lang "ta" }}சரிபார்க்கப்பட்ட பொது பதிவுகள் கிடைக்கும் போது மட்டுமே வரைபடம் காட்டப்படும்.{{ else }}The chart and table appear when verified public rate history is added. No figures are estimated or fabricated.{{ end }}</p>
     </div>
     <div class="rate-history-chart" data-history-chart>
       <svg viewBox="0 0 480 116" role="img" aria-label="{{ if eq .Site.Language.Lang "ta" }}பொது விலை வரலாறு வரைபடம்{{ else }}Public rate history chart{{ end }}">
@@ -40,6 +40,24 @@
         <text x="240" y="58" text-anchor="middle" class="chart-empty-label">{{ if eq .Site.Language.Lang "ta" }}பதிவுகள் சேர்க்கப்படவில்லை{{ else }}No verified history added yet{{ end }}</text>
       </svg>
     </div>
+  </section>
+  <section class="rate-history-table-section" aria-labelledby="rate-history-table-title">
+    <h3 id="rate-history-table-title">{{ if eq .Site.Language.Lang "ta" }}முந்தைய பொது விலைகள்{{ else }}Previous public rates{{ end }}</h3>
+    {{ $history := where .Site.Data.rates.history "public" true }}
+    {{ if gt (len $history) 0 }}
+      <div class="table-scroll">
+        <table class="rate-history-table">
+          <thead><tr><th>{{ if eq .Site.Language.Lang "ta" }}தேதி{{ else }}Date{{ end }}</th><th>{{ if eq .Site.Language.Lang "ta" }}வகை{{ else }}Reference{{ end }}</th><th>{{ if eq .Site.Language.Lang "ta" }}விலை{{ else }}Rate{{ end }}</th></tr></thead>
+          <tbody>
+            {{ range sort $history "date" "desc" }}
+              <tr><td>{{ .date }}</td><td>{{ if eq $.Site.Language.Lang "ta" }}{{ .labelTa | default .label }}{{ else }}{{ .label | default .id }}{{ end }}</td><td>{{ if ne .value nil }}₹{{ lang.FormatNumber 2 .value }} {{ .unit | default "per kg" }}{{ else }}—{{ end }}</td></tr>
+            {{ end }}
+          </tbody>
+        </table>
+      </div>
+    {{ else }}
+      <p class="history-empty">{{ if eq .Site.Language.Lang "ta" }}சரிபார்க்கப்பட்ட பொது பதிவுகள் இன்னும் சேர்க்கப்படவில்லை.{{ else }}No verified public rate records have been added yet.{{ end }}</p>
+    {{ end }}
   </section>
   <section class="rates-note">
     <h2>{{ if eq .Site.Language.Lang "ta" }}விலைகளை எவ்வாறு பயன்படுத்துவது?{{ else }}How to use these rates{{ end }}</h2>
