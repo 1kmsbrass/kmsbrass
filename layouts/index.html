@@ -33,6 +33,18 @@
   </aside>
 </section>
 
+<section class="home-search page-shell" aria-labelledby="home-search-title">
+  <div class="home-search-heading">
+    <p class="eyebrow">{{ if eq .Site.Language.Lang "ta" }}விரைவான தேடல்{{ else }}FIND AN ARTICLE{{ end }}</p>
+    <h2 id="home-search-title">{{ if eq .Site.Language.Lang "ta" }}பொருள், கோயில் அல்லது வழிகாட்டியைத் தேடுங்கள்{{ else }}Search products, temples and guides{{ end }}</h2>
+  </div>
+  <label class="visually-hidden" for="home-search-input">{{ if eq .Site.Language.Lang "ta" }}தேடல் சொற்கள்{{ else }}Search terms{{ end }}</label>
+  <input id="home-search-input" class="search-input home-search-input" type="search" autocomplete="off" data-pagefind-search-input placeholder="{{ if eq .Site.Language.Lang "ta" }}எ.கா. குத்துவிளக்கு, கும்பாபிஷேகம்{{ else }}Try Kuthu Vilakku, kudam or Kumbabishegam{{ end }}">
+  <p class="search-hint">{{ if eq .Site.Language.Lang "ta" }}ஆங்கிலம் அல்லது தமிழில் தேடலாம். உடனடி தேடலுக்கு JavaScript தேவை.{{ else }}Search in English or Tamil. Instant results require JavaScript.{{ end }}</p>
+  <div id="home-search-results" class="search-results home-search-results" aria-live="polite" aria-busy="false"></div>
+  <noscript><p class="search-hint">{{ if eq .Site.Language.Lang "ta" }}JavaScript இல்லாவிட்டாலும் பக்கங்களையும் தொடர்பு இணைப்புகளையும் பயன்படுத்தலாம்.{{ else }}Pages and contact links remain available when JavaScript is disabled; use the product index below to browse.{{ end }}</p></noscript>
+</section>
+
 <section class="home-section home-audiences" id="buying-for">
   <div class="section-heading page-shell">
     <div><p class="eyebrow">{{ if eq .Site.Language.Lang "ta" }}யாருக்காக{{ else }}WHO WE SUPPLY FOR{{ end }}</p>
