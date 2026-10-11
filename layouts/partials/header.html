@@ -27,6 +27,12 @@
       {{ end }}
       <span class="payment-note">{{ if eq .Site.Language.Lang "ta" }}முன்பணம் செலுத்தி வாங்குதல்{{ else }}Advance payment{{ end }}</span>
     </div>
+    <div class="language-switch" aria-label="{{ if eq .Site.Language.Lang "ta" }}மொழியை மாற்றவும்{{ else }}Change language{{ end }}">
+      <span>{{ if eq .Site.Language.Lang "ta" }}தமிழ்{{ else }}EN{{ end }}</span>
+      {{ range .AllTranslations }}
+        {{ if ne .Lang $.Lang }}<a href="{{ .RelPermalink }}" lang="{{ .Language.LanguageCode }}">{{ .Language.LanguageName }}</a>{{ end }}
+      {{ end }}
+    </div>
   </div>
   <dialog class="search-dialog" id="site-search-dialog" aria-labelledby="search-title">
     <div class="search-panel">
