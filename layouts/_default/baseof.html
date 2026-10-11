@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="{{ .Site.Language.LanguageCode }}">
   {{ partial "head.html" . }}
-  <body>
+  <body {{ if ne .Params.quality "complete" }}data-pagefind-ignore{{ end }}>
     <a class="skip-link" href="#main-content">{{ if eq .Site.Language.Lang "ta" }}முக்கிய உள்ளடக்கத்திற்குச் செல்லவும்{{ else }}Skip to main content{{ end }}</a>
     {{ partial "header.html" . }}
     <main id="main-content" class="site-main" {{ if ne .Params.quality "complete" }}data-pagefind-ignore{{ else }}data-pagefind-body{{ end }}>
