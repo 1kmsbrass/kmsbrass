@@ -1,16 +1,19 @@
 /* KMS design system: one place to adjust the palette and shared layout. */
 :root {
-  --red-900: #5E0F0F;
-  --red-700: #8B1A1A;
-  --red-600: #A32020;
-  --brass-500: #E3A82B;
-  --brass-400: #F0BD4F;
-  --brass-100: #FFF1CC;
-  --cream: #FFF9EC;
-  --ink: #2B1B14;
-  --muted: #6B5A50;
-  --line: #DDCDB4;
-  --surface-soft: #F5EBD9;
+  --kms-red: #C8202D;
+  --kms-yellow: #FFC90D;
+  --kms-gradient: linear-gradient(105deg, #C8202D 0%, #E94B27 52%, #FFC90D 100%);
+  --red-900: #68131A;
+  --red-700: #A61926;
+  --red-600: #C8202D;
+  --brass-500: #FFC90D;
+  --brass-400: #FFD84A;
+  --brass-100: #FFF1B8;
+  --cream: #FFFCF3;
+  --ink: #261A18;
+  --muted: #685753;
+  --line: #DDCCB0;
+  --surface-soft: #FFF5D8;
   --shadow: 0 14px 38px rgb(43 27 20 / 10%);
   --serif: "Yeseva One", "Playfair Display", Georgia, serif;
   --sans: Inter, "Noto Sans Tamil", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -54,7 +57,7 @@ p { margin-block: 0 1rem; }
   position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
-.site-header { position: relative; z-index: 10; border-bottom: 1px solid var(--line); background: var(--cream); }
+.site-header { position: relative; z-index: 10; border-bottom: 3px solid transparent; border-image: var(--kms-gradient) 1; background: var(--cream); }
 .header-inner {
   width: min(100% - 2rem, var(--content-width)); margin-inline: auto; min-height: 94px;
   display: flex; align-items: center; gap: clamp(.7rem, 2vw, 1.8rem); padding-block: .9rem;
@@ -62,7 +65,8 @@ p { margin-block: 0 1rem; }
 .brand { display: inline-flex; align-items: center; gap: .8rem; color: var(--ink); text-decoration: none; min-width: max-content; }
 .brand-mark {
   display: grid; place-items: center; width: 49px; height: 49px; flex: 0 0 49px;
-  border: 1.5px solid var(--red-700); border-radius: 50%; color: var(--red-700);
+  border: 2px solid transparent; border-radius: 50%; color: var(--red-700);
+  background: linear-gradient(var(--cream), var(--cream)) padding-box, var(--kms-gradient) border-box;
   font-family: var(--serif); font-size: 1.55rem;
 }
 .brand-copy { display: grid; line-height: 1.3; }
@@ -257,7 +261,7 @@ kbd { font: inherit; font-size: .75rem; color: var(--muted); background: var(--s
 .family-list { padding-top: 0; }
 .family-row { display: grid; grid-template-columns: 54px minmax(0, 1fr) 36px; align-items: center; gap: 1.2rem; padding: 1.4rem 0; border-top: 1px solid var(--line); color: var(--ink); text-decoration: none; }
 .family-row:last-child { border-bottom: 1px solid var(--line); }
-.family-row:hover { color: var(--ink); background: linear-gradient(90deg, rgb(255 241 204 / 35%), transparent 75%); }
+.family-row:hover { color: var(--ink); background: linear-gradient(100deg, rgb(255 201 13 / 24%) 0%, rgb(200 32 45 / 5%) 48%, transparent 78%); }
 .family-row:hover .family-arrow { border-color: var(--brass-500); background: var(--brass-100); }
 .family-index { color: var(--brass-500); font-family: var(--serif); font-size: 1.7rem; }
 .family-row h3 { margin: 0 0 .35rem; font-size: 1.35rem; }
