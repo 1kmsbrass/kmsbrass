@@ -423,3 +423,10 @@ kbd { font: inherit; font-size: .75rem; color: var(--muted); background: var(--s
 @media (max-width: 680px) {
   .page-meta { padding: .9rem 1rem calc(1rem + env(safe-area-inset-bottom)); }
 }
+
+.prices-hidden-notice {
+  max-width: 70ch; margin-top: 2rem; padding: clamp(1.4rem, 3vw, 2.2rem);
+  border-left: 4px solid var(--brass-500); background: var(--surface-soft);
+}
+.prices-hidden-notice h2 { margin: .3rem 0 .85rem; }
+.prices-hidden-notice p:not(.eyebrow) { max-width: 62ch; }
