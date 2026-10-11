@@ -1,0 +1,38 @@
+{
+  "status": "awaiting_verified_rates",
+  "updatedOn": null,
+  "notice": "Indicative only. Call for an exact quote. Do not publish an unverified figure.",
+  "rates": [
+    {
+      "id": "brass-reference",
+      "name": "Brass reference rate",
+      "nameTa": "பித்தளை குறிப்பு விலை",
+      "unit": "₹ / kg",
+      "value": null,
+      "public": true,
+      "updatedOn": null,
+      "description": "A general reference value, when verified and approved for public display."
+    },
+    {
+      "id": "brass-scrap",
+      "name": "Brass scrap reference",
+      "nameTa": "பழைய பித்தளை குறிப்பு விலை",
+      "unit": "₹ / kg",
+      "value": null,
+      "public": true,
+      "updatedOn": null,
+      "description": "Reference only; scrap grade, cleanliness and mix affect the actual value."
+    },
+    {
+      "id": "copper-reference",
+      "name": "Copper reference rate",
+      "nameTa": "செம்பு குறிப்பு விலை",
+      "unit": "₹ / kg",
+      "value": null,
+      "public": true,
+      "updatedOn": null,
+      "description": "A general reference value, when verified and approved for public display."
+    }
+  ],
+  "history": []
+}
