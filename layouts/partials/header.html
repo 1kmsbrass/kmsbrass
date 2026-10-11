@@ -22,7 +22,7 @@
       </div>
     </details>
     <nav class="primary-nav" aria-label="{{ if eq .Site.Language.Lang "ta" }}முதன்மை வழிசெலுத்தல்{{ else }}Main navigation{{ end }}">
-      <a href="{{ printf "%s#browse" .Site.Home.RelPermalink }}">{{ if eq .Site.Language.Lang "ta" }}பொருட்கள்{{ else }}Products{{ end }}</a>
+      <a href="{{ printf "%s#product-index" .Site.Home.RelPermalink }}">{{ if eq .Site.Language.Lang "ta" }}பொருட்கள்{{ else }}Products{{ end }}</a>
       <a href="{{ "rates/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}விலைத் தகவல்{{ else }}Rates{{ end }}</a>
       <a href="{{ printf "%s#tools-preview" .Site.Home.RelPermalink }}">{{ if eq .Site.Language.Lang "ta" }}கருவிகள்{{ else }}Tools{{ end }}</a>
       <a href="{{ "terms/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}விற்பனை விதிகள்{{ else }}Ordering & terms{{ end }}</a>
