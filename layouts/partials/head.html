@@ -12,8 +12,9 @@
   <meta name="robots" content="{{ $robots }}">
   <link rel="canonical" href="{{ .Permalink }}">
   {{ range .AllTranslations }}
-    {{ if ne .Lang $.Lang }}<link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">{{ end }}
+    <link rel="alternate" hreflang="{{ .Site.Language.LanguageCode }}" href="{{ .Permalink }}">
   {{ end }}
+  <link rel="alternate" hreflang="x-default" href="{{ .Site.Home.Permalink }}">
   <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
   <meta property="og:site_name" content="{{ .Site.Title }}">
   <meta property="og:title" content="{{ .Title | default .Site.Title | plainify | htmlEscape }}">
