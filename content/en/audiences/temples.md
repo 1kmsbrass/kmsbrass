@@ -8,6 +8,9 @@ translationKey: audience-temples
 weight: 2
 kicker: "TEMPLE REQUIREMENTS"
 whatsappMessage: "Hello Kumbakonam Metal Stores. I am enquiring on behalf of a temple/institution. Please help with brass pooja or temple articles. Occasion/pooja: ; Items: ; Quantity: ; Temple town: ; Date needed: "
+lastUpdated: "2026-10-11"
+sources:
+  - "KMS business and ordering policy; no external research claims used"
 ---
 
 Temple requirements can range from routine pooja articles to items needed for a specific observance or renovation. Share the use and the required specifications so the enquiry can be handled clearly.
