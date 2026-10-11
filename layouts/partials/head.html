@@ -24,6 +24,26 @@
   {{ with .Params.image }}
     <meta property="og:image" content="{{ if strings.HasPrefix . "http" }}{{ . }}{{ else }}{{ $.Site.Params.imageBaseURL }}/{{ . }}{{ end }}">
   {{ end }}
+  <style>
+    /* Critical first-screen CSS: keep the heading, search and contact usable while the main sheet loads. */
+    html { background: #FFF9EC; }
+    body { margin: 0; color: #2B1B14; background: #FFF9EC; font: 17px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .site-header { border-bottom: 1px solid #DDCDB4; background: #FFF9EC; }
+    .header-inner { width: min(100% - 2rem, 1200px); margin-inline: auto; display: flex; flex-wrap: wrap; align-items: center; gap: .7rem; padding-block: .75rem; }
+    .brand { color: #5E0F0F; text-decoration: none; }
+    .site-main { min-height: 40vh; }
+    .page-shell { width: min(100% - 2rem, 1200px); margin-inline: auto; }
+    .home-hero { padding-block: 1.5rem; }
+    .home-hero h1 { max-width: 24ch; color: #5E0F0F; font-size: clamp(2rem, 4vw, 3.6rem); line-height: 1.12; }
+    .home-summary { max-width: 76ch; color: #8B1A1A; font-size: 1.125rem; }
+    .home-search { padding-block: 1.2rem; border-block: 1px solid #DDCDB4; background: #F5EBD9; }
+    .home-search-input { width: 100%; min-height: 56px; box-sizing: border-box; }
+    a { color: #8B1A1A; text-underline-offset: .2em; }
+    button, input, a { font: inherit; }
+    button, a, input { touch-action: manipulation; }
+    :focus-visible { outline: 3px solid #E3A82B; outline-offset: 3px; }
+    @media (max-width: 680px) { body { padding-bottom: 82px; } .page-shell { width: min(100% - 1.25rem, 1200px); } }
+  </style>
   {{ $mainCSS := resources.Get "css/main.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $mainCSS.RelPermalink }}" integrity="{{ $mainCSS.Data.Integrity }}" crossorigin="anonymous">
   {{ with .OutputFormats.Get "RSS" }}<link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ $.Site.Title }}">{{ end }}
