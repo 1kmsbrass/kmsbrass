@@ -6,13 +6,12 @@
     <p class="eyebrow">{{ if eq .Site.Language.Lang "ta" }}கும்பகோணம் · பித்தளை மொத்த விற்பனை{{ else }}KUMBAKONAM · BRASS WHOLESALE{{ end }}</p>
     <h1>{{ .Title }}</h1>
     {{ with .Description }}<p class="hero-standfirst">{{ . }}</p>{{ end }}
-    <p class="hero-detail">{{ if eq .Site.Language.Lang "ta" }}கோயில்கள், வணிகக் கொள்முதல் மற்றும் மொத்தத் தேவைகளுக்கான பித்தளைப் பொருட்கள். தேவையான பொருள், எண்ணிக்கை மற்றும் ஊரைத் தெரிவிக்கவும்.{{ else }}Brass articles for temples, trade buyers and bulk requirements. Tell us the product, quantity and destination; we will clarify the details and quote.{{ end }}</p>
+    <div class="prose home-hero-text">{{ .Content }}</div>
     <div class="home-actions">
       <a class="button button-red" href="{{ "audiences/retailers/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}வணிகக் கொள்முதல்{{ else }}Wholesale buyers{{ end }} <span aria-hidden="true">↗</span></a>
       {{ $message := "Hello Kumbakonam Metal Stores. I would like to make a wholesale brass enquiry. Please help me with product options, minimum quantities and a current quote." }}
       <a class="button button-brass" href="{{ partial "whatsapp-url.html" (dict "ctx" . "message" $message) }}" {{ if ne .Site.Params.whatsapp "{{WHATSAPP}}" }}target="_blank" rel="noopener noreferrer"{{ end }}>WhatsApp <span aria-hidden="true">↗</span></a>
     </div>
-    <p class="hero-terms">{{ if eq .Site.Language.Lang "ta" }}மொத்த ஆர்டர்களுக்கு முன்பணம் தேவை · கடன் விற்பனை இல்லை{{ else }}Advance payment on wholesale orders · No trade credit{{ end }}</p>
   </div>
   <aside class="hero-visual" aria-label="{{ if eq .Site.Language.Lang "ta" }}வணிகம், கோயில் மற்றும் மொத்தத் தேவைகள்{{ else }}Trade, temple and bulk supply{{ end }}">
     <div class="hero-visual-top"><span>KMS / 01</span><span>{{ if eq .Site.Language.Lang "ta" }}பித்தளை{{ else }}BRASSWARE{{ end }}</span></div>
