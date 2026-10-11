@@ -63,8 +63,8 @@
     const results = resultTarget(input);
     if (!results) return;
     input.addEventListener("focus", async () => {
-      await loadPagefind(results);
-      if (!input.value.trim()) {
+      const pagefind = await loadPagefind(results);
+      if (pagefind && !input.value.trim()) {
         results.textContent = messages.ready;
         results.setAttribute("aria-busy", "false");
       }
@@ -78,15 +78,15 @@
   if (disclosure && headerInput) {
     disclosure.addEventListener("toggle", async () => {
       if (!disclosure.open) return;
-      await loadPagefind(resultTarget(headerInput));
+      const results = resultTarget(headerInput);
+      const pagefind = await loadPagefind(results);
+      if (!disclosure.open) return;
       headerInput.focus();
-      if (headerInput.value.trim()) search(headerInput, resultTarget(headerInput));
-      else {
-        const results = resultTarget(headerInput);
-        if (results) {
-          results.textContent = messages.ready;
-          results.setAttribute("aria-busy", "false");
-        }
+      if (!pagefind) return;
+      if (headerInput.value.trim()) search(headerInput, results);
+      else if (results) {
+        results.textContent = messages.ready;
+        results.setAttribute("aria-busy", "false");
       }
     });
   }
