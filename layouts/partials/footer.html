@@ -14,8 +14,7 @@
       <p><strong>{{ if eq .Site.Language.Lang "ta" }}தொலைபேசி:{{ else }}Phone:{{ end }}</strong> <a href="tel:{{ $phone }}">{{ .Site.Params.phone }}</a></p>
       {{ $message := "Hello Kumbakonam Metal Stores. Please contact me about wholesale brass products." }}
       <p><strong>WhatsApp:</strong> <a href="{{ partial "whatsapp-url.html" (dict "ctx" . "message" $message) }}" target="_blank" rel="noopener noreferrer">{{ .Site.Params.phone }}</a></p>
-      <p><strong>{{ if eq .Site.Language.Lang "ta" }}திறந்திருக்கும் நேரம்:{{ else }}Opening hours:{{ end }}</strong> {{ if eq .Site.Language.Lang "ta" }}இன்னும் வெளியிடப்படவில்லை; வருவதற்கு முன் அழைக்கவும்.{{ else }}Not published yet; please call before visiting.{{ end }}</p>
-      <p class="contact-hours-note">{{ if eq .Site.Language.Lang "ta" }}இந்திய நேரம் (IST, Asia/Kolkata). விடுமுறை நாட்களில் நேரம் மாறலாம்; வருவதற்கு முன் உறுதிப்படுத்தவும்.{{ else }}India Standard Time (IST, Asia/Kolkata). Holiday hours may vary; please confirm before visiting.{{ end }}</p>
+      
     </div>
     <div class="footer-terms">
       <h2>{{ if eq .Site.Language.Lang "ta" }}மொத்த விற்பனை விதிமுறைகள்{{ else }}Wholesale terms{{ end }}</h2>
@@ -24,7 +23,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© {{ now.Year }} Kumbakonam Metal Stores</span>
+    
     <span>{{ if eq .Site.Language.Lang "ta" }}விளம்பரங்கள் அல்லது மூன்றாம் தரப்பு கண்காணிப்பிகள் இல்லை. பகுப்பாய்வு குக்கீகள் இல்லை.{{ else }}No ads or third-party trackers. No analytics cookies.{{ end }}</span>
     <span>{{ if eq .Site.Language.Lang "ta" }}விலைகள் குறிப்பானவை; சரியான விலைக்கு தொடர்பு கொள்ளவும்.{{ else }}Indicative rates only · Call for exact quote{{ end }}</span>
   </div>
