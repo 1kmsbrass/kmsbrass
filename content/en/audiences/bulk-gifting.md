@@ -8,6 +8,9 @@ translationKey: audience-bulk-gifting
 weight: 4
 kicker: "BULK & GIFTING"
 whatsappMessage: "Hello Kumbakonam Metal Stores. I am enquiring about bulk brass gifting. Occasion: ; Item/variant: ; Quantity: ; Budget range per piece (optional): ; City: ; Required date: "
+lastUpdated: "2026-10-11"
+sources:
+  - "KMS business and ordering policy; no external research claims used"
 ---
 
 Brass gifting works best when the article, presentation, quantity and delivery timeline are agreed before production or packing is arranged. Tell us the purpose and approximate count, and ask for an exact quote for the selected variant.
