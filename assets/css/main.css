@@ -378,3 +378,7 @@ kbd { font: inherit; font-size: .75rem; color: var(--muted); background: var(--s
   .language-switch { order: 2; margin-left: 0; font-size: .72rem; }
   .header-inner { column-gap: .45rem; }
 }
+
+.home-hero-text { max-width: 58ch; margin-top: 1.2rem; color: var(--muted); font-size: .94rem; }
+.home-hero-text p { margin-block: 0 .75rem; }
+.home-hero-text strong { color: var(--red-700); }
