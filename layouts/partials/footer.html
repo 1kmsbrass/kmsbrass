@@ -7,8 +7,12 @@
     </div>
     <div class="footer-contact">
       <h2>{{ if eq .Site.Language.Lang "ta" }}தொடர்பு{{ else }}Contact{{ end }}</h2>
-      <p>{{ .Site.Params.address }}</p>
-      <p>{{ if eq .Site.Language.Lang "ta" }}GST எண்{{ else }}GST No.{{ end }}: {{ .Site.Params.gstNo }}</p>
+      {{ if and .Site.Params.address (ne .Site.Params.address "{{ADDRESS}}") }}
+        <p>{{ .Site.Params.address }}</p>
+      {{ end }}
+      {{ if and .Site.Params.gstNo (ne .Site.Params.gstNo "{{GST_NO}}") }}
+        <p>{{ if eq .Site.Language.Lang "ta" }}GST எண்{{ else }}GST No.{{ end }}: {{ .Site.Params.gstNo }}</p>
+      {{ end }}
       {{ $phone := replaceRE "[^0-9+]" "" .Site.Params.phone }}
       {{ if and $phone (ne .Site.Params.phone "{{PHONE}}") }}<p><a href="tel:{{ $phone }}">{{ .Site.Params.phone }}</a></p>{{ else }}<p>{{ .Site.Params.phone }}</p>{{ end }}
       {{ $message := "Hello Kumbakonam Metal Stores. Please contact me about wholesale brass products." }}
