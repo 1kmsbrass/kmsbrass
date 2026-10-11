@@ -3,8 +3,8 @@
   const cards = [...document.querySelectorAll("[data-rate-card]")];
   const status = document.querySelector(".copy-status");
   const copyButton = document.querySelector("[data-copy-rates]");
-  const shareButton = document.querySelector("[data-share-rates]");
   if (!cards.length) return;
+  if (copyButton) copyButton.hidden = false;
 
   const isTamil = (document.documentElement.lang || "").toLowerCase().startsWith("ta");
   const copiedMessage = isTamil ? "விலைகள் நகலெடுக்கப்பட்டன." : "Rates copied.";
@@ -41,8 +41,4 @@
     }
   });
 
-  shareButton?.addEventListener("click", () => {
-    const message = getText();
-    window.open("https://wa.me/?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
-  });
 })();
