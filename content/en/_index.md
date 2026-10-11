@@ -8,7 +8,7 @@ sources:
   - "KMS business and ordering policy; no external research claims used"
 ---
 
-Kumbakonam Metal Stores supplies brass articles for pooja, temples, households and bulk requirements.
+Kumbakonam Metal Stores, at 9 VOC Street, Anupperpalayam, Tiruppur 641652, supplies brass articles for pooja, temples, households and bulk requirements.
 
 We keep the enquiry straightforward: share the item, quantity, delivery city and required date. Ask us to confirm the specification, minimum order quantity and exact quote.
 
