@@ -544,3 +544,15 @@ kbd { font: inherit; font-size: .75rem; color: var(--muted); background: var(--s
   .mobile-header-contact .mobile-header-call { background: var(--cream); color: var(--red-700); }
   .mobile-header-contact .mobile-header-whatsapp { background: var(--red-700); border-color: var(--red-700); color: var(--cream); }
 }
+
+/* Legibility floor for reading text, footer notes, and table headings. */
+.page-meta,
+.footer-bottom,
+.site-footer p,
+.rate-history-table th,
+.history-empty,
+.rates-muted,
+.rates-updated {
+  font-size: 1.0625rem;
+}
+.rate-history-table th { font-size: .9375rem; }
