@@ -1,7 +1,7 @@
 {{- /* Emit LocalBusiness schema only when real contact details replace placeholders. */ -}}
 {{- if and .IsHome (ne .Site.Params.phone "{{PHONE}}") (ne .Site.Params.address "{{ADDRESS}}") -}}
   {{- $postalAddress := dict "@type" "PostalAddress" "streetAddress" .Site.Params.streetAddress "addressLocality" .Site.Params.addressLocality "addressRegion" .Site.Params.addressRegion "postalCode" .Site.Params.postalCode "addressCountry" .Site.Params.addressCountry -}}
-  {{- $business := dict "@context" "https://schema.org" "@type" "LocalBusiness" "@id" (printf "%s#business" .Site.BaseURL) "name" .Site.Title "url" .Site.BaseURL "description" .Site.Params.description "telephone" .Site.Params.phone "address" $postalAddress -}}
+  {{- $business := dict "@context" "https://schema.org" "@type" "LocalBusiness" "@id" (printf "%s#business" .Site.BaseURL) "name" .Site.Title "url" .Site.BaseURL "description" .Site.Params.description "telephone" .Site.Params.phone "logo" (printf "%simages/kms-logo.svg" .Site.BaseURL) "address" $postalAddress -}}
   {{- if ne .Site.Params.gstNo "{{GST_NO}}" -}}
     {{- $business = merge $business (dict "taxID" .Site.Params.gstNo) -}}
   {{- end -}}
