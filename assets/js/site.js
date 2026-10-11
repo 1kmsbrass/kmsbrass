@@ -62,7 +62,13 @@
   inputs.forEach((input) => {
     const results = resultTarget(input);
     if (!results) return;
-    input.addEventListener("focus", () => { loadPagefind(results); });
+    input.addEventListener("focus", async () => {
+      await loadPagefind(results);
+      if (!input.value.trim()) {
+        results.textContent = messages.ready;
+        results.setAttribute("aria-busy", "false");
+      }
+    });
     input.addEventListener("input", () => {
       window.clearTimeout(debounceTimers.get(input));
       debounceTimers.set(input, window.setTimeout(() => search(input, results), 100));
