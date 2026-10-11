@@ -5,5 +5,13 @@
   {{- if ne .Site.Params.gstNo "{{GST_NO}}" -}}
     {{- $business = merge $business (dict "taxID" .Site.Params.gstNo) -}}
   {{- end -}}
+
+{{- /* Basic breadcrumb markup for complete, indexable pages. */ -}}
+{{- if and (not .IsHome) .IsPage (eq .Params.quality "complete") -}}
+  {{- $homeItem := dict "@type" "ListItem" "position" 1 "name" .Site.Title "item" .Site.Home.Permalink -}}
+  {{- $pageItem := dict "@type" "ListItem" "position" 2 "name" .Title "item" .Permalink -}}
+  {{- $breadcrumb := dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" (slice $homeItem $pageItem) -}}
+<script type="application/ld+json">{{ $breadcrumb | jsonify | safeJS }}</script>
+{{- end -}}
 <script type="application/ld+json">{{ $business | jsonify | safeJS }}</script>
 {{- end -}}
