@@ -9,6 +9,25 @@
   let pagefindPromise = null;
   const sequences = new WeakMap();
   const debounceTimers = new WeakMap();
+  const prefetched = new Set();
+
+  // Prefetch only same-origin product pages, and only when a visitor shows intent.
+  function prefetchProductLink(event) {
+    const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
+    if (!link) return;
+    let url;
+    try { url = new URL(link.href, window.location.href); } catch (_) { return; }
+    if (url.origin !== window.location.origin || !/^\\/products\\//.test(url.pathname) || prefetched.has(url.href)) return;
+    prefetched.add(url.href);
+    const hint = document.createElement("link");
+    hint.rel = "prefetch";
+    hint.href = url.href;
+    hint.as = "document";
+    document.head.appendChild(hint);
+  }
+
+  document.addEventListener("pointerover", prefetchProductLink, { passive: true });
+  document.addEventListener("focusin", prefetchProductLink);
 
   const isTamil = (document.documentElement.lang || "").toLowerCase().startsWith("ta");
   const messages = isTamil ? {
