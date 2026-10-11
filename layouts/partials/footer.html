@@ -2,27 +2,30 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <span class="footer-brand-name">Kumbakonam Metal Stores</span>
-      <p>{{ if eq .Site.Language.Lang "ta" }}பித்தளை, பூஜை மற்றும் கோயில் பொருட்களுக்கான மொத்த விற்பனை.{{ else }}Wholesale brassware for pooja, temples, homes and bulk requirements.{{ end }}</p>
+      <p>{{ if eq .Site.Language.Lang "ta" }}பூஜை, கோயில், வீடு மற்றும் மொத்தத் தேவைகளுக்கான பித்தளைப் பொருட்கள்.{{ else }}Brass articles for pooja, temples, homes and bulk requirements.{{ end }}</p>
       {{ partial "kolam-divider.html" . }}
+      <a class="footer-policy-link" href="{{ "terms/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}எதை விற்கிறோம், ஆர்டர் எப்படி செய்வது, தெளிவான விதிமுறைகள்{{ else }}What we sell, how ordering works, and plain terms{{ end }}</a>
     </div>
     <div class="footer-contact">
-      <h2>{{ if eq .Site.Language.Lang "ta" }}தொடர்பு{{ else }}Contact{{ end }}</h2>
-      {{ if and .Site.Params.address (ne .Site.Params.address "{{ADDRESS}}") }}
-        <p>{{ .Site.Params.address }}</p>
-      {{ end }}
-      {{ if and .Site.Params.gstNo (ne .Site.Params.gstNo "{{GST_NO}}") }}
-        <p>{{ if eq .Site.Language.Lang "ta" }}GST எண்{{ else }}GST No.{{ end }}: {{ .Site.Params.gstNo }}</p>
-      {{ end }}
+      <h2>{{ if eq .Site.Language.Lang "ta" }}தொடர்பு மற்றும் முகவரி{{ else }}Contact & address{{ end }}</h2>
+      <p>{{ .Site.Params.address }}</p>
+      <p><strong>GST:</strong> {{ .Site.Params.gstNo }}</p>
       {{ $phone := replaceRE "[^0-9+]" "" .Site.Params.phone }}
-      {{ if and $phone (ne .Site.Params.phone "{{PHONE}}") }}<p><a href="tel:{{ $phone }}">{{ .Site.Params.phone }}</a></p>{{ else }}<p>{{ .Site.Params.phone }}</p>{{ end }}
+      <p><strong>{{ if eq .Site.Language.Lang "ta" }}தொலைபேசி:{{ else }}Phone:{{ end }}</strong> <a href="tel:{{ $phone }}">{{ .Site.Params.phone }}</a></p>
       {{ $message := "Hello Kumbakonam Metal Stores. Please contact me about wholesale brass products." }}
-      <a class="text-link" href="{{ partial "whatsapp-url.html" (dict "ctx" . "message" $message) }}" {{ if ne .Site.Params.whatsapp "{{WHATSAPP}}" }}target="_blank" rel="noopener noreferrer"{{ end }}>WhatsApp <span aria-hidden="true">↗</span></a>
+      <p><strong>WhatsApp:</strong> <a href="{{ partial "whatsapp-url.html" (dict "ctx" . "message" $message) }}" target="_blank" rel="noopener noreferrer">{{ .Site.Params.phone }}</a></p>
+      <p><strong>{{ if eq .Site.Language.Lang "ta" }}திறந்திருக்கும் நேரம்:{{ else }}Opening hours:{{ end }}</strong> {{ if eq .Site.Language.Lang "ta" }}இன்னும் வெளியிடப்படவில்லை; வருவதற்கு முன் அழைக்கவும்.{{ else }}Not published yet; please call before visiting.{{ end }}</p>
+      <p class="contact-hours-note">{{ if eq .Site.Language.Lang "ta" }}இந்திய நேரம் (IST, Asia/Kolkata). விடுமுறை நாட்களில் நேரம் மாறலாம்; வருவதற்கு முன் உறுதிப்படுத்தவும்.{{ else }}India Standard Time (IST, Asia/Kolkata). Holiday hours may vary; please confirm before visiting.{{ end }}</p>
     </div>
     <div class="footer-terms">
-      <h2>{{ if eq .Site.Language.Lang "ta" }}விற்பனை விவரங்கள்{{ else }}Wholesale terms{{ end }}</h2>
-      <p>{{ if eq .Site.Language.Lang "ta" }}மொத்த ஆர்டர்களுக்கு முன்பணம் தேவை. சரியான விலை மற்றும் குறைந்தபட்ச ஆர்டர் அளவுக்கு தொடர்பு கொள்ளவும்.{{ else }}Wholesale orders require advance payment. Contact us for an exact quote and minimum order quantity.{{ end }}</p>
+      <h2>{{ if eq .Site.Language.Lang "ta" }}மொத்த விற்பனை விதிமுறைகள்{{ else }}Wholesale terms{{ end }}</h2>
+      <p>{{ if eq .Site.Language.Lang "ta" }}முன்பணம் தேவை; வணிகக் கடன் இல்லை. குறைந்தபட்ச ஆர்டர், அனுப்பும் தேதி, போக்குவரத்து, திரும்பப்பெறுதல் மற்றும் சேத நிபந்தனைகளை பணம் செலுத்தும் முன் எழுத்தில் உறுதிப்படுத்தவும்.{{ else }}Advance payment is required; no trade credit. Confirm MOQ, dispatch date, transport responsibility, returns and damage terms in writing before payment.{{ end }}</p>
       <a class="research-link" href="{{ "temples/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}கோயில்கள் மற்றும் சடங்குகளை ஆராயுங்கள்{{ else }}Explore temples and rituals{{ end }}</a>
     </div>
   </div>
-  <div class="footer-bottom"><span>© {{ now.Year }} Kumbakonam Metal Stores</span><span>{{ if eq .Site.Language.Lang "ta" }}விலைகள் குறிப்பானவை; சரியான விலைக்கு தொடர்பு கொள்ளவும்.{{ else }}Indicative rates only · Call for exact quote{{ end }}</span></div>
+  <div class="footer-bottom">
+    <span>© {{ now.Year }} Kumbakonam Metal Stores</span>
+    <span>{{ if eq .Site.Language.Lang "ta" }}விளம்பரங்கள் அல்லது மூன்றாம் தரப்பு கண்காணிப்பிகள் இல்லை. பகுப்பாய்வு குக்கீகள் இல்லை.{{ else }}No ads or third-party trackers. No analytics cookies.{{ end }}</span>
+    <span>{{ if eq .Site.Language.Lang "ta" }}விலைகள் குறிப்பானவை; சரியான விலைக்கு தொடர்பு கொள்ளவும்.{{ else }}Indicative rates only · Call for exact quote{{ end }}</span>
+  </div>
 </footer>
