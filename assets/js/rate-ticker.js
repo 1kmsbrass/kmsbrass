@@ -1,0 +1,45 @@
+/* Used only on the homepage and rates page. No network calls or trackers. */
+(() => {
+  const formatINR = (value) => new Intl.NumberFormat("en-IN", {
+    style: "currency", currency: "INR", maximumFractionDigits: 2
+  }).format(value);
+
+  document.querySelectorAll(".rate-ticker").forEach((ticker) => {
+    const value = Number(ticker.dataset.rateValue);
+    const valueNode = ticker.querySelector(".rate-ticker-value");
+    const historyNode = ticker.querySelector(".rate-ticker-sparkline");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (ticker.dataset.rateValue && Number.isFinite(value) && valueNode) {
+      valueNode.textContent = reduceMotion ? formatINR(value) + " / kg" : "₹0 / kg";
+      const start = performance.now();
+      const duration = 650;
+      const animate = (now) => {
+        const progress = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        valueNode.textContent = formatINR(value * eased) + " / kg";
+        if (progress < 1) requestAnimationFrame(animate);
+      };
+      if (!reduceMotion) requestAnimationFrame(animate);
+      else valueNode.textContent = formatINR(value) + " / kg";
+    }
+
+    if (historyNode) {
+      let points = [];
+      try { points = JSON.parse(ticker.dataset.rateHistory || "[]"); } catch (_) { points = []; }
+      points = points.filter((point) => point && point.public === true && Number.isFinite(Number(point.value)));
+      if (points.length > 1) {
+        const values = points.map((point) => Number(point.value));
+        const min = Math.min(...values), max = Math.max(...values);
+        const span = max - min || 1;
+        const coords = values.map((v, i) => {
+          const x = 3 + (i * 106 / (values.length - 1));
+          const y = 25 - ((v - min) / span) * 20;
+          return [x, y];
+        });
+        const path = coords.map(([x, y], i) => (i ? "L" : "M") + x.toFixed(1) + " " + y.toFixed(1)).join(" ");
+        historyNode.innerHTML = '<path class="ticker-sparkline-path" d="' + path + '"></path><circle class="ticker-sparkline-dot" cx="' + coords[coords.length - 1][0] + '" cy="' + coords[coords.length - 1][1] + '" r="2.4"></circle>';
+      }
+    }
+  });
+})();
