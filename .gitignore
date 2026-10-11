@@ -1,0 +1,16 @@
+# Hugo build output and generated Pagefind index
+/public/
+/resources/_gen/
+/.hugo_build.lock
+/pagefind/
+
+# Node dependencies
+/node_modules/
+
+# Keep secrets and raw private exports out of Git
+.env
+.env.*
+!.env.example
+/private/
+.local/
+*.secret.json
