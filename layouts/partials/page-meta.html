@@ -1,7 +1,7 @@
 {{- /* Every page carries a visible update date and source note. Research pages should supply real sources in front matter. */ -}}
 {{- $updated := .Params.lastUpdated -}}
 <div class="page-meta" aria-label="{{ if eq .Site.Language.Lang "ta" }}பக்க விவரங்கள்{{ else }}Page details{{ end }}">
-  <span><strong>{{ if eq .Site.Language.Lang "ta" }}கடைசியாக புதுப்பிக்கப்பட்டது:{{ else }}Last updated:{{ end }}</strong> {{ if $updated }}{{ $updated }}{{ else }}{{ if .Lastmod }}{{ .Lastmod.Format "2006-01-02" }}{{ else }}{{ if eq .Site.Language.Lang "ta" }}தேதி குறிப்பிடப்படவில்லை{{ else }}Date not supplied{{ end }}{{ end }}{{ end }}</span>
+  <span><strong>{{ if eq .Site.Language.Lang "ta" }}கடைசியாக புதுப்பிக்கப்பட்டது:{{ else }}Last updated:{{ end }}</strong> {{ if $updated }}{{ $updated }}{{ else }}{{ if .Lastmod }}{{ .Lastmod.Format "2006-01-02" }}{{ else }}{{ if eq .Site.Language.Lang "ta" }}தேதி குறிப்பிடப்படவில்லை{{ else }}Not recorded{{ end }}{{ end }}{{ end }}</span>
   <span><strong>{{ if eq .Site.Language.Lang "ta" }}ஆதாரங்கள்:{{ else }}Sources:{{ end }}</strong>
     {{ with .Params.sources }}
       {{ range $index, $source := . }}{{ if $index }} · {{ end }}{{ if reflect.IsMap $source }}{{ if $source.url }}<a href="{{ $source.url }}" {{ if strings.HasPrefix $source.url "http" }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ $source.title | default $source.url }}</a>{{ else }}{{ $source.title | default "Source not specified" }}{{ end }}{{ else }}{{ . }}{{ end }}{{ end }}
