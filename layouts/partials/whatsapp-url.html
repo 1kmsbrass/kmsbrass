@@ -1,0 +1,9 @@
+{{- /* Usage: partial "whatsapp-url.html" (dict "ctx" . "message" "Message text") */ -}}
+{{- $ctx := .ctx -}}
+{{- $number := replaceRE "[^0-9]" "" $ctx.Site.Params.whatsapp -}}
+{{- $message := .message | default "Hello Kumbakonam Metal Stores. I would like to enquire about brass products." -}}
+{{- if and $number (ne $ctx.Site.Params.whatsapp "{{WHATSAPP}}") -}}
+https://wa.me/{{ $number }}?text={{ $message | urlquery }}
+{{- else -}}
+{{- $ctx.Site.Home.RelPermalink }}#contact
+{{- end -}}
