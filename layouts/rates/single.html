@@ -23,6 +23,31 @@
       </article>
     {{ end }}
   </div>
+  <section class="rate-comparison" aria-labelledby="rate-comparison-title">
+    <h3 id="rate-comparison-title">{{ if eq .Site.Language.Lang "ta" }}பழைய · புதிய · தற்போதைய பொது விலைகள்{{ else }}Old · New · Latest public rates{{ end }}</h3>
+    <div class="table-scroll">
+      <table class="rate-history-table">
+        <thead><tr>
+          <th>{{ if eq .Site.Language.Lang "ta" }}குறிப்பு{{ else }}Reference{{ end }}</th>
+          <th>{{ if eq .Site.Language.Lang "ta" }}பழைய{{ else }}Old{{ end }}</th>
+          <th>{{ if eq .Site.Language.Lang "ta" }}புதிய{{ else }}New{{ end }}</th>
+          <th>{{ if eq .Site.Language.Lang "ta" }}தற்போதைய{{ else }}Latest{{ end }}</th>
+          <th>{{ if eq .Site.Language.Lang "ta" }}புதுப்பிப்பு{{ else }}Updated{{ end }}</th>
+        </tr></thead>
+        <tbody>
+          {{ range where .Site.Data.rates.rates "public" true }}
+            <tr>
+              <td>{{ if eq $.Site.Language.Lang "ta" }}{{ .nameTa }}{{ else }}{{ .name }}{{ end }}</td>
+              <td>{{ if ne .oldValue nil }}₹{{ lang.FormatNumber 2 .oldValue }}{{ else }}—{{ end }}</td>
+              <td>{{ if ne .newValue nil }}₹{{ lang.FormatNumber 2 .newValue }}{{ else }}—{{ end }}</td>
+              <td>{{ if ne .value nil }}₹{{ lang.FormatNumber 2 .value }}{{ else }}{{ if eq $.Site.Language.Lang "ta" }}வெளியிடப்படவில்லை{{ else }}Not published{{ end }}{{ end }}</td>
+              <td>{{ .updatedOn | default "—" }}</td>
+            </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+  </section>
   <div class="rate-actions" aria-label="{{ if eq .Site.Language.Lang "ta" }}விலை பகிர்வு கருவிகள்{{ else }}Rate sharing tools{{ end }}">
     <button class="button button-outline" type="button" data-copy-rates>{{ if eq .Site.Language.Lang "ta" }}விலைகளை நகலெடுக்கவும்{{ else }}Copy rates as text{{ end }}</button>
     <button class="button button-red" type="button" data-share-rates>{{ if eq .Site.Language.Lang "ta" }}WhatsApp-ல் பகிரவும்{{ else }}Share on WhatsApp{{ end }} <span aria-hidden="true">↗</span></button>
