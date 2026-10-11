@@ -11,7 +11,9 @@
       "value": null,
       "public": true,
       "updatedOn": null,
-      "description": "A general reference value, when verified and approved for public display."
+      "description": "A general reference value, when verified and approved for public display.",
+      "oldValue": null,
+      "newValue": null
     },
     {
       "id": "brass-scrap",
@@ -21,7 +23,9 @@
       "value": null,
       "public": true,
       "updatedOn": null,
-      "description": "Reference only; scrap grade, cleanliness and mix affect the actual value."
+      "description": "Reference only; scrap grade, cleanliness and mix affect the actual value.",
+      "oldValue": null,
+      "newValue": null
     },
     {
       "id": "copper-reference",
@@ -31,7 +35,9 @@
       "value": null,
       "public": true,
       "updatedOn": null,
-      "description": "A general reference value, when verified and approved for public display."
+      "description": "A general reference value, when verified and approved for public display.",
+      "oldValue": null,
+      "newValue": null
     }
   ],
   "history": []
