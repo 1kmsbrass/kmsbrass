@@ -1,13 +1,12 @@
 ---
-title: "Kumbakonam Metal Stores"
-description: "Wholesale brass, copper, pooja and temple articles. Enquire for specifications, minimum quantities and an exact quote."
+title: "Brassware for trade, temples and bulk requirements"
+description: "Wholesale brass articles for trade buyers, temples and bulk requirements. Share your product, quantity and destination for an exact quote."
 quality: complete
+translationKey: home-page
 ---
-
-## Wholesale brassware, clearly specified
 
 Kumbakonam Metal Stores supplies brass articles for pooja, temples, households and bulk requirements.
 
-Product pages will list available variants and practical specifications. Public rates, where available, are indicative only. Contact us for an exact quote and minimum order quantity.
+We keep the enquiry straightforward: share the item, quantity, delivery city and required date. Ask us to confirm the specification, minimum order quantity and exact quote.
 
 **Wholesale terms:** advance payment. No credit is offered to trade buyers.
