@@ -12,14 +12,10 @@
     if (!dialog.open) dialog.showModal();
     window.setTimeout(() => input.focus(), 20);
     if (!pagefindLoading) {
-      results.textContent = "Loading search…";
-      pagefindLoading = new Promise((resolve, reject) => {
-        const script = document.createElement("script");
-        script.src = "/pagefind/pagefind.js";
-        script.onload = () => resolve(window.pagefind || null);
-        script.onerror = () => reject(new Error("Pagefind index has not been built yet."));
-        document.head.appendChild(script);
-      }).catch((error) => {
+      pagefindLoading = import("/pagefind/pagefind.js").then((module) => {
+        window.pagefind = module.default || module;
+        return window.pagefind;
+      }).catch(() => {
         results.textContent = "Search index is not available yet. You can still browse the site.";
         return null;
       });
