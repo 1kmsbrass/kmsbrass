@@ -48,9 +48,15 @@
       </table>
     </div>
   </section>
+  {{ $shareText := printf "%s\n%s\n%s" "Kumbakonam Metal Stores — public reference rates" "Indicative only. Call for exact quote. Wholesale orders require advance payment." .Permalink }}
+  {{ range where .Site.Data.rates.rates "public" true }}
+    {{ $publicValue := "Not published — contact KMS for today's quote" }}
+    {{ if ne .value nil }}{{ $publicValue = printf "₹%.2f %s" .value .unit }}{{ end }}
+    {{ $shareText = printf "%s\n%s: %s" $shareText .name $publicValue }}
+  {{ end }}
   <div class="rate-actions" aria-label="{{ if eq .Site.Language.Lang "ta" }}விலை பகிர்வு கருவிகள்{{ else }}Rate sharing tools{{ end }}">
-    <button class="button button-outline" type="button" data-copy-rates>{{ if eq .Site.Language.Lang "ta" }}விலைகளை நகலெடுக்கவும்{{ else }}Copy rates as text{{ end }}</button>
-    <button class="button button-red" type="button" data-share-rates>{{ if eq .Site.Language.Lang "ta" }}WhatsApp-ல் பகிரவும்{{ else }}Share on WhatsApp{{ end }} <span aria-hidden="true">↗</span></button>
+    <button class="button button-outline" type="button" data-copy-rates hidden>{{ if eq .Site.Language.Lang "ta" }}விலைகளை நகலெடுக்கவும்{{ else }}Copy rates as text{{ end }}</button>
+    <a class="button button-red" href="https://wa.me/?text={{ $shareText | urlquery }}" target="_blank" rel="noopener noreferrer">{{ if eq .Site.Language.Lang "ta" }}WhatsApp-ல் பகிரவும்{{ else }}Share on WhatsApp{{ end }} <span aria-hidden="true">↗</span></a>
     <span class="copy-status" role="status" aria-live="polite"></span>
   </div>
   <section class="rate-history-section">
