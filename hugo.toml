@@ -1,0 +1,7 @@
+baseURL = "https://kmsbrass.in/"
+languageCode = "en-IN"
+title = "Kumbakonam Metal Stores"
+enableRobotsTXT = true
+
+[params]
+  description = "Wholesale brass, copper, pooja and temple items from Kumbakonam Metal Stores."
