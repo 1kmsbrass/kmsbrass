@@ -20,7 +20,7 @@
   --radius: 1.1rem;
 }
 * { box-sizing: border-box; }
-html { background: var(--cream); scroll-behavior: smooth; scroll-padding-top: 6rem; }
+html { background: var(--cream); scroll-padding-top: 6rem; }
 body {
   margin: 0; min-width: 320px; padding-bottom: 0;
   background: var(--cream); color: var(--ink);
@@ -103,7 +103,7 @@ kbd { font: inherit; font-size: .75rem; color: var(--muted); background: var(--s
   padding: .72rem 1.15rem; border: 1px solid transparent; border-radius: 999px;
   font-weight: 750; text-decoration: none; cursor: pointer; transition: transform .18s ease, background-color .18s ease;
 }
-.button:hover { transform: translateY(-1px); }
+.button:hover { text-decoration: underline; text-underline-offset: .18em; }
 .button-brass { background: var(--brass-500); color: var(--ink); }
 .button-brass:hover { background: var(--brass-400); color: var(--ink); }
 .button-red { background: var(--red-700); color: var(--cream); }
@@ -243,11 +243,11 @@ kbd { font: inherit; font-size: .75rem; color: var(--muted); background: var(--s
 .audience-card {
   position: relative; min-width: 0; min-height: 270px; display: flex; flex-direction: column; align-items: flex-start;
   padding: 1.25rem 1.2rem 1.1rem; overflow: hidden; color: var(--ink); text-decoration: none;
-  border: 1px solid var(--line); background: var(--cream); transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  border: 1px solid var(--line); background: var(--cream);
 }
-.audience-card::after { content: ""; position: absolute; top: 0; left: -110%; width: 60%; height: 100%; transform: skewX(-18deg); background: linear-gradient(90deg, transparent, rgb(240 189 79 / 18%), transparent); transition: left .45s ease; pointer-events: none; }
-.audience-card:hover { border-color: var(--brass-500); transform: translateY(-3px); box-shadow: var(--shadow); color: var(--ink); }
-.audience-card:hover::after { left: 150%; }
+
+.audience-card:hover, .audience-card:focus-visible { border-color: var(--brass-500); background: var(--brass-100); color: var(--ink); }
+
 .card-number { color: var(--muted); font-size: .7rem; font-weight: 850; letter-spacing: .1em; }
 .card-mark { position: absolute; top: 1rem; right: 1rem; display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 50%; color: var(--red-700); }
 .audience-card h3 { max-width: 14ch; margin: 2rem 0 .65rem; font-size: 1.45rem; }
