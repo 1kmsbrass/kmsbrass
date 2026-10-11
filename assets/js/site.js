@@ -7,6 +7,30 @@
 
   let pagefindLoading;
   let searchSequence = 0;
+  const isTamil = (document.documentElement.lang || "").toLowerCase().startsWith("ta");
+  const messages = isTamil ? {
+    loading: "தேடல் ஏற்றப்படுகிறது…",
+    unavailable: "தேடல் பட்டியல் இப்போது கிடைக்கவில்லை. தளத்தைத் தொடர்ந்து உலாவலாம்.",
+    ready: "பொருட்கள், கோயில்கள், வழிகாட்டிகள் மற்றும் கருவிகளைத் தேடத் தொடங்குங்கள்.",
+    noResults: "முடிவுகள் இல்லை. வேறு எழுத்து அல்லது தமிழ்/ஆங்கிலச் சொல்லை முயற்சிக்கவும்.",
+    notReady: "தேடல் பட்டியல் இன்னும் தயாராகவில்லை. தளத்தை உலாவவும் அல்லது கட்டமைப்பு முடிந்தபின் மீண்டும் முயற்சிக்கவும்.",
+    failed: "தேடலை ஏற்ற முடியவில்லை. சிறிது நேரத்தில் மீண்டும் முயற்சிக்கவும்.",
+    products: "பொருட்கள்",
+    rituals: "கோயில்கள் மற்றும் சடங்குகள்",
+    tools: "கருவிகள் மற்றும் விலைகள்",
+    guides: "வழிகாட்டிகள்"
+  } : {
+    loading: "Loading search…",
+    unavailable: "Search index is not available yet. You can still browse the site.",
+    ready: "Start typing to search products, temples, guides and tools.",
+    noResults: "No results found. Try another spelling or a Tamil search term.",
+    notReady: "Search index is not ready. Browse the site or try again after the site build completes.",
+    failed: "Search could not load. Please try again in a moment.",
+    products: "Products",
+    rituals: "Temples & rituals",
+    tools: "Tools & rates",
+    guides: "Guides"
+  };
 
   const openSearch = async () => {
     if (!dialog.open) dialog.showModal();
@@ -16,7 +40,7 @@
         window.pagefind = module.default || module;
         return window.pagefind;
       }).catch(() => {
-        results.textContent = "Search index is not available yet. You can still browse the site.";
+        results.textContent = messages.unavailable;
         return null;
       });
     }
@@ -24,7 +48,7 @@
     if (window.pagefind && input.value.trim()) {
       runSearch();
     } else if (window.pagefind) {
-      results.textContent = "Start typing to search products, temples, guides and tools.";
+      results.textContent = messages.ready;
       results.setAttribute("aria-busy", "false");
     }
   };
@@ -59,7 +83,7 @@
       return;
     }
     if (!window.pagefind) {
-      results.textContent = "Search index is not ready. Browse the site or try again after the site build completes.";
+      results.textContent = messages.notReady;
       return;
     }
     results.setAttribute("aria-busy", "true");
@@ -68,7 +92,7 @@
       if (sequence !== searchSequence) return;
       results.replaceChildren();
       if (!response.results.length) {
-        results.textContent = "No results found. Try another spelling or a Tamil search term.";
+        results.textContent = messages.noResults;
         return;
       }
       const groups = new Map();
@@ -78,9 +102,9 @@
         // Use the URL path as a reliable fallback until each template supplies search metadata.
         const path = String(data.url || "").toLowerCase().replace(/^\/(?:en|ta)(?:-[a-z]{2})?\//, "/");
         const section = (data.meta && (data.meta.section || data.meta.type)) || path;
-        const group = /product/i.test(section) || path.startsWith("/products/") ? "Products" :
-          /temple|pooja|kumbabishegam/i.test(section) || /^\/(temples|poojas|kumbabishegam)\//.test(path) ? "Temples & rituals" :
-          /tool|rate/i.test(section) || /^\/(tools|rates|brass-rate)\//.test(path) ? "Tools & rates" : "Guides";
+        const group = /product/i.test(section) || path.startsWith("/products/") ? messages.products :
+          /temple|pooja|kumbabishegam/i.test(section) || /^\/(temples|poojas|kumbabishegam)\//.test(path) ? messages.rituals :
+          /tool|rate/i.test(section) || /^\/(tools|rates|brass-rate)\//.test(path) ? messages.tools : messages.guides;
         if (!groups.has(group)) groups.set(group, []);
         groups.get(group).push(data);
       }
@@ -105,7 +129,7 @@
         }
       }
     } catch (error) {
-      results.textContent = "Search could not load. Please try again in a moment.";
+      results.textContent = messages.failed;
     } finally {
       if (sequence === searchSequence) results.setAttribute("aria-busy", "false");
     }
