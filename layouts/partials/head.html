@@ -6,7 +6,7 @@
   <title>{{ if .IsHome }}{{ .Site.Title }} — {{ if eq .Site.Language.Lang "ta" }}மொத்த பித்தளைப் பொருட்கள்{{ else }}Brass Wholesale{{ end }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
   <meta name="description" content="{{ .Description | default .Site.Params.description | plainify | htmlEscape }}">
   {{ $robots := "index,follow" }}
-  {{ if or (eq .Params.quality "stub") (.Params.noindex) }}
+  {{ if or (ne .Params.quality "complete") (.Params.noindex) }}
     {{ $robots = "noindex,follow" }}
   {{ end }}
   <meta name="robots" content="{{ $robots }}">
