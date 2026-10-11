@@ -1,0 +1,33 @@
+{{ define "main" }}
+<article class="audience-page page-shell" data-pagefind-body data-pagefind-meta="type:Guides">
+  <p class="eyebrow">{{ .Params.kicker | default "WHOLESALE BY USE" }}</p>
+  <div class="audience-layout">
+    <div class="audience-main">
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
+      <div class="prose audience-copy">{{ .Content }}</div>
+      {{ $message := .Params.whatsappMessage | default (printf "Hello Kumbakonam Metal Stores. I would like to enquire about %s." .Title) }}
+      <div class="audience-bottom-cta">
+        <p class="eyebrow">{{ if eq .Site.Language.Lang "ta" }}அடுத்த படி{{ else }}NEXT STEP{{ end }}</p>
+        <h2>{{ if eq .Site.Language.Lang "ta" }}உங்கள் தேவையைப் பகிருங்கள்{{ else }}Tell us what you need{{ end }}</h2>
+        <p>{{ if eq .Site.Language.Lang "ta" }}பொருள், எண்ணிக்கை, நகரம் மற்றும் தேவைப்படும் தேதியை அனுப்புங்கள். சரியான விலை மற்றும் குறைந்தபட்ச ஆர்டரை உறுதிப்படுத்துவோம்.{{ else }}Send the item, quantity, destination city and required date. We will confirm the exact quote and minimum order quantity.{{ end }}</p>
+        <a class="button button-brass" href="{{ partial "whatsapp-url.html" (dict "ctx" . "message" $message) }}" {{ if ne .Site.Params.whatsapp "{{WHATSAPP}}" }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ if eq .Site.Language.Lang "ta" }}WhatsApp-ல் விசாரிக்கவும்{{ else }}Enquire on WhatsApp{{ end }} <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <aside class="audience-aside" aria-label="{{ if eq .Site.Language.Lang "ta" }}விசாரணைக்கான விவரங்கள்{{ else }}Enquiry checklist{{ end }}">
+      <span class="aside-number">KMS / {{ printf "%02d" .Weight }}</span>
+      <h2>{{ if eq .Site.Language.Lang "ta" }}விசாரணைக்கு தயாராக வைத்திருக்கவும்{{ else }}What to include{{ end }}</h2>
+      <ul>
+        <li>{{ if eq .Site.Language.Lang "ta" }}பொருள் மற்றும் அளவு{{ else }}Product and variant{{ end }}</li>
+        <li>{{ if eq .Site.Language.Lang "ta" }}தேவையான எண்ணிக்கை{{ else }}Required quantity{{ end }}</li>
+        <li>{{ if eq .Site.Language.Lang "ta" }}நகரம் / விநியோக இடம்{{ else }}City or destination{{ end }}</li>
+        <li>{{ if eq .Site.Language.Lang "ta" }}தேவைப்படும் தேதி{{ else }}Date needed{{ end }}</li>
+      </ul>
+      <div class="aside-terms">
+        <strong>{{ if eq .Site.Language.Lang "ta" }}மொத்த விற்பனை விதிமுறை{{ else }}Wholesale terms{{ end }}</strong>
+        <p>{{ if eq .Site.Language.Lang "ta" }}ஆர்டருக்கு முன்பணம் தேவை. கடன் விற்பனை இல்லை.{{ else }}Advance payment is required. No trade credit.{{ end }}</p>
+      </div>
+    </aside>
+  </div>
+</article>
+{{ end }}
