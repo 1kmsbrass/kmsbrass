@@ -4,6 +4,9 @@ description: "A research archive connecting temples, poojas, documented Kumbabis
 quality: stub
 noindex: true
 translationKey: temples-research-archive
+lastUpdated: "2026-10-11"
+sources:
+  - "KMS business and ordering policy; no external research claims used"
 ---
 
 The temple and ritual research archive is being prepared. The planned archive will connect verified temple information, pooja references, documented Kumbabishegam records and relevant brass articles.
