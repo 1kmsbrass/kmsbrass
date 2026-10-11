@@ -1,0 +1,8 @@
+{{ $message := "Hello Kumbakonam Metal Stores. I would like to enquire about wholesale brass products." }}
+<div class="mobile-contact-bar" aria-label="{{ if eq .Site.Language.Lang "ta" }}தொடர்புக்கு{{ else }}Contact KMS{{ end }}">
+  <div class="mobile-contact-copy">
+    <strong>{{ if eq .Site.Language.Lang "ta" }}மொத்த விற்பனை{{ else }}Wholesale enquiries{{ end }}</strong>
+    <span>{{ if eq .Site.Language.Lang "ta" }}முன்பணம் செலுத்தி வாங்குதல்{{ else }}Advance payment terms{{ end }}</span>
+  </div>
+  <a class="button button-brass mobile-contact-cta" href="{{ partial "whatsapp-url.html" (dict "ctx" . "message" $message) }}" {{ if ne .Site.Params.whatsapp "{{WHATSAPP}}" }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ if eq .Site.Language.Lang "ta" }}WhatsApp{{ else }}Enquire{{ end }}</a>
+</div>
