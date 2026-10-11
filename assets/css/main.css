@@ -101,7 +101,7 @@ kbd { font: inherit; font-size: .75rem; color: var(--muted); background: var(--s
 .button {
   min-height: 48px; display: inline-flex; justify-content: center; align-items: center; gap: .45rem;
   padding: .72rem 1.15rem; border: 1px solid transparent; border-radius: 999px;
-  font-weight: 750; text-decoration: none; cursor: pointer; transition: transform .18s ease, background-color .18s ease;
+  font-weight: 750; text-decoration: none; cursor: pointer;
 }
 .button:hover { text-decoration: underline; text-underline-offset: .18em; }
 .button-brass { background: var(--brass-500); color: var(--ink); }
@@ -364,11 +364,6 @@ kbd { font: inherit; font-size: .75rem; color: var(--muted); background: var(--s
   .rate-card { min-height: 0; }
   .rate-history-section { grid-template-columns: 1fr; gap: 1.3rem; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .audience-card, .audience-card::after { transition: none; }
-  .audience-card:hover { transform: none; }
-}
-
 .language-switch {
   display: inline-flex; align-items: center; gap: .45rem; flex: 0 0 auto;
   color: var(--muted); font-size: .76rem; white-space: nowrap;
