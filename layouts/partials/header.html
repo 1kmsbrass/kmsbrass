@@ -13,10 +13,10 @@
       <kbd>/</kbd>
     </button>
     <nav class="primary-nav" aria-label="{{ if eq .Site.Language.Lang "ta" }}முதன்மை வழிசெலுத்தல்{{ else }}Main navigation{{ end }}">
-      <a href="{{ "products/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}பொருட்கள்{{ else }}Products{{ end }}</a>
+      <a href="{{ printf "%s#browse" .Site.Home.RelPermalink }}">{{ if eq .Site.Language.Lang "ta" }}பொருட்கள்{{ else }}Products{{ end }}</a>
       <a href="{{ "rates/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}விலைத் தகவல்{{ else }}Rates{{ end }}</a>
-      <a href="{{ "tools/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}கருவிகள்{{ else }}Tools{{ end }}</a>
-      <a href="{{ "about/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}எங்களைப் பற்றி{{ else }}About{{ end }}</a>
+      <a href="{{ printf "%s#tools-preview" .Site.Home.RelPermalink }}">{{ if eq .Site.Language.Lang "ta" }}கருவிகள்{{ else }}Tools{{ end }}</a>
+      <a href="{{ printf "%s#about-kms" .Site.Home.RelPermalink }}">{{ if eq .Site.Language.Lang "ta" }}எங்களைப் பற்றி{{ else }}About{{ end }}</a>
     </nav>
     <div class="header-contact">
       {{ $phone := replaceRE "[^0-9+]" "" .Site.Params.phone }}
