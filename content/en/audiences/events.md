@@ -8,6 +8,9 @@ translationKey: audience-events
 weight: 3
 kicker: "EVENT PLANNING"
 whatsappMessage: "Hello Kumbakonam Metal Stores. I am enquiring about brass articles for a Kumbabishegam/temple event. Temple/location: ; Event date: ; Items: ; Estimated quantities: ; Delivery city: "
+lastUpdated: "2026-10-11"
+sources:
+  - "KMS business and ordering policy; no external research claims used"
 ---
 
 A Kumbabishegam or temple event may involve several articles, multiple quantities and a fixed delivery date. Start with the list you have; we can clarify the product variants and quote requirements item by item.
