@@ -446,3 +446,25 @@ kbd { font: inherit; font-size: .75rem; color: var(--muted); background: var(--s
   }
   .mobile-contact-copy span:not(.sticky-phone) { display: none; }
 }
+
+/* Tables become readable stacked records on small screens; column labels stay visible. */
+@media (max-width: 680px) {
+  .rate-history-table { min-width: 0; }
+  .rate-history-table thead {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+  .rate-history-table tbody tr {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .25rem .8rem; padding: .7rem 0; border-top: 1px solid var(--line);
+  }
+  .rate-history-table td {
+    min-width: 0; display: block; padding: .45rem .25rem;
+    border: 0; overflow-wrap: anywhere; font-size: 1.0625rem;
+  }
+  .rate-history-table td:first-child { grid-column: 1 / -1; font-weight: 800; }
+  .rate-history-table td::before {
+    content: attr(data-label); display: block; margin-bottom: .2rem;
+    color: var(--red-900); font-size: .9rem; font-weight: 750;
+  }
+}
