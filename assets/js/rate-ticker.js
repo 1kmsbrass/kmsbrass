@@ -8,20 +8,10 @@
     const value = Number(ticker.dataset.rateValue);
     const valueNode = ticker.querySelector(".rate-ticker-value");
     const historyNode = ticker.querySelector(".rate-ticker-sparkline");
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+    // Show the verified value immediately; avoid decorative count-up animation.
     if (ticker.dataset.rateValue && Number.isFinite(value) && valueNode) {
-      valueNode.textContent = reduceMotion ? formatINR(value) + " / kg" : "₹0 / kg";
-      const start = performance.now();
-      const duration = 650;
-      const animate = (now) => {
-        const progress = Math.min(1, (now - start) / duration);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        valueNode.textContent = formatINR(value * eased) + " / kg";
-        if (progress < 1) requestAnimationFrame(animate);
-      };
-      if (!reduceMotion) requestAnimationFrame(animate);
-      else valueNode.textContent = formatINR(value) + " / kg";
+      valueNode.textContent = formatINR(value) + " / kg";
     }
 
     if (historyNode) {
