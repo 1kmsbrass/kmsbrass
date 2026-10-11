@@ -15,7 +15,8 @@
     </main>
     {{ partial "footer.html" . }}
     {{ partial "sticky-contact-bar.html" . }}
-    <script src="{{ "js/site.js" | relURL }}" defer></script>
+    {{ $siteJS := resources.Get "js/site.js" | minify | fingerprint }}
+    <script src="{{ $siteJS.RelPermalink }}" integrity="{{ $siteJS.Data.Integrity }}" crossorigin="anonymous" defer></script>
     {{ block "pageScripts" . }}{{ end }}
   </body>
 </html>
