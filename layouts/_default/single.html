@@ -1,8 +1,23 @@
 {{ define "main" }}
+{{ if .Params.floatingIndex }}
+<div class="article-with-index" data-pagefind-body>
+  <aside class="floating-index" aria-label="{{ if eq .Site.Language.Lang "ta" }}கட்டுரை உள்ளடக்க அட்டவணை{{ else }}Article contents{{ end }}">
+    <strong>{{ if eq .Site.Language.Lang "ta" }}இந்தப் பக்கத்தில்{{ else }}On this page{{ end }}</strong>
+    {{ .TableOfContents }}
+  </aside>
+  <article class="prose article-copy">
+    <p class="eyebrow">{{ .Section | humanize }}</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
+    {{ .Content }}
+  </article>
+</div>
+{{ else }}
 <article class="page-shell prose" data-pagefind-body>
   <p class="eyebrow">{{ .Section | humanize }}</p>
   <h1>{{ .Title }}</h1>
   {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
   {{ .Content }}
 </article>
+{{ end }}
 {{ end }}
