@@ -9,8 +9,8 @@
     <p class="eyebrow">{{ .Section | humanize }}</p>
     <h1>{{ .Title }}</h1>
     {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
-    <p class="article-byline">By Santhosh for KMS</p>
     {{ .Content }}
+    <p class="article-byline">By Santhosh for KMS 🙂</p>
   </article>
 </div>
 {{ else }}
@@ -18,8 +18,8 @@
   <p class="eyebrow">{{ .Section | humanize }}</p>
   <h1>{{ .Title }}</h1>
   {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
-  <p class="article-byline">By Santhosh for KMS</p>
   {{ .Content }}
+  <p class="article-byline">By Santhosh for KMS 🙂</p>
 </article>
 {{ end }}
 {{ end }}
