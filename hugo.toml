@@ -9,7 +9,7 @@ timeZone = "Asia/Kolkata"
 
 [taxonomies]
   audience = "audiences"
-  occasion = "occasions"
+  occasions = "occasions"
   category = "categories"
   temple = "temples"
   pooja = "poojas"
@@ -55,3 +55,9 @@ timeZone = "Asia/Kolkata"
     contentDir = "content/ta"
     weight = 2
     title = "கும்பகோணம் மெட்டல் ஸ்டோர்ஸ்"
+  [languages.hi]
+    languageCode = "hi-IN"
+    languageName = "हिन्दी"
+    contentDir = "content/hi"
+    weight = 3
+    title = "कुंभकोणम मेटल स्टोर्स"
