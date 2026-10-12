@@ -11,44 +11,44 @@ sources:
   - "KMS editorial perspective; no external research claims used"
 ---
 
-Look at enough products and a pattern begins to appear. The same basic shape returns with a different colour, logo or small decorative change. There may be plenty to choose from, but not much that feels considered.
+Have you ever looked through a whole page of products and thought, “Didn't I just see this one?” Different colour, different logo, maybe one extra detail—but otherwise, much the same.
 
-It is easy to mistake this for a problem of appearance alone. The deeper issue is whether anyone has thought carefully about what the product is for, how it should work and why it should be made that way.
+It's not that every product needs to look unusual. The question is simpler: has someone thought carefully about what this thing is for, how it should work and why it has been made this way?
 
 ## Originality is more than adding decoration
 
-A product does not become original just because it has an unusual colour or an extra detail. A thoughtful design begins with a reason.
+A different colour or an extra flourish doesn't automatically make a product original. Good design starts with a reason.
 
-Does the shape make it easier to use? Does the proportion suit its purpose? Does a detail improve handling, strength, cleaning or storage? Is a traditional feature there because it serves a function, carries meaning or reflects a particular way of making?
+Does the shape make it easier to use? Do the proportions suit its purpose? Does a small detail make it easier to hold, clean or store? Is a traditional feature useful, meaningful or part of a particular way of making the object?
 
-Not every product needs to be unusual. But its choices should make sense.
+Not everything has to be new. But the choices should make sense.
 
-## Traditional craft has its own kind of character
+## Traditional craft has its own character
 
-In brassware, character can come from proportion, shape, surface, weight, workmanship and the way a piece is intended to be used. Two articles may serve the same broad purpose while differing in details that matter to a particular buyer.
+With brassware, character can come from the shape, proportions, surface, weight, workmanship and intended use. Two articles may serve a similar purpose but have details that matter to different buyers.
 
-Handmade variation is not automatically better, and irregularity should not be used as an excuse for poor quality. The point is to understand how the object was made, what variation is normal and which differences are meaningful.
+And let's be fair: handmade variation doesn't automatically mean better quality. Nor should irregularity become an excuse for poor work. It's worth understanding how an object was made, what variation is normal and which differences actually matter.
 
-That understanding is more useful than simply calling something “unique.”
+That tells us more than simply calling something “unique.”
 
-## Why so many products feel interchangeable
+## Why do so many products feel interchangeable?
 
-Businesses can focus on copying whatever appears to sell. That may produce familiar products, but it can also leave customers with a shelf full of near-identical choices and little guidance about why one is better suited to them than another.
+A business can keep copying whatever seems to sell. That may be a sensible shortcut in the short term, but it can leave customers staring at a row of nearly identical options without a clear reason to choose one over another.
 
-Originality takes attention. It means understanding the user, the setting and the practical problem before deciding what to make. Sometimes the result is a new form. Sometimes it is a small improvement to a familiar object. Sometimes it is simply a clearer, better-made version of something that already works.
+Originality takes a little more attention. First understand the person using the product, where it will be used and what problem it needs to solve. Sometimes that leads to a new shape. Sometimes it's a small improvement to something familiar. Sometimes the best thing to do is make a reliable product better and explain it more clearly.
 
-## What a business can do
+## What can a business do?
 
-Do not claim uniqueness when a product is standard. Explain what is actually different: the material, proportions, finish, workmanship, intended use or available sizes.
+If a product is standard, don't pretend it's one of a kind. Explain what is actually different: the material, proportions, finish, workmanship, intended use or available sizes.
 
-Curate products around real needs rather than filling a catalogue with near-duplicates. Show details honestly. Help customers understand which differences matter and which are only cosmetic.
+Choose products around real needs instead of filling a catalogue with near-duplicates. Show details honestly. Help people understand which differences matter and which are just cosmetic.
 
-For traditional brass articles, that can mean explaining why a particular form is used, what to check before buying and what the customer should expect from the finish or workmanship. If we do not know a detail, we should say so rather than invent a story around it.
+With traditional brass articles, that might mean explaining why a particular form is used, what to check before buying and what to expect from the finish or workmanship. And if we don't know something, we should say so rather than invent a lovely story around it.
 
-## Considered is better than merely different
+## Thoughtful is better than different for the sake of it ❤️
 
-People do not need every object to be extraordinary. They need products that make sense for their purpose, are described honestly and feel worth owning.
+People don't need every object to be extraordinary. They need things that suit their purpose, are described honestly and feel worth owning.
 
-Originality is not the demand that everything must look new. It is the care to make deliberate choices instead of repeating a formula without thought.
+Originality doesn't mean making everything look new. It means making deliberate choices instead of repeating a formula without thinking.
 
 **People don't need every product to be extraordinary. They need more products that feel considered, useful and worth owning.**
