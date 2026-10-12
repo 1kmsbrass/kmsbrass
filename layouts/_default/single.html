@@ -1,8 +1,8 @@
 {{ define "main" }}
 {{ if .Params.floatingIndex }}
 <div class="article-with-index" data-pagefind-body>
-  <aside class="floating-index" aria-label="{{ if eq .Site.Language.Lang "ta" }}கட்டுரை உள்ளடக்க அட்டவணை{{ else }}Article contents{{ end }}">
-    <strong>{{ if eq .Site.Language.Lang "ta" }}இந்தப் பக்கத்தில்{{ else }}On this page{{ end }}</strong>
+  <aside class="floating-index" aria-label="{{ if eq .Site.Language.Lang "ta" }}கட்டுரை உள்ளடக்க அட்டவணை{{ else if eq .Site.Language.Lang "hi" }}लेख की विषय-सूची{{ else }}Article contents{{ end }}">
+    <strong>{{ if eq .Site.Language.Lang "ta" }}இந்தப் பக்கத்தில்{{ else if eq .Site.Language.Lang "hi" }}इस लेख में{{ else }}On this page{{ end }}</strong>
     {{ .TableOfContents }}
   </aside>
   <article class="prose article-copy">
