@@ -9,7 +9,7 @@
     <p class="eyebrow">{{ .Section | humanize }}</p>
     <h1>{{ .Title }}</h1>
     {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
-    <p class="article-byline">{{ if eq .Site.Language.Lang "ta" }}கும்பகோணம் மெட்டல் ஸ்டோர்ஸிற்காக சந்தோஷ் எழுதியது{{ else if eq .Site.Language.Lang "hi" }}कुंभकोणम मेटल स्टोर्स के लिए संतोष द्वारा लिखित{{ else }}Written by Santhosh for Kumbakonam Metal Stores{{ end }}</p>
+    <p class="article-byline">By Santhosh for KMS</p>
     {{ .Content }}
   </article>
 </div>
@@ -18,7 +18,7 @@
   <p class="eyebrow">{{ .Section | humanize }}</p>
   <h1>{{ .Title }}</h1>
   {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
-  <p class="article-byline">{{ if eq .Site.Language.Lang "ta" }}கும்பகோணம் மெட்டல் ஸ்டோர்ஸிற்காக சந்தோஷ் எழுதியது{{ else if eq .Site.Language.Lang "hi" }}कुंभकोणम मेटल स्टोर्स के लिए संतोष द्वारा लिखित{{ else }}Written by Santhosh for Kumbakonam Metal Stores{{ end }}</p>
+  <p class="article-byline">By Santhosh for KMS</p>
   {{ .Content }}
 </article>
 {{ end }}
