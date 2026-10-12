@@ -4,39 +4,39 @@
       <img class="brand-logo" src="{{ "images/kms-logo.svg" | relURL }}" width="52" height="52" alt="" aria-hidden="true" decoding="async">
       <span class="brand-copy">
         <span class="brand-name">Kumbakonam Metal Stores</span>
-        <span class="brand-kicker">{{ if eq .Site.Language.Lang "ta" }}பித்தளைப் பொருட்கள் — மொத்த விற்பனை{{ else }}Brassware · Wholesale{{ end }}</span>
+        <span class="brand-kicker">{{ if eq .Site.Language.Lang "ta" }}பித்தளைப் பொருட்கள் — மொத்த விற்பனை{{ else if eq .Site.Language.Lang "hi" }}पीतल के सामान · थोक बिक्री{{ else }}Brassware · Wholesale{{ end }}</span>
       </span>
     </a>
     {{ if not .IsHome }}
     <details class="search-disclosure" id="site-search-disclosure">
-      <summary class="icon-button search-open" aria-controls="site-search-panel" aria-label="{{ if eq .Site.Language.Lang "ta" }}தளத்தில் தேடுங்கள்{{ else }}Search KMS{{ end }}">
+      <summary class="icon-button search-open" aria-controls="site-search-panel" aria-label="{{ if eq .Site.Language.Lang "ta" }}தளத்தில் தேடுங்கள்{{ else if eq .Site.Language.Lang "hi" }}KMS में खोजें{{ else }}Search KMS{{ end }}">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>
-        <span class="search-label">{{ if eq .Site.Language.Lang "ta" }}தேடு{{ else }}Search{{ end }}</span>
+        <span class="search-label">{{ if eq .Site.Language.Lang "ta" }}தேடு{{ else if eq .Site.Language.Lang "hi" }}खोजें{{ else }}Search{{ end }}</span>
         <kbd>/</kbd>
       </summary>
       <div class="search-panel" id="site-search-panel">
-        <label class="visually-hidden" for="site-search-input">{{ if eq .Site.Language.Lang "ta" }}தேடல் சொற்கள்{{ else }}Search terms{{ end }}</label>
-        <input id="site-search-input" aria-controls="site-search-results" data-pagefind-search-input class="search-input" type="search" autocomplete="off" placeholder="{{ if eq .Site.Language.Lang "ta" }}பொருட்கள், கோயில்கள், வழிகாட்டிகள்...{{ else }}Products, temples, guides…{{ end }}">
-        <p class="search-hint">{{ if eq .Site.Language.Lang "ta" }}ஆங்கிலம் அல்லது தமிழில் தேடலாம். உடனடி தேடலுக்கு JavaScript தேவை.{{ else }}Search in English or Tamil. Instant results require JavaScript.{{ end }}</p>
+        <label class="visually-hidden" for="site-search-input">{{ if eq .Site.Language.Lang "ta" }}தேடல் சொற்கள்{{ else if eq .Site.Language.Lang "hi" }}खोज शब्द{{ else }}Search terms{{ end }}</label>
+        <input id="site-search-input" aria-controls="site-search-results" data-pagefind-search-input class="search-input" type="search" autocomplete="off" placeholder="{{ if eq .Site.Language.Lang "ta" }}பொருட்கள், கோயில்கள், வழிகாட்டிகள்...{{ else if eq .Site.Language.Lang "hi" }}उत्पाद, मंदिर, मार्गदर्शिकाएँ…{{ else }}Products, temples, guides…{{ end }}">
+        <p class="search-hint">{{ if eq .Site.Language.Lang "ta" }}ஆங்கிலம் அல்லது தமிழில் தேடலாம். உடனடி தேடலுக்கு JavaScript தேவை.{{ else if eq .Site.Language.Lang "hi" }}अंग्रेज़ी या हिन्दी में खोजें। तुरंत परिणामों के लिए JavaScript आवश्यक है।{{ else }}Search in English or Tamil. Instant results require JavaScript.{{ end }}</p>
         <div id="site-search-results" class="search-results" aria-live="polite" aria-busy="false"></div>
-        <noscript><p class="search-hint">{{ if eq .Site.Language.Lang "ta" }}JavaScript இல்லாவிட்டாலும் அனைத்து பக்கங்களையும் படிக்கலாம்; தொடர்பு இணைப்புகள் செயல்படும்.{{ else }}With JavaScript disabled, all pages and contact links still work; instant search is unavailable.{{ end }}</p></noscript>
+        <noscript><p class="search-hint">{{ if eq .Site.Language.Lang "ta" }}JavaScript இல்லாவிட்டாலும் அனைத்து பக்கங்களையும் படிக்கலாம்; தொடர்பு இணைப்புகள் செயல்படும்.{{ else if eq .Site.Language.Lang "hi" }}JavaScript बंद होने पर भी सभी पृष्ठ और संपर्क लिंक उपलब्ध रहेंगे; तुरंत खोज उपलब्ध नहीं होगी।{{ else }}With JavaScript disabled, all pages and contact links still work; instant search is unavailable.{{ end }}</p></noscript>
       </div>
     </details>
     {{ end }}
-    <nav class="primary-nav" aria-label="{{ if eq .Site.Language.Lang "ta" }}முதன்மை வழிசெலுத்தல்{{ else }}Main navigation{{ end }}">
-      <a href="{{ printf "%s#product-index" .Site.Home.RelPermalink }}">{{ if eq .Site.Language.Lang "ta" }}பொருட்கள்{{ else }}Products{{ end }}</a>
-      <a href="{{ "rates/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}விலைத் தகவல்{{ else }}Rates{{ end }}</a>
-      <a href="{{ printf "%s#tools-preview" .Site.Home.RelPermalink }}">{{ if eq .Site.Language.Lang "ta" }}கருவிகள்{{ else }}Tools{{ end }}</a>
-      <a href="{{ "terms/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}விற்பனை விதிகள்{{ else }}Ordering & terms{{ end }}</a>
+    <nav class="primary-nav" aria-label="{{ if eq .Site.Language.Lang "ta" }}முதன்மை வழிசெலுத்தல்{{ else if eq .Site.Language.Lang "hi" }}मुख्य नेविगेशन{{ else }}Main navigation{{ end }}">
+      <a href="{{ printf "%s#product-index" .Site.Home.RelPermalink }}">{{ if eq .Site.Language.Lang "ta" }}பொருட்கள்{{ else if eq .Site.Language.Lang "hi" }}उत्पाद{{ else }}Products{{ end }}</a>
+      <a href="{{ "rates/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}விலைத் தகவல்{{ else if eq .Site.Language.Lang "hi" }}दरें{{ else }}Rates{{ end }}</a>
+      <a href="{{ printf "%s#tools-preview" .Site.Home.RelPermalink }}">{{ if eq .Site.Language.Lang "ta" }}கருவிகள்{{ else if eq .Site.Language.Lang "hi" }}उपकरण{{ else }}Tools{{ end }}</a>
+      <a href="{{ "terms/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}விற்பனை விதிகள்{{ else if eq .Site.Language.Lang "hi" }}ऑर्डर और शर्तें{{ else }}Ordering & terms{{ end }}</a>
     </nav>
     <div class="header-contact">
       {{ $phone := replaceRE "[^0-9+]" "" .Site.Params.phone }}
       <a class="phone-link" href="tel:{{ $phone }}">{{ .Site.Params.phone }}</a>
       <a class="header-whatsapp" href="{{ partial "whatsapp-url.html" (dict "ctx" . "message" "Hello Kumbakonam Metal Stores. I would like to enquire about wholesale brass products.") }}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-      <span class="payment-note">{{ if eq .Site.Language.Lang "ta" }}முன்பணம் · கடன் இல்லை{{ else }}Advance payment · No credit{{ end }}</span>
+      <span class="payment-note">{{ if eq .Site.Language.Lang "ta" }}முன்பணம் · கடன் இல்லை{{ else if eq .Site.Language.Lang "hi" }}अग्रिम भुगतान · उधार नहीं{{ else }}Advance payment · No credit{{ end }}</span>
     </div>
-    <div class="language-switch" aria-label="{{ if eq .Site.Language.Lang "ta" }}மொழியை மாற்றவும்{{ else }}Change language{{ end }}">
-      <span>{{ if eq .Site.Language.Lang "ta" }}தமிழ்{{ else }}EN{{ end }}</span>
+    <div class="language-switch" aria-label="{{ if eq .Site.Language.Lang "ta" }}மொழியை மாற்றவும்{{ else if eq .Site.Language.Lang "hi" }}भाषा बदलें{{ else }}Change language{{ end }}">
+      <span>{{ if eq .Site.Language.Lang "ta" }}தமிழ்{{ else if eq .Site.Language.Lang "hi" }}हिन्दी{{ else }}EN{{ end }}</span>
       {{ range .AllTranslations }}
         {{ if ne .Lang $.Lang }}<a href="{{ .RelPermalink }}" lang="{{ .Language.LanguageCode }}">{{ .Language.LanguageName }}</a>{{ end }}
       {{ end }}
@@ -44,11 +44,11 @@
   </div>
   <div class="mobile-header-contact">
     {{ $phone := replaceRE "[^0-9+]" "" .Site.Params.phone }}
-    <a class="mobile-header-call" href="tel:{{ $phone }}">{{ if eq .Site.Language.Lang "ta" }}அழைக்கவும்: {{ else }}Call: {{ end }}{{ .Site.Params.phone }}</a>
+    <a class="mobile-header-call" href="tel:{{ $phone }}">{{ if eq .Site.Language.Lang "ta" }}அழைக்கவும்: {{ else if eq .Site.Language.Lang "hi" }}कॉल करें: {{ else }}Call: {{ end }}{{ .Site.Params.phone }}</a>
     <a class="mobile-header-whatsapp" href="{{ partial "whatsapp-url.html" (dict "ctx" . "message" "Hello Kumbakonam Metal Stores. I would like a wholesale brass quote. Item: ; Quantity: ; City: ; Required date: ") }}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
   </div>
   <div class="desktop-contact-strip">
-    <span><strong>{{ if eq .Site.Language.Lang "ta" }}முகவரி:{{ else }}Address:{{ end }}</strong> {{ .Site.Params.address }}</span>
+    <span><strong>{{ if eq .Site.Language.Lang "ta" }}முகவரி:{{ else if eq .Site.Language.Lang "hi" }}पता:{{ else }}Address:{{ end }}</strong> {{ .Site.Params.address }}</span>
     <span><strong>GST:</strong> {{ .Site.Params.gstNo }}</span>
     
   </div>
