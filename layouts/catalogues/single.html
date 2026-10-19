@@ -1,0 +1,87 @@
+{{ define "main" }}
+<style>
+.catalogue-document{width:min(100% - 2rem,1120px);margin:auto;padding:2rem 0 4rem}
+.catalogue-topline{display:flex;justify-content:space-between;align-items:center;gap:1rem;border-bottom:2px solid var(--kms-red);padding-bottom:1rem;margin-bottom:2rem}
+.catalogue-brand{font-weight:850;color:var(--red-900)}
+.catalogue-actions{display:flex;gap:.6rem;flex-wrap:wrap}
+.catalogue-actions button,.catalogue-actions a{min-height:42px;padding:.5rem .85rem;border:1px solid var(--line);border-radius:.5rem;background:#fff;color:var(--red-900);font:inherit;font-size:.9rem;font-weight:700;text-decoration:none;cursor:pointer}
+.catalogue-document h1{margin:.25rem 0 .75rem}
+.catalogue-intro{max-width:70ch;color:var(--muted)}
+.catalogue-product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:2rem}
+.catalogue-product{border:1px solid var(--line);border-radius:.65rem;padding:1rem;break-inside:avoid;min-width:0;background:#fff}
+.catalogue-product img{display:block;width:100%;height:190px;object-fit:contain;background:#fff}
+.catalogue-product h2{font-family:var(--sans);font-size:1.05rem;font-weight:800;margin:.8rem 0 .25rem;color:var(--ink)}
+.catalogue-product-id{font-size:.78rem;font-weight:800;letter-spacing:.06em;color:var(--red-700)}
+.catalogue-specs{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:.6rem}
+.catalogue-specs th,.catalogue-specs td{text-align:left;vertical-align:top;padding:.35rem .2rem;border-bottom:1px solid #eee}
+.catalogue-specs th{width:38%;font-weight:650;color:var(--muted)}
+.catalogue-price{font-size:1.05rem;font-weight:800;color:var(--red-900)}
+.catalogue-footer{border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1rem;font-size:.85rem;color:var(--muted)}
+.catalogue-empty{padding:1.2rem;border:1px dashed var(--line);border-radius:.6rem}
+@media(max-width:760px){.catalogue-product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.catalogue-product img{height:150px}}
+@media(max-width:480px){.catalogue-product-grid{grid-template-columns:1fr}.catalogue-product img{height:220px}.catalogue-topline{align-items:flex-start;flex-direction:column}}
+@media print{
+  @page{size:A4;margin:13mm}
+  html,body{background:#fff!important;color:#111!important;font-size:10pt}
+  .site-header,.site-footer,.mobile-contact-bar,.skip-link,.catalogue-actions{display:none!important}
+  .catalogue-document{width:100%;padding:0;margin:0}
+  .catalogue-topline{margin-bottom:1rem}
+  .catalogue-product-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7mm}
+  .catalogue-product{border:1px solid #bbb;border-radius:0;padding:3mm}
+  .catalogue-product img{height:38mm}
+  .catalogue-document h1,.catalogue-product h2{color:#111!important}
+  .catalogue-product,.catalogue-specs tr{break-inside:avoid}
+  a{color:#111!important;text-decoration:none}
+}
+</style>
+<article class="catalogue-document">
+  <div class="catalogue-topline">
+    <div>
+      <div class="catalogue-brand">KUMBAKONAM METAL STORES</div>
+      <div>Wholesale brassware · Tiruppur, Tamil Nadu</div>
+    </div>
+    <div class="catalogue-actions">
+      <button type="button" onclick="window.print()">Print / Save as PDF</button>
+      {{ $phone := replaceRE "[^0-9+]" "" .Site.Params.phone }}
+      <a href="https://wa.me/{{ $phone }}?text={{ printf "Hello Kumbakonam Metal Stores. I am enquiring about your %s catalogue." .Title | urlquery }}" target="_blank" rel="noopener noreferrer">WhatsApp enquiry</a>
+    </div>
+  </div>
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="catalogue-intro">{{ . }}</p>{{ end }}
+  {{ with .Content }}<div class="catalogue-intro">{{ . }}</div>{{ end }}
+  {{ $products := .Params.products }}
+  {{ if $products }}
+    <div class="catalogue-product-grid">
+      {{ range $products }}
+        <article class="catalogue-product">
+          {{ with .image }}
+            {{ $src := . }}
+            {{ if not (strings.HasPrefix $src "http") }}{{ $src = printf "%s/%s" $.Site.Params.imageBaseURL (strings.TrimPrefix "/" $src) }}{{ end }}
+            <img src="{{ $src }}" alt="{{ .alt | default .name }}" loading="lazy">
+          {{ end }}
+          {{ with .id }}<div class="catalogue-product-id">{{ . }}</div>{{ end }}
+          <h2>{{ .name }}</h2>
+          {{ with .description }}<p>{{ . }}</p>{{ end }}
+          <table class="catalogue-specs">
+            {{ with .size }}<tr><th>Size</th><td>{{ . }}</td></tr>{{ end }}
+            {{ with .weight }}<tr><th>Weight</th><td>{{ . }}</td></tr>{{ end }}
+            {{ with .material }}<tr><th>Material</th><td>{{ . }}</td></tr>{{ end }}
+            {{ with .capacity }}<tr><th>Capacity</th><td>{{ . }}</td></tr>{{ end }}
+          </table>
+          {{ if and $.Site.Params.showPrices .price }}<p class="catalogue-price">{{ .price }}</p>{{ else }}<p>Wholesale rate on enquiry</p>{{ end }}
+        </article>
+      {{ end }}
+    </div>
+  {{ else }}
+    <div class="catalogue-empty">
+      <strong>Product records will appear here.</strong>
+      <p>This catalogue layout is ready. Add verified product records and image paths when the product database is prepared.</p>
+    </div>
+  {{ end }}
+  <footer class="catalogue-footer">
+    <strong>Kumbakonam Metal Stores</strong> · {{ .Site.Params.address }}<br>
+    Call {{ .Site.Params.phone }} · WhatsApp for current rates, specifications, minimum quantities and availability.<br>
+    Advance payment required. No trade credit. Confirm order and transport terms before payment.
+  </footer>
+</article>
+{{ end }}
