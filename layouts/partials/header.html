@@ -26,6 +26,7 @@
     <nav class="primary-nav" aria-label="{{ if eq .Site.Language.Lang "ta" }}முதன்மை வழிசெலுத்தல்{{ else if eq .Site.Language.Lang "hi" }}मुख्य नेविगेशन{{ else }}Main navigation{{ end }}">
       <a href="{{ printf "%s#product-index" .Site.Home.RelPermalink }}">{{ if eq .Site.Language.Lang "ta" }}பொருட்கள்{{ else if eq .Site.Language.Lang "hi" }}उत्पाद{{ else }}Products{{ end }}</a>
       <a href="{{ "rates/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}விலைத் தகவல்{{ else if eq .Site.Language.Lang "hi" }}दरें{{ else }}Rates{{ end }}</a>
+      <a href="{{ "catalogues/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}பட்டியல்கள்{{ else if eq .Site.Language.Lang "hi" }}कैटलॉग{{ else }}Catalogues{{ end }}</a>
       <a href="{{ printf "%s#tools-preview" .Site.Home.RelPermalink }}">{{ if eq .Site.Language.Lang "ta" }}கருவிகள்{{ else if eq .Site.Language.Lang "hi" }}उपकरण{{ else }}Tools{{ end }}</a>
       <a href="{{ "terms/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}விற்பனை விதிகள்{{ else if eq .Site.Language.Lang "hi" }}ऑर्डर और शर्तें{{ else }}Ordering & terms{{ end }}</a>
     </nav>
