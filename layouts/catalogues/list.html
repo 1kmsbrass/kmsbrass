@@ -1,0 +1,52 @@
+{{ define "main" }}
+<style>
+.catalogue-hub{width:min(100% - 2rem,1200px);margin:auto;padding:clamp(2rem,6vw,5rem) 0 4rem}
+.catalogue-hub h1{max-width:18ch;margin:.2rem 0 1rem}
+.catalogue-lede{max-width:68ch;font-size:1.12rem;color:var(--muted)}
+.catalogue-note{margin:2rem 0;padding:1.1rem 1.25rem;border:1px solid var(--line);border-left:5px solid var(--kms-red);border-radius:.65rem;background:#fffdf2}
+.catalogue-categories{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:2rem}
+.catalogue-category{min-height:150px;padding:1.25rem;border:1px solid var(--line);border-radius:.8rem;background:#fff}
+.catalogue-category h2{font-size:1.35rem;margin:0 0 .55rem}
+.catalogue-category p{margin:0;color:var(--muted);font-size:.95rem}
+.catalogue-kicker{font-size:.76rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--red-700)}
+.catalogue-contact{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+.catalogue-contact .button{display:inline-flex;align-items:center;justify-content:center;padding:.65rem 1rem;border-radius:.55rem;text-decoration:none;font-weight:750}
+.catalogue-contact .button-primary{background:var(--kms-red);color:white}
+.catalogue-contact .button-secondary{border:1px solid var(--line);color:var(--red-900)}
+@media(max-width:760px){.catalogue-categories{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.catalogue-categories{grid-template-columns:1fr}}
+@media print{
+  .site-header,.site-footer,.mobile-contact-bar,.skip-link,.catalogue-contact{display:none!important}
+  body,html{background:#fff!important;color:#111!important}
+  .catalogue-hub{width:100%;padding:0}
+  .catalogue-category,.catalogue-note{break-inside:avoid;background:#fff!important}
+  h1,h2{color:#111!important}
+  a{color:#111!important;text-decoration:none}
+  @page{size:A4;margin:16mm}
+}
+</style>
+<section class="catalogue-hub">
+  <p class="catalogue-kicker">Kumbakonam Metal Stores · Wholesale</p>
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="catalogue-lede">{{ . }}</p>{{ end }}
+  <div class="catalogue-note">
+    <strong>Catalogue preparation in progress</strong>
+    <p>We are preparing product-wise catalogues using verified product details and photographs. This page is the catalogue home; category catalogues will appear here as their data is ready.</p>
+  </div>
+  <h2>Catalogue categories</h2>
+  <div class="catalogue-categories">
+    <article class="catalogue-category"><h2>Kodam &amp; Sombu</h2><p>Brass water vessels and traditional forms.</p></article>
+    <article class="catalogue-category"><h2>Vilakku &amp; Diya</h2><p>Kuthu vilakku, Kamakshi diya and lighting articles.</p></article>
+    <article class="catalogue-category"><h2>Brass Bells</h2><p>Bells for pooja, homes and temples.</p></article>
+    <article class="catalogue-category"><h2>Plates &amp; Dining</h2><p>Brass plates and serving articles.</p></article>
+    <article class="catalogue-category"><h2>Pongal Items</h2><p>Pongal panai and seasonal cookware.</p></article>
+    <article class="catalogue-category"><h2>Temple Articles</h2><p>Selected brass articles for temple use.</p></article>
+  </div>
+  <div class="catalogue-contact">
+    {{ $phone := replaceRE "[^0-9+]" "" .Site.Params.phone }}
+    <a class="button button-primary" href="https://wa.me/{{ $phone }}?text={{ "Hello Kumbakonam Metal Stores. Please share your wholesale brass product catalogue." | urlquery }}" target="_blank" rel="noopener noreferrer">Enquire on WhatsApp</a>
+    <a class="button button-secondary" href="tel:{{ $phone }}">Call {{ .Site.Params.phone }}</a>
+    <button class="button button-secondary" type="button" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+</section>
+{{ end }}
