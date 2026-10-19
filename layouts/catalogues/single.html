@@ -53,11 +53,12 @@
   {{ if $products }}
     <div class="catalogue-product-grid">
       {{ range $products }}
+        {{ $product := . }}
         <article class="catalogue-product">
           {{ with .image }}
             {{ $src := . }}
             {{ if not (strings.HasPrefix $src "http") }}{{ $src = printf "%s/%s" $.Site.Params.imageBaseURL (strings.TrimPrefix "/" $src) }}{{ end }}
-            <img src="{{ $src }}" alt="{{ .alt | default .name }}" loading="lazy">
+            <img src="{{ $src }}" alt="{{ $product.alt | default $product.name }}" loading="lazy">
           {{ end }}
           {{ with .id }}<div class="catalogue-product-id">{{ . }}</div>{{ end }}
           <h2>{{ .name }}</h2>
