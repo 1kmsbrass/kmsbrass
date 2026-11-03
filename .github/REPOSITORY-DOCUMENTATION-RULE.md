@@ -1,21 +1,10 @@
-# Repository Documentation Linking Rule
+# Repository Documentation and Writing Rules
 
-This repository follows **REPO-DOC-001 — Repository Documentation Linking Standard**.
+This repository follows the central standards in [1kmsbrass/rules](https://github.com/1kmsbrass/rules).
 
-Canonical rule: [Read the full standard in the central rules repository](https://github.com/1kmsbrass/rules/blob/main/rules/repository-work/knowledge-linking-standard.md).
+- **Documentation:** Follow [REPO-DOC-001](https://github.com/1kmsbrass/rules/blob/main/rules/repository-work/knowledge-linking-standard.md): search existing material, avoid duplicate sources of truth, add verified relative Markdown links to meaningful related documents, and consider reciprocal links.
+- **Personal voice:** Follow [WRITING-VOICE-001](https://github.com/1kmsbrass/rules/blob/main/rules/repository-work/personal-voice-and-intellectual-influence.md). Preserve the user's point of view, strengths, experiences, preferences, constraints, ambitions and reasoning. Personal documents should normally use first person and sound like the user, not generic detached or stoic business prose. Keep meaningful metaphors and analytical depth.
+- **Jordan B. Peterson reference:** The user values selected concepts associated with Peterson. Use them only when useful; do not imitate his exact voice or force terminology into every document. Before applying or attributing these concepts, consult the [checked concept reference](https://github.com/1kmsbrass/rules/blob/main/references/jordan-b-peterson.md), verify precise claims against the original source, and distinguish Peterson's idea from our interpretation and the user's own position.
+- **Specific rules:** Technical, legal, financial, safety, privacy, brand and customer-facing requirements take precedence for their subject. Identify genuine conflicts rather than guessing.
 
-## Required practice
-
-Before creating or substantially updating a substantive documentation or knowledge file:
-
-1. Search the repository for existing documents covering the same subject, aliases and related concepts.
-2. Reuse or update the existing authoritative document when appropriate; do not create duplicate sources of truth.
-3. Add a **Related Documents** section containing direct, relative Markdown links to all meaningfully related files, with a short explanation of each relationship.
-4. Consider reciprocal links in existing related documents where useful.
-5. Verify every relative link and update links when files move or are renamed.
-
-Use standard Markdown links, not Obsidian-only wikilinks as the sole link format. This supports GitHub navigation and Obsidian backlinks/graph views.
-
-Apply this to documentation, specifications, architecture notes, operational instructions, research and project knowledge. Do not add link noise to source code, generated files, raw data rows or every individual content page. Respect existing repository-specific navigation conventions and preserve the current structure.
-
-The goal is discoverable, connected knowledge—not more files or more links for their own sake.
+This file points to the central source of truth; it does not replace repository-specific documentation or architecture.
