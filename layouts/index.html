@@ -65,4 +65,8 @@
   </div>
   <a class="text-link terms-details-link" href="{{ "terms/" | relLangURL }}">{{ if eq .Site.Language.Lang "ta" }}முழு விதிமுறைகளைப் படிக்க{{ else }}Read all terms{{ end }} <span aria-hidden="true">→</span></a>
 </section>
+{{ $demoCSS := resources.Get "css/demo-preview.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $demoCSS.RelPermalink }}" integrity="{{ $demoCSS.Data.Integrity }}" crossorigin="anonymous">
+{{ $demoJS := resources.Get "js/demo-preview.js" | minify | fingerprint }}
+<script src="{{ $demoJS.RelPermalink }}" integrity="{{ $demoJS.Data.Integrity }}" crossorigin="anonymous" defer></script>
 {{ end }}
