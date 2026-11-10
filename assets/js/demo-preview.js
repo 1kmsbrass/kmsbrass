@@ -70,7 +70,7 @@
       note: "Representative brass vessel image. Confirm the exact Pongal panai model and capacity.",
       image: "https://commons.wikimedia.org/wiki/Special:FilePath/Brass_vessel_01.jpg",
       alt: "Traditional brass vessel",
-      credit: "Wikimedia Commons contributor · CC BY-SA 4.0",
+      credit: "Gurnoor ghuman · CC BY-SA 4.0",
       source: "https://commons.wikimedia.org/wiki/File:Brass_vessel_01.jpg",
       group: "Festival"
     }
