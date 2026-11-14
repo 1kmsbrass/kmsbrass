@@ -5,7 +5,7 @@ type: page
 layout: single
 quality: complete
 translationKey: ordering-terms
-lastUpdated: "2026-10-11"
+lastUpdated: "2026-11-14"
 sources:
   - "KMS business and ordering policy"
 ---
@@ -17,6 +17,8 @@ Kumbakonam Metal Stores supplies brass articles for pooja, lamps, temples, vesse
 We handle wholesale and bulk enquiries for brass articles such as pooja items, lamps, temple articles, vessels, cookware and gifting requirements. Product-specific pages will publish stable facts such as material, sizes, weights, capacity and minimum order quantity as each specification is verified.
 
 We do not offer trade credit, display v1 public prices, guarantee unconfirmed stock, or promise an availability/dispatch date before the order details are confirmed. We do not accept ritual assumptions as proof: requirements specific to a temple should be confirmed with its committee or officiant. We do not use fake stock counters, discounts or reply-time promises.
+
+**We don't exploit bhakti. We enable it.** We do not use religious fear, urgency, exaggerated spiritual claims or unverified assertions to sell. We help customers make informed choices through honest product information and careful service. Read our [approach to bhakti and honest selling](our-approach-to-bhakti.md).
 
 ## How ordering works
 
